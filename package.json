@@ -13,8 +13,10 @@
     "web": "expo start --web",
     "eject": "expo eject",
     "test": "jest --watchAll",
+    "deploy": "yarn deploy:expo && yarn build:web && yarn deploy:web",
+    "deploy:expo": "expo publish",
     "build:web": "expo build:web",
-    "expo:publish": "expo publish",
+    "deploy:web": "netlify deploy --prod",
     "lint": "yarn lint:ts && yarn lint:md",
     "lint:ts": "eslint '**/*.+(js|jsx|ts|tsx)' --ignore-path .gitignore",
     "lint:md": "markdownlint '**/*.+(md)' --ignore node_modules"
