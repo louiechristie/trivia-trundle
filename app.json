@@ -1,12 +1,16 @@
 {
   "expo": {
-    "name": "trivia-trundle",
+    "name": "Trivia Trundle",
     "slug": "trivia-trundle",
-    "version": "1.0.0",
-    "orientation": "portrait",
+    "description": "A a 10 question, true or false, trivia app",
+    "privacy": "unlisted",
+    "githubUrl": "https://github.com/louiechristie/trivia-trundle",
+    "version": "0.1.0",
+    "orientation": "default",
     "icon": "./assets/images/icon.png",
-    "scheme": "myapp",
+    "scheme": "trivia-trundle",
     "userInterfaceStyle": "automatic",
+    "platforms": ["ios", "android", "web"],
     "splash": {
       "image": "./assets/images/splash.png",
       "resizeMode": "contain",
@@ -15,9 +19,7 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
