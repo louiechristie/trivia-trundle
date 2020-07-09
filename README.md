@@ -3,7 +3,10 @@
 A a 10 question, true or false, trivia app.
 
 ## Demo
-- @todo create demo
+- App: 
+  - Install [Android Expo App](https://play.google.com/store/apps/details?id=host.exp.exponent&hl=en) (for iOS see 'Getting Started' below.)
+  - Scan the QR code at [https://expo.io/@louiechristie/trivia-trundle](https://expo.io/@louiechristie/trivia-trundle)
+- Web: [https://triviatrundle.netlify.com/](https://triviatrundle.netlify.com/)
 
 ## Getting Started
 
@@ -26,7 +29,5 @@ A a 10 question, true or false, trivia app.
 ## Author
 
 [Louie Christie](https://www.louiechristie.com)
-
-## License
 
 Copyright Louie Christie (c) 2020
