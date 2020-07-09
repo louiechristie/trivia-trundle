@@ -3,7 +3,8 @@
   "name": "trivia-trundle",
   "description": "A a 10 question, true or false, trivia app",
   "version": "0.1.0",
-  "license": "UNLICENSED",
+  "private": true,
+  "license": "LicenseRef-LICENSE",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "start": "expo start",
@@ -13,10 +14,29 @@
     "eject": "expo eject",
     "test": "jest --watchAll",
     "build:web": "expo build:web",
-    "expo:publish": "expo publish"
+    "expo:publish": "expo publish",
+    "lint": "yarn lint:ts && yarn lint:md",
+    "lint:ts": "eslint '**/*.+(js|jsx|ts|tsx)' --ignore-path .gitignore",
+    "lint:md": "markdownlint '**/*.+(md)' --ignore node_modules"
   },
   "jest": {
     "preset": "jest-expo"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*.+(md)": [
+      "prettier --write",
+      "markdownlint --ignore node_modules --fix"
+    ],
+    "**/*.+(js|jsx|ts|tsx|css|sass|less|graphql|yml|yaml|scss|vue)": [
+      "prettier --write",
+      "eslint --ignore-path .gitignore --fix",
+      "jest --findRelatedTests"
+    ]
   },
   "dependencies": {
     "@expo/vector-icons": "^10.0.0",
@@ -45,9 +65,19 @@
     "@types/react": "~16.9.23",
     "@types/react-native": "~0.62.13",
     "babel-preset-expo": "~8.1.0",
+    "eslint": "^7.4.0",
+    "eslint-config-universe": "^4.0.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jest": "^23.18.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react-hooks": "^4.0.6",
+    "eslint-plugin-tsdoc": "^0.2.5",
     "expo-cli": "^3.22.0",
+    "husky": "^4.2.5",
     "jest-expo": "~38.0.0",
+    "lint-staged": "^10.2.11",
+    "markdownlint-cli": "^0.23.2",
+    "prettier": "^2.0.5",
     "typescript": "~3.9.5"
-  },
-  "private": true
+  }
 }
