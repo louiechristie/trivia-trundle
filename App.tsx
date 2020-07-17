@@ -1,9 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { ActivityIndicator } from 'react-native';
+import { Provider as PaperProvider } from 'react-native-paper';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-import { Provider } from './context/QuestionsContext';
+import { Provider as QuestionsProvider } from './context/QuestionsContext';
 import useCachedResources from './hooks/useCachedResources';
 import useColorScheme from './hooks/useColorScheme';
 import Navigation from './navigation';
@@ -16,12 +17,14 @@ export default function App(): JSX.Element {
     return <ActivityIndicator />;
   } else {
     return (
-      <Provider>
+      <QuestionsProvider>
         <SafeAreaProvider>
-          <StatusBar />
-          <Navigation colorScheme={colorScheme} />
+          <PaperProvider>
+            <StatusBar />
+            <Navigation colorScheme={colorScheme} />
+          </PaperProvider>
         </SafeAreaProvider>
-      </Provider>
+      </QuestionsProvider>
     );
   }
 }
