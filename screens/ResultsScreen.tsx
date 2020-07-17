@@ -1,6 +1,7 @@
 // import Constants from 'expo-constants';
 import React, { useContext, useEffect } from 'react';
-import { View, Text, StyleSheet, FlatList } from 'react-native';
+import { View, StyleSheet, FlatList } from 'react-native';
+import { Paragraph } from 'react-native-paper';
 
 import Header from '../components/Header';
 import { Context } from '../context/QuestionsContext';
@@ -11,6 +12,7 @@ const Entities = require('html-entities').AllHtmlEntities;
 const entities = new Entities();
 
 // const DEBUG = Constants.manifest.extra.debug || false;
+// const DEBUG = true;
 
 export default function TabOneScreen(): JSX.Element {
   const { state, getQuestions } = useContext(Context);
@@ -30,19 +32,21 @@ export default function TabOneScreen(): JSX.Element {
         renderItem={({ item }) => {
           return (
             <View style={styles.row}>
-              <Text>{entities.decode(item.question)}</Text>
+              <Paragraph>{entities.decode(item.question)}</Paragraph>
             </View>
           );
         }}
       />
 
-      {/* {DEBUG && <Text>State: {JSON.stringify(state, null, 2)}</Text>} */}
+      {/* {DEBUG && <Paragraph>State: {JSON.stringify(state, null, 2)}</Paragraph>} */}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {},
+  container: {
+    flex: 1,
+  },
   title: {
     fontSize: 20,
     fontWeight: 'bold',

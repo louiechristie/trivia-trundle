@@ -13,6 +13,7 @@ import Navigation from './navigation';
 export default function App(): JSX.Element {
   const isLoadingComplete = useCachedResources();
   const colorScheme = useColorScheme();
+  // const colorScheme = 'light';
 
   if (!isLoadingComplete) {
     return <ActivityIndicator />;
@@ -20,7 +21,7 @@ export default function App(): JSX.Element {
     return (
       <QuestionsProvider>
         <SafeAreaProvider>
-          <PaperProvider theme={Colors.light}>
+          <PaperProvider theme={colorScheme === 'dark' ? Colors.dark : Colors.light}>
             <StatusBar style="light" />
             <Navigation colorScheme={colorScheme} />
           </PaperProvider>

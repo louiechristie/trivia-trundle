@@ -19,7 +19,7 @@ const MaterialTopTabs = createMaterialTopTabNavigator<MaterialTopTabParams>();
 function QuizScreen({
   navigation,
   theme: {
-    colors: { background },
+    colors: { quiz },
   },
 }: StackScreenProps<ParamListBase>) {
   React.useLayoutEffect(() => {
@@ -29,7 +29,7 @@ function QuizScreen({
   }, [navigation]);
 
   return (
-    <ScrollView style={[styles.container, { backgroundColor: '#E0E0E0' }]}>
+    <ScrollView style={[styles.container, { backgroundColor: quiz }]}>
       <Header />
       <MaterialTopTabs.Navigator>
         <MaterialTopTabs.Screen name="1" component={Question} options={{ title: '1' }} />

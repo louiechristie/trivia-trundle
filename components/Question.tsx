@@ -25,12 +25,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
   },
-  card: {
-    // elevation: 10,
-    // borderWidth: 1,
-    borderColor: '#000',
-    backgroundColor: '#fff',
-  },
+  card: {},
 });
 
 export default Question;

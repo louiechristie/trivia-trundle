@@ -1,23 +1,29 @@
 import * as React from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import { Title } from 'react-native-paper';
 
-import EditScreenInfo from '../components/EditScreenInfo';
 import Header from '../components/Header';
-import { Text, View } from '../components/Themed';
 
 export default function HomeScreen(): JSX.Element {
   return (
     <View style={styles.container}>
       <Header />
-      <Text style={styles.title}>Tab Two</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="/screens/HomeScreen.tsx" />
+      <View style={styles.content}>
+        <Title>Welcome</Title>
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {},
+  container: {
+    flex: 1,
+  },
+  content: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   title: {
     fontSize: 20,
     fontWeight: 'bold',

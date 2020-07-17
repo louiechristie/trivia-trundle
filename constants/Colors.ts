@@ -10,6 +10,8 @@ export default {
     colors: {
       primary: tintColorLight,
       card: '#FFF3CE',
+      surface: '#FFF',
+      quiz: '#E0E0E0',
       border: 'rgb(199, 199, 204)',
       text: '#000',
       tint: tintColorLight,
@@ -22,7 +24,7 @@ export default {
     colors: {
       primary: tintColorDark,
       text: '#fff',
-      background: '#000',
+      // background: '#000',
       tint: tintColorDark,
       tabIconDefault: '#ccc',
       tabIconSelected: tintColorDark,
