@@ -3,6 +3,7 @@ import React from 'react';
 import { ActivityIndicator } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
+import { Provider } from './context/QuestionsContext';
 import useCachedResources from './hooks/useCachedResources';
 import useColorScheme from './hooks/useColorScheme';
 import Navigation from './navigation';
@@ -15,10 +16,12 @@ export default function App(): JSX.Element {
     return <ActivityIndicator />;
   } else {
     return (
-      <SafeAreaProvider>
-        <Navigation colorScheme={colorScheme} />
-        <StatusBar />
-      </SafeAreaProvider>
+      <Provider>
+        <SafeAreaProvider>
+          <StatusBar />
+          <Navigation colorScheme={colorScheme} />
+        </SafeAreaProvider>
+      </Provider>
     );
   }
 }
