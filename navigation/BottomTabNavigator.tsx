@@ -5,10 +5,9 @@ import * as React from 'react';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
+import QuizScreen from '../screens/QuizScreen';
 import ResultsScreen from '../screens/ResultsScreen';
 import HomeScreen from '../screens/TabTwoScreen';
-import QuizScreen from '../screens/TabTwoScreen';
-import { BottomTabParamList, HomeParamList, QuizParamList } from '../types';
 
 type MaterialBottomTabParams = {
   Home: undefined;
