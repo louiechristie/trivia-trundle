@@ -2,12 +2,11 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
+import { withTheme } from 'react-native-paper';
 
-import Colors from '../constants/Colors';
-import useColorScheme from '../hooks/useColorScheme';
+import HomeScreen from '../screens/HomeScreen';
 import QuizScreen from '../screens/QuizScreen';
 import ResultsScreen from '../screens/ResultsScreen';
-import HomeScreen from '../screens/TabTwoScreen';
 
 type MaterialBottomTabParams = {
   Home: undefined;
@@ -29,13 +28,9 @@ type ResultsParamList = {
 
 const BottomTab = createMaterialBottomTabNavigator<MaterialBottomTabParams>();
 
-export default function BottomTabNavigator(): JSX.Element {
-  const colorScheme = useColorScheme();
-
+const BottomTabNavigator = (): JSX.Element => {
   return (
-    <BottomTab.Navigator
-      initialRouteName="Results"
-      tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}>
+    <BottomTab.Navigator initialRouteName="Results">
       <BottomTab.Screen
         name="Home"
         component={HomeNavigator}
@@ -59,7 +54,7 @@ export default function BottomTabNavigator(): JSX.Element {
       />
     </BottomTab.Navigator>
   );
-}
+};
 
 // You can explore the built-in icon families and icons on the web at:
 // https://icons.expo.fyi/
@@ -77,7 +72,7 @@ function HomeNavigator() {
       <HomeStack.Screen
         name="HomeScreen"
         component={HomeScreen}
-        options={{ headerTitle: 'Home' }}
+        options={{ headerShown: false, headerTitle: 'Home' }}
       />
     </HomeStack.Navigator>
   );
@@ -91,7 +86,7 @@ function QuizNavigator() {
       <QuizStack.Screen
         name="QuizScreen"
         component={QuizScreen}
-        options={{ headerTitle: 'Quiz' }}
+        options={{ headerShown: false, headerTitle: 'Quiz' }}
       />
     </QuizStack.Navigator>
   );
@@ -105,8 +100,10 @@ function ResultsNavigator() {
       <ResultsStack.Screen
         name="ResultsScreen"
         component={ResultsScreen}
-        options={{ headerTitle: 'Results' }}
+        options={{ headerShown: false, headerTitle: 'Results' }}
       />
     </ResultsStack.Navigator>
   );
 }
+
+export default withTheme(BottomTabNavigator);

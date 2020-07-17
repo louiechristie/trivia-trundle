@@ -4,6 +4,7 @@ import { ActivityIndicator } from 'react-native';
 import { Provider as PaperProvider } from 'react-native-paper';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
+import Colors from './constants/Colors';
 import { Provider as QuestionsProvider } from './context/QuestionsContext';
 import useCachedResources from './hooks/useCachedResources';
 import useColorScheme from './hooks/useColorScheme';
@@ -19,8 +20,8 @@ export default function App(): JSX.Element {
     return (
       <QuestionsProvider>
         <SafeAreaProvider>
-          <PaperProvider>
-            <StatusBar />
+          <PaperProvider theme={Colors.light}>
+            <StatusBar style="light" />
             <Navigation colorScheme={colorScheme} />
           </PaperProvider>
         </SafeAreaProvider>

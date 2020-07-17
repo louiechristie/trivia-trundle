@@ -1,7 +1,7 @@
 {
   "author": "Louie Christie <6807448+louiechristie@users.noreply.github.com> (https://github.com/louiechristie/)",
   "name": "trivia-trundle",
-  "description": "A a 10 question, true or false, trivia app",
+  "description": "A a 10 question, true or false, trivia game",
   "version": "0.1.0",
   "private": true,
   "license": "LicenseRef-LICENSE",
