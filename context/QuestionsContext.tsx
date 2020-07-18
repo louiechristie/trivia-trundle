@@ -1,14 +1,24 @@
 import Constants from 'expo-constants';
 
 import jsonServer from '../api/jsonServer';
+import { question } from '../types';
 import createDataContext from './createDataContext';
+
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const Entities = require('html-entities').AllHtmlEntities;
+const entities = new Entities();
 
 const DEBUG = Constants.manifest.extra.debug || false;
 
-const questionReducer = (state, action) => {
+const questionReducer = (state: question[], action) => {
   switch (action.type) {
     case 'get_questions':
-      return action.payload;
+      return action.payload.map((question) => {
+        return {
+          ...question,
+          question: entities.decode(question?.question),
+        };
+      });
     case 'edit_question':
       return state.map((questionPost) => {
         return questionPost.id === action.payload.id ? action.payload : questionPost;
@@ -61,9 +71,6 @@ const editQuestion = (dispatch) => {
       type: 'edit_question',
       payload: { id, title, content },
     });
-    if (callback) {
-      callback();
-    }
   };
 };
 

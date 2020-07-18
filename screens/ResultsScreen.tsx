@@ -5,16 +5,12 @@ import { Paragraph } from 'react-native-paper';
 
 import Header from '../components/Header';
 import { Context } from '../context/QuestionsContext';
-
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const Entities = require('html-entities').AllHtmlEntities;
-
-const entities = new Entities();
+import { question } from '../types';
 
 // const DEBUG = Constants.manifest.extra.debug || false;
 // const DEBUG = true;
 
-export default function TabOneScreen(): JSX.Element {
+export default function ResultsScreen(): JSX.Element {
   const { state, getQuestions } = useContext(Context);
 
   useEffect(() => {
@@ -32,7 +28,7 @@ export default function TabOneScreen(): JSX.Element {
         renderItem={({ item }) => {
           return (
             <View style={styles.row}>
-              <Paragraph>{entities.decode(item.question)}</Paragraph>
+              <Paragraph>{item.question}</Paragraph>
             </View>
           );
         }}
