@@ -1,13 +1,14 @@
 # Trivia Trundle
 
-A a 10 question, true or false, trivia app.
+A a 10 question, true or false, trivia game.
 
 ## Demo
 
-- App:
-  - Install [Android Expo App](https://play.google.com/store/apps/details?id=host.exp.exponent&hl=en) (for iOS see 'Getting Started' below.)
+- Android:
+  - Install [Android Expo App](https://play.google.com/store/apps/details?id=host.exp.exponent&hl=en)
   - Scan the QR code at [https://expo.io/@louiechristie/trivia-trundle](https://expo.io/@louiechristie/trivia-trundle)
 - Web: [https://triviatrundle.netlify.com/](https://triviatrundle.netlify.com/)
+- iOS: Demo not available due to Apple restrictions. build the app locally on your computer by following the 'Getting Started' instructions below.
 
 ## Getting Started
 
@@ -15,11 +16,22 @@ A a 10 question, true or false, trivia app.
 
 - Install [yarn version 1.x](https://classic.yarnpkg.com/lang/en/)
 
-- In a terminal type these commands:
+- Install dependencies:
 
 ```console
   yarn
-  yarn start
+```
+
+- Either, start the development processes for iOS/Android App:
+
+```console
+yarn start
+```
+
+- Or, start the development processes for website:
+
+```console
+yarn web
 ```
 
 ## Technologies Used
