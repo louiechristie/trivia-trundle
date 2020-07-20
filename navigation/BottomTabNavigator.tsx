@@ -5,12 +5,12 @@ import * as React from 'react';
 import { withTheme } from 'react-native-paper';
 
 import HomeScreen from '../screens/HomeScreen';
-import QuizScreen from '../screens/QuizScreen';
+import QuestionsScreen from '../screens/QuestionsScreen';
 import ResultsScreen from '../screens/ResultsScreen';
 
 type MaterialBottomTabParams = {
   Home: undefined;
-  Quiz: undefined;
+  Questions: undefined;
   Results: undefined;
 };
 
@@ -18,8 +18,8 @@ type HomeParamList = {
   HomeScreen: undefined;
 };
 
-type QuizParamList = {
-  QuizScreen: undefined;
+type QuestionsParamList = {
+  QuestionsScreen: undefined;
 };
 
 type ResultsParamList = {
@@ -39,8 +39,8 @@ const BottomTabNavigator = (): JSX.Element => {
         }}
       />
       <BottomTab.Screen
-        name="Quiz"
-        component={QuizNavigator}
+        name="Questions"
+        component={QuestionsNavigator}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="question-answer" color={color} />,
         }}
@@ -78,17 +78,17 @@ function HomeNavigator() {
   );
 }
 
-const QuizStack = createStackNavigator<QuizParamList>();
+const QuestionsStack = createStackNavigator<QuestionsParamList>();
 
-function QuizNavigator() {
+function QuestionsNavigator() {
   return (
-    <QuizStack.Navigator>
-      <QuizStack.Screen
-        name="QuizScreen"
-        component={QuizScreen}
-        options={{ headerShown: false, headerTitle: 'Quiz' }}
+    <QuestionsStack.Navigator>
+      <QuestionsStack.Screen
+        name="QuestionsScreen"
+        component={QuestionsScreen}
+        options={{ headerShown: false, headerTitle: 'Questions' }}
       />
-    </QuizStack.Navigator>
+    </QuestionsStack.Navigator>
   );
 }
 

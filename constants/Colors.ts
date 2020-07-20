@@ -1,6 +1,9 @@
 import { DefaultTheme, DarkTheme } from 'react-native-paper';
 
 const tintColorLight = '#0051E7';
+const negative = '#DD4837';
+const positive = '#59AF23';
+
 const tintColorDark = '#fff';
 
 export default {
@@ -9,9 +12,11 @@ export default {
 
     colors: {
       primary: tintColorLight,
+      positive,
+      negative,
       card: '#FFF3CE',
       surface: '#FFF',
-      quiz: '#E0E0E0',
+      questionsBackground: '#E0E0E0',
       border: 'rgb(199, 199, 204)',
       text: '#000',
       tint: tintColorLight,
@@ -23,6 +28,8 @@ export default {
     ...DarkTheme,
     colors: {
       primary: tintColorDark,
+      positive,
+      negative,
       text: '#fff',
       // background: '#000',
       tint: tintColorDark,

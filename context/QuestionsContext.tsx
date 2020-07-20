@@ -4,21 +4,27 @@ import jsonServer from '../api/jsonServer';
 import { question } from '../types';
 import createDataContext from './createDataContext';
 
+export type questions = {
+  questions: question[];
+};
+
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const Entities = require('html-entities').AllHtmlEntities;
 const entities = new Entities();
 
 const DEBUG = Constants.manifest.extra.debug || false;
 
-const questionReducer = (state: question[], action) => {
+const questionReducer = (state: questions, action): questions => {
   switch (action.type) {
     case 'get_questions':
-      return action.payload.map((question) => {
-        return {
-          ...question,
-          question: entities.decode(question?.question),
-        };
-      });
+      return action.payload.map(
+        (question: question): question => {
+          return {
+            ...question,
+            question: entities.decode(question?.question),
+          };
+        }
+      );
     case 'edit_question':
       return state.map((questionPost) => {
         return questionPost.id === action.payload.id ? action.payload : questionPost;
@@ -41,7 +47,7 @@ const questionReducer = (state: question[], action) => {
 
 const getQuestions = (dispatch) => {
   return async () => {
-    const response = await jsonServer.get();
+    const response = await jsonServer.get('');
 
     if (DEBUG) {
       console.log(`response: ${JSON.stringify(response, null, 2)}`);

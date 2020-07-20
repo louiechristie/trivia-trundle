@@ -4,6 +4,7 @@ export type RootStackParamList = {
 };
 
 export type question = {
+  index?: number;
   category: string;
   type: string;
   difficulty: string;

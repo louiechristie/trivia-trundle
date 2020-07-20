@@ -9,16 +9,16 @@ import { withTheme } from 'react-native-paper';
 import Header from '../components/Header';
 import Question from '../components/Question';
 import { Context } from '../context/QuestionsContext';
-import { question } from '../types';
+import { question as questionType } from '../types';
 
 const DEBUG = Constants.manifest.extra.debug || false;
 
 const MaterialTopTabs = createMaterialTopTabNavigator();
 
-function QuizScreen({
+function QuestionsScreen({
   navigation,
   theme: {
-    colors: { quiz },
+    colors: { questionsBackground },
   },
 }: StackScreenProps<ParamListBase>) {
   React.useLayoutEffect(() => {
@@ -30,7 +30,8 @@ function QuizScreen({
   const { state } = useContext(Context);
 
   return (
-    <ScrollView contentContainerStyle={[styles.container, { backgroundColor: quiz }]}>
+    <ScrollView
+      contentContainerStyle={[styles.container, { backgroundColor: questionsBackground }]}>
       <Header />
       <MaterialTopTabs.Navigator
         style={{
@@ -40,7 +41,7 @@ function QuizScreen({
           borderColor: 'orange',
           justifyContent: 'center',
         }}>
-        {state.map((question: Question, index: number) => {
+        {state.map((question: questionType, index: number) => {
           const title = Number(index + 1).toString();
           const ThisQuestion = () => <Question index={index + 1} {...question} />;
           return (
@@ -72,4 +73,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withTheme(QuizScreen);
+export default withTheme(QuestionsScreen);
