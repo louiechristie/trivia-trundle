@@ -4,7 +4,7 @@ import type { StackScreenProps } from '@react-navigation/stack';
 import Constants from 'expo-constants';
 import React, { useContext } from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
-import { withTheme } from 'react-native-paper';
+import { withTheme, ActivityIndicator, Paragraph } from 'react-native-paper';
 
 import Header from '../components/Header';
 import Question from '../components/Question';
@@ -28,32 +28,40 @@ function QuestionsScreen({
   }, [navigation]);
 
   const { state } = useContext(Context);
+  const { questions, error, isLoading } = state;
 
   return (
     <ScrollView
       contentContainerStyle={[styles.container, { backgroundColor: questionsBackground }]}>
       <Header />
-      <MaterialTopTabs.Navigator
-        style={{
-          flex: 1,
-          flexGrow: 100,
-          borderWidth: DEBUG ? 2 : 0,
-          borderColor: 'orange',
-          justifyContent: 'center',
-        }}>
-        {state.map((question: questionType, index: number) => {
-          const title = Number(index + 1).toString();
-          const ThisQuestion = () => <Question index={index + 1} {...question} />;
-          return (
-            <MaterialTopTabs.Screen
-              key={title}
-              name={title}
-              component={ThisQuestion}
-              options={{ title }}
-            />
-          );
-        })}
-      </MaterialTopTabs.Navigator>
+
+      {isLoading && <ActivityIndicator />}
+
+      {error && <Paragraph>{error}</Paragraph>}
+
+      {questions && (
+        <MaterialTopTabs.Navigator
+          style={{
+            flex: 1,
+            flexGrow: 100,
+            borderWidth: DEBUG ? 2 : 0,
+            borderColor: 'orange',
+            justifyContent: 'center',
+          }}>
+          {questions.map((question: questionType, index: number) => {
+            const title = Number(index + 1).toString();
+            const ThisQuestion = () => <Question index={index + 1} {...question} />;
+            return (
+              <MaterialTopTabs.Screen
+                key={title}
+                name={title}
+                component={ThisQuestion}
+                options={{ title }}
+              />
+            );
+          })}
+        </MaterialTopTabs.Navigator>
+      )}
     </ScrollView>
   );
 }

@@ -1,12 +1,13 @@
 import React, { useReducer } from 'react';
 
-export default (reducer, actions, initialState) => {
-  const Context = React.createContext();
+import { state } from './QuestionsContext';
+
+export default (reducer, actions, initialState: state) => {
+  const Context = React.createContext(initialState);
 
   const Provider = ({ children }) => {
     const [state, dispatch] = useReducer(reducer, initialState);
 
-    // actions === { addQuestion: (dispatch) => { return () => {} } }
     const boundActions = {};
     for (const key in actions) {
       boundActions[key] = actions[key](dispatch);

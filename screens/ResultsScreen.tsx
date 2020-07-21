@@ -1,17 +1,17 @@
-// import Constants from 'expo-constants';
+import Constants from 'expo-constants';
 import React, { useContext, useEffect } from 'react';
 import { View, StyleSheet, FlatList } from 'react-native';
-import { Paragraph } from 'react-native-paper';
+import { Paragraph, ActivityIndicator } from 'react-native-paper';
 
 import Header from '../components/Header';
 import { Context } from '../context/QuestionsContext';
 import { question } from '../types';
 
-// const DEBUG = Constants.manifest.extra.debug || false;
-// const DEBUG = true;
+const DEBUG = Constants.manifest.extra.debug || false;
 
 export default function ResultsScreen(): JSX.Element {
   const { state, getQuestions } = useContext(Context);
+  const { questions, error, isLoading } = state;
 
   useEffect(() => {
     getQuestions();
@@ -20,11 +20,14 @@ export default function ResultsScreen(): JSX.Element {
   }, []);
 
   return (
-    <View style={styles.container}>
+    <View style={styles.outer}>
       <Header />
+
       <FlatList
-        data={state}
-        keyExtractor={(item) => item.question}
+        style={styles.container}
+        contentContainerStyle={styles.contentContainer}
+        data={questions}
+        keyExtractor={(item: question) => item.question}
         renderItem={({ item }) => {
           return (
             <View style={styles.row}>
@@ -32,27 +35,48 @@ export default function ResultsScreen(): JSX.Element {
             </View>
           );
         }}
+        ListEmptyComponent={
+          <View style={styles.empty}>
+            {isLoading && <ActivityIndicator style={{ flex: 1 }} />}
+            {error && <Paragraph style={{ flex: 1 }}>{error}</Paragraph>}
+            {DEBUG && (
+              <Paragraph style={styles.debug}>State: {JSON.stringify(state, null, 2)}</Paragraph>
+            )}
+          </View>
+        }
       />
-
-      {/* {DEBUG && <Paragraph>State: {JSON.stringify(state, null, 2)}</Paragraph>} */}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  outer: {
     flex: 1,
+    borderWidth: DEBUG ? 2 : 0,
+    borderColor: 'red',
   },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
+  container: {
+    borderWidth: DEBUG ? 2 : 0,
+    borderColor: 'orange',
   },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
+  contentContainer: {
+    alignItems: 'center',
+    borderWidth: DEBUG ? 2 : 0,
+    borderColor: 'yellow',
   },
   row: {
+    width: 300,
     padding: 10,
+    borderWidth: DEBUG ? 1 : 0,
+    borderColor: 'green',
   },
+  empty: {
+    width: 300,
+    padding: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderWidth: DEBUG ? 1 : 0,
+    borderColor: 'green',
+  },
+  debug: { flex: 1, paddingTop: 10 },
 });

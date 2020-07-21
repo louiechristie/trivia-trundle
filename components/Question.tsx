@@ -5,7 +5,6 @@ import { StyleSheet, View, ScrollView } from 'react-native';
 import { Surface, Title, Paragraph, withTheme, Button, TouchableRipple } from 'react-native-paper';
 
 const DEBUG = Constants.manifest.extra.debug || false;
-// const DEBUG = false;
 
 const styles = StyleSheet.create({
   outer: {

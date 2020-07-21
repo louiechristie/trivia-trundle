@@ -1,11 +1,17 @@
 import Constants from 'expo-constants';
 
-import jsonServer from '../api/jsonServer';
+import questionsAPI from '../api/questionsAPI';
 import { question } from '../types';
 import createDataContext from './createDataContext';
 
-export type questions = {
-  questions: question[];
+export type action = 'get_questions';
+
+export type state = {
+  questions: {
+    questions: question[];
+    error: string;
+    isLoading: boolean;
+  };
 };
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
@@ -14,17 +20,23 @@ const entities = new Entities();
 
 const DEBUG = Constants.manifest.extra.debug || false;
 
-const questionReducer = (state: questions, action): questions => {
+const questionReducer = (state: state, action: action): state => {
   switch (action.type) {
     case 'get_questions':
-      return action.payload.map(
-        (question: question): question => {
-          return {
-            ...question,
-            question: entities.decode(question?.question),
-          };
-        }
-      );
+      return {
+        ...action.payload,
+        // decode HTML entities
+        questions:
+          action.payload.questions?.map(
+            (question: question): question => {
+              return {
+                ...question,
+                question: entities.decode(question?.question),
+              };
+            }
+          ) || [],
+      };
+
     case 'edit_question':
       return state.map((questionPost) => {
         return questionPost.id === action.payload.id ? action.payload : questionPost;
@@ -47,14 +59,54 @@ const questionReducer = (state: questions, action): questions => {
 
 const getQuestions = (dispatch) => {
   return async () => {
-    const response = await jsonServer.get('');
+    let response = null;
+    const error = null;
+    let isLoading = true;
 
-    if (DEBUG) {
-      console.log(`response: ${JSON.stringify(response, null, 2)}`);
-      console.log(`response.data: ${JSON.stringify(response.data, null, 2)}`);
+    dispatch({
+      type: 'get_questions',
+      payload: {
+        questions: [],
+        error,
+        isLoading,
+      },
+    });
+
+    try {
+      await setTimeout(null, 4000);
+      response = await questionsAPI.get('');
+      isLoading = false;
+
+      if (DEBUG) {
+        console.log(`response: ${JSON.stringify(response, null, 2)}`);
+        console.log(`response.data: ${JSON.stringify(response.data, null, 2)}`);
+      }
+
+      dispatch({
+        type: 'get_questions',
+        payload: {
+          questions: response?.data?.results || [],
+          error,
+          isLoading,
+        },
+      });
+    } catch (err) {
+      isLoading = false;
+
+      if (DEBUG) {
+        console.log(`get_questions err: ${err}`);
+      }
+
+      dispatch({
+        type: 'get_questions',
+        payload: {
+          questions: [],
+          error:
+            'Sorry, there was a problem downloading questions. Please check you are connected to the internet and try again.',
+          isLoading,
+        },
+      });
     }
-
-    dispatch({ type: 'get_questions', payload: response.data?.results });
   };
 };
 
