@@ -30,7 +30,7 @@ const BottomTab = createMaterialBottomTabNavigator<MaterialBottomTabParams>();
 
 const BottomTabNavigator = (): JSX.Element => {
   return (
-    <BottomTab.Navigator initialRouteName="Results">
+    <BottomTab.Navigator initialRouteName="Home">
       <BottomTab.Screen
         name="Home"
         component={HomeNavigator}

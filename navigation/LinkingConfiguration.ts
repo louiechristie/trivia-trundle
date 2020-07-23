@@ -35,7 +35,7 @@ export default {
           },
         },
       },
-      NotFound: '*',
+      Home: '*',
     },
   },
 };

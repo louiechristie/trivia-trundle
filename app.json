@@ -2,7 +2,7 @@
   "expo": {
     "name": "Trivia Trundle",
     "slug": "trivia-trundle",
-    "description": "A a 10 question, true or false, trivia game",
+    "description": "A quick true or false game.",
     "privacy": "unlisted",
     "githubUrl": "https://github.com/louiechristie/trivia-trundle",
     "version": "0.1.0",
@@ -33,7 +33,7 @@
       "favicon": "./assets/images/favicon.png"
     },
     "extra": {
-      "debug": false
+      "debug": true
     }
   }
 }

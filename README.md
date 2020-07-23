@@ -1,6 +1,6 @@
 # Trivia Trundle
 
-A a 10 question, true or false, trivia game.
+A quick true or false game.
 
 ## Demo
 

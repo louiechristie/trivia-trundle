@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
 });
 
 interface Props {
-  index: number;
+  id: number;
   category: string;
   type: string;
   difficulty: string;
@@ -102,7 +102,7 @@ interface Props {
 
 const Question = (props: Props): JSX.Element => {
   const {
-    index,
+    id,
     category,
     type,
     difficulty,
@@ -124,7 +124,7 @@ const Question = (props: Props): JSX.Element => {
                 <AntDesign name="question" size={48} color={colors.text} />
               </View>
             </Surface>
-            <Paragraph style={styles.questionNumber}>{index} of 10</Paragraph>
+            <Paragraph style={styles.questionNumber}>{id} of 10</Paragraph>
           </View>
         </View>
         <View style={styles.buttonsSection}>

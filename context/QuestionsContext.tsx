@@ -1,18 +1,8 @@
 import Constants from 'expo-constants';
 
 import questionsAPI from '../api/questionsAPI';
-import { question } from '../types';
+import { Question, State, GET_QUESTIONS, SET_QUESTION_ANSWER, ActionTypes } from '../types';
 import createDataContext from './createDataContext';
-
-export type action = 'get_questions';
-
-export type state = {
-  questions: {
-    questions: question[];
-    error: string;
-    isLoading: boolean;
-  };
-};
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const Entities = require('html-entities').AllHtmlEntities;
@@ -20,38 +10,63 @@ const entities = new Entities();
 
 const DEBUG = Constants.manifest.extra.debug || false;
 
-const questionReducer = (state: state, action: action): state => {
-  switch (action.type) {
-    case 'get_questions':
-      return {
-        ...action.payload,
-        // decode HTML entities
-        questions:
-          action.payload.questions?.map(
-            (question: question): question => {
-              return {
-                ...question,
-                question: entities.decode(question?.question),
-              };
-            }
-          ) || [],
-      };
+const initialState = {
+  questions: [],
+  error: null,
+  isLoading: false,
+};
 
-    case 'edit_question':
-      return state.map((questionPost) => {
-        return questionPost.id === action.payload.id ? action.payload : questionPost;
-      });
-    case 'delete_question':
-      return state.filter((questionPost) => questionPost.id !== action.payload);
-    case 'add_question':
-      return [
-        ...state,
+/**
+ *
+ * @param questions Questions from API
+ *
+ * Decodes HTML entities in questions
+ * Adds id value to each question for identifying questions in the app.
+ *
+ */
+const transformQuestions = (questions: Question[]): Question[] => {
+  return questions?.map(
+    (question: Question, index: number): Question => {
+      return (
         {
-          id: Math.floor(Math.random() * 99999),
-          title: action.payload.title,
-          content: action.payload.content,
-        },
-      ];
+          id: index + 1,
+          ...question,
+          question: entities.decode(question.question),
+          given_answer: null,
+          answered_correctly: null,
+        } || []
+      );
+    }
+  );
+  // return (
+  //   questions?.map((question, id) => {
+  //     return {
+  //       id,
+  //       ...question,
+  //     };
+  //   }) || []
+  // );
+};
+
+const questionReducer = (state: State, action: ActionTypes): State => {
+  switch (action.type) {
+    case GET_QUESTIONS:
+      return {
+        ...state,
+        ...action.payload,
+        questions: transformQuestions(action.payload.questions),
+      };
+    case SET_QUESTION_ANSWER:
+      return {
+        ...state,
+        questions: state.questions.map((question) => {
+          return {
+            ...question,
+            given_answer: question.id === action.payload.id ? action.payload.given_answer : null,
+            answered_correctly: action.payload.given_answer === question.correct_answer,
+          };
+        }),
+      };
     default:
       return state;
   }
@@ -64,7 +79,7 @@ const getQuestions = (dispatch) => {
     let isLoading = true;
 
     dispatch({
-      type: 'get_questions',
+      type: GET_QUESTIONS,
       payload: {
         questions: [],
         error,
@@ -73,7 +88,6 @@ const getQuestions = (dispatch) => {
     });
 
     try {
-      await setTimeout(null, 4000);
       response = await questionsAPI.get('');
       isLoading = false;
 
@@ -83,7 +97,7 @@ const getQuestions = (dispatch) => {
       }
 
       dispatch({
-        type: 'get_questions',
+        type: GET_QUESTIONS,
         payload: {
           questions: response?.data?.results || [],
           error,
@@ -98,7 +112,7 @@ const getQuestions = (dispatch) => {
       }
 
       dispatch({
-        type: 'get_questions',
+        type: GET_QUESTIONS,
         payload: {
           questions: [],
           error:
@@ -110,30 +124,17 @@ const getQuestions = (dispatch) => {
   };
 };
 
-const addQuestion = (dispatch) => {
-  return (title, content, callback) => {
-    dispatch({ type: 'add_question', payload: { title, content } });
-    if (callback) {
-      callback();
-    }
-  };
-};
-const deleteQuestion = (dispatch) => {
-  return (id) => {
-    dispatch({ type: 'delete_question', payload: id });
-  };
-};
-const editQuestion = (dispatch) => {
-  return (id, title, content) => {
+const setQuestionAnswer = (dispatch) => {
+  return (id, given_answer) => {
     dispatch({
-      type: 'edit_question',
-      payload: { id, title, content },
+      type: SET_QUESTION_ANSWER,
+      payload: { id, given_answer },
     });
   };
 };
 
 export const { Context, Provider } = createDataContext(
   questionReducer,
-  { addQuestion, deleteQuestion, editQuestion, getQuestions },
-  []
+  { getQuestions, setQuestionAnswer },
+  initialState
 );

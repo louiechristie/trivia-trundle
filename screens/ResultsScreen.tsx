@@ -1,23 +1,21 @@
 import Constants from 'expo-constants';
 import React, { useContext, useEffect } from 'react';
 import { View, StyleSheet, FlatList } from 'react-native';
-import { Paragraph, ActivityIndicator } from 'react-native-paper';
+import { Paragraph, ActivityIndicator, Button } from 'react-native-paper';
 
 import Header from '../components/Header';
 import { Context } from '../context/QuestionsContext';
-import { question } from '../types';
+import { Question } from '../types';
 
 const DEBUG = Constants.manifest.extra.debug || false;
 
-export default function ResultsScreen(): JSX.Element {
-  const { state, getQuestions } = useContext(Context);
+export default function ResultsScreen({ navigation }): JSX.Element {
+  const { state } = useContext(Context);
   const { questions, error, isLoading } = state;
 
-  useEffect(() => {
-    getQuestions();
-    // Only get once
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const playAgain = () => {
+    navigation.navigate('Home');
+  };
 
   return (
     <View style={styles.outer}>
@@ -27,7 +25,7 @@ export default function ResultsScreen(): JSX.Element {
         style={styles.container}
         contentContainerStyle={styles.contentContainer}
         data={questions}
-        keyExtractor={(item: question) => item.question}
+        keyExtractor={(item: Question) => item.question}
         renderItem={({ item }) => {
           return (
             <View style={styles.row}>
@@ -37,12 +35,18 @@ export default function ResultsScreen(): JSX.Element {
         }}
         ListEmptyComponent={
           <View style={styles.empty}>
-            {isLoading && <ActivityIndicator style={{ flex: 1 }} />}
-            {error && <Paragraph style={{ flex: 1 }}>{error}</Paragraph>}
+            {isLoading && <ActivityIndicator />}
+            <Paragraph>No results to display.</Paragraph>
+            {error && <Paragraph>{error}</Paragraph>}
             {DEBUG && (
               <Paragraph style={styles.debug}>State: {JSON.stringify(state, null, 2)}</Paragraph>
             )}
           </View>
+        }
+        ListFooterComponent={
+          <Button mode="contained" style={styles.button} onPress={playAgain}>
+            PLAY AGAIN?
+          </Button>
         }
       />
     </View>
@@ -56,21 +60,24 @@ const styles = StyleSheet.create({
     borderColor: 'red',
   },
   container: {
+    flex: 1,
     borderWidth: DEBUG ? 2 : 0,
     borderColor: 'orange',
   },
   contentContainer: {
+    flexGrow: 1,
+    justifyContent: 'space-between',
     alignItems: 'center',
     borderWidth: DEBUG ? 2 : 0,
     borderColor: 'yellow',
   },
   row: {
-    width: 300,
-    padding: 10,
+    width: 310,
     borderWidth: DEBUG ? 1 : 0,
     borderColor: 'green',
   },
   empty: {
+    flex: 1,
     width: 300,
     padding: 10,
     justifyContent: 'center',
@@ -78,5 +85,8 @@ const styles = StyleSheet.create({
     borderWidth: DEBUG ? 1 : 0,
     borderColor: 'green',
   },
-  debug: { flex: 1, paddingTop: 10 },
+  debug: { paddingTop: 10 },
+  button: {
+    margin: 30,
+  },
 });
