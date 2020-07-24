@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "Trivia Trundle",
+    "name": "Trivia Challenge",
     "slug": "trivia-trundle",
     "description": "A quick true or false game.",
     "privacy": "unlisted",
@@ -33,7 +33,7 @@
       "favicon": "./assets/images/favicon.png"
     },
     "extra": {
-      "debug": true
+      "debug": false
     }
   }
 }

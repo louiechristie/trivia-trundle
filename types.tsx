@@ -1,26 +1,3 @@
-export type RootStackParamList = {
-  Root: undefined;
-  NotFound: undefined;
-};
-
-export type MaterialBottomTabParams = {
-  Home: undefined;
-  Questions: undefined;
-  Results: undefined;
-};
-
-export type HomeParamList = {
-  HomeScreen: undefined;
-};
-
-export type QuestionsParamList = {
-  QuestionsScreen: undefined;
-};
-
-export type ResultsParamList = {
-  ResultsScreen: undefined;
-};
-
 export type TrueOrFalse = 'True' | 'False';
 
 export type Question = {
@@ -63,3 +40,22 @@ interface SetQuestionAnswerAction {
 }
 
 export type ActionTypes = GetQuestionsAction | SetQuestionAnswerAction;
+
+export type RootStackParamList = {
+  Home: undefined;
+  Questions: undefined;
+  Results: undefined;
+};
+
+// Fix to allow custom colors in react-native-paper theme
+// See https://callstack.github.io/react-native-paper/theming.html#typescript
+declare global {
+  // eslint-disable-next-line @typescript-eslint/no-namespace
+  namespace ReactNativePaper {
+    interface ThemeColors {
+      positive: string;
+      negative: string;
+      questionBackgroundColor: string;
+    }
+  }
+}

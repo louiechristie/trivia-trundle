@@ -19,7 +19,7 @@ const initialState = {
 
 /**
  *
- * @param questions Questions from API
+ * @param questions - Questions from API
  *
  * Decodes HTML entities in questions
  * Adds id value to each question for identifying questions in the app.

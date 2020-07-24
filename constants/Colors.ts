@@ -1,3 +1,7 @@
+// import {
+//   DefaultTheme as NavigationDefaultTheme,
+//   DarkTheme as NavigationDarkTheme,
+// } from '@react-navigation/native';
 import { DefaultTheme, DarkTheme } from 'react-native-paper';
 
 const tintColorLight = '#0051E7';
@@ -14,11 +18,13 @@ export default {
       primary: tintColorLight,
       positive,
       negative,
-      card: '#FFF3CE',
+      questionBackgroundColor: '#E0E0E0',
+      card: '#FFF',
       surface: '#FFF',
-      questionsBackground: '#E0E0E0',
       border: 'rgb(199, 199, 204)',
       text: '#000',
+      background: '#FFF',
+      lightText: '#FFF',
       tint: tintColorLight,
       tabIconDefault: '#ccc',
       tabIconSelected: tintColorLight,
@@ -31,7 +37,8 @@ export default {
       positive,
       negative,
       text: '#fff',
-      // background: '#000',
+      background: '#000',
+      lightText: '#FFF',
       tint: tintColorDark,
       tabIconDefault: '#ccc',
       tabIconSelected: tintColorDark,

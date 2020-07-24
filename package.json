@@ -19,7 +19,7 @@
     "deploy:web": "netlify deploy --prod",
     "lint": "yarn lint:ts && yarn lint:md",
     "lint:ts": "eslint '**/*.+(js|jsx|ts|tsx)' --ignore-path .gitignore",
-    "lint:md": "markdownlint '**/*.+(md)' --ignore node_modules"
+    "lint:md": "markdownlint '**/README.md' --ignore node_modules"
   },
   "jest": {
     "preset": "jest-expo"

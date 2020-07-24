@@ -1,4 +1,4 @@
-import { AntDesign } from '@expo/vector-icons';
+import { AntDesign, Entypo } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import Constants from 'expo-constants';
 import React, { useContext } from 'react';
@@ -38,12 +38,13 @@ export default function Question(props: Props): JSX.Element {
       nextScreenName = 'Results';
     }
 
-    setQuestionAnswer(id, given_answer);
     navigate(nextScreenName);
+    setQuestionAnswer(id, given_answer);
   };
 
   return (
-    <ScrollView contentContainerStyle={styles.outer}>
+    <ScrollView
+      contentContainerStyle={[styles.outer, { backgroundColor: colors.questionBackgroundColor }]}>
       <View style={styles.container}>
         <Title style={styles.titleSection}>{category}</Title>
         <View style={styles.questionSection}>
@@ -63,13 +64,14 @@ export default function Question(props: Props): JSX.Element {
             onPress={() => {
               answer('False');
             }}
-            rippleColor="rgba(0, 0, 0, .32)">
-            <Surface style={styles.button}>
-              <Title style={styles.buttonTitle}>❌</Title>
+            rippleColor="rgba(255, 255, 255, .32)">
+            <Surface style={[styles.button, { backgroundColor: colors.negative }]}>
+              <Entypo name="cross" size={48} color={colors.lightText} />
+
               <Paragraph
                 style={[
                   styles.buttonText,
-                  { color: colors.negative, backgroundColor: colors.surface },
+                  { color: colors.lightText, backgroundColor: colors.negative },
                 ]}>
                 False
               </Paragraph>
@@ -77,16 +79,17 @@ export default function Question(props: Props): JSX.Element {
           </TouchableRipple>
           <TouchableRipple
             style={styles.buttonContainer}
-            rippleColor="rgba(0, 0, 0, .32)"
+            rippleColor="rgba(255, 255, 255, .66)"
             onPress={() => {
               answer('True');
             }}>
-            <Surface style={styles.button}>
-              <Title style={styles.buttonTitle}>✅</Title>
+            <Surface style={[styles.button, { backgroundColor: colors.positive }]}>
+              <Entypo name="check" size={48} color={colors.lightText} />
+
               <Paragraph
                 style={[
                   styles.buttonText,
-                  { color: colors.positive, backgroundColor: colors.surface },
+                  { color: colors.lightText, backgroundColor: colors.positive },
                 ]}>
                 True
               </Paragraph>
@@ -101,6 +104,7 @@ export default function Question(props: Props): JSX.Element {
 const styles = StyleSheet.create({
   outer: {
     flex: 1,
+    paddingBottom: 20,
     alignItems: 'center',
     borderWidth: DEBUG ? 2 : 0,
     borderColor: 'yellow',
@@ -119,7 +123,7 @@ const styles = StyleSheet.create({
     borderColor: 'blue',
   },
   questionSection: {
-    flex: 2,
+    flex: 3,
     justifyContent: 'center',
     alignItems: 'center',
     borderWidth: DEBUG ? 2 : 0,
@@ -132,14 +136,18 @@ const styles = StyleSheet.create({
     borderColor: 'indigo',
   },
   questionSurface: {
-    padding: 20,
+    padding: 30,
+    minWidth: 300,
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 5,
     borderWidth: DEBUG ? 2 : 0,
     borderColor: 'violet',
   },
-  paragraph: {},
+  paragraph: {
+    fontSize: 20,
+    lineHeight: 20 * 1.2,
+  },
   questionNumber: {
     borderWidth: DEBUG ? 2 : 0,
     borderColor: 'violet',
@@ -173,7 +181,6 @@ const styles = StyleSheet.create({
     borderColor: 'grey',
   },
   buttonText: {
-    // flex: 1,
     fontSize: 18,
     borderWidth: DEBUG ? 1 : 0,
     borderColor: 'grey',

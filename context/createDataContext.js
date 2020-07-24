@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import React, { useReducer } from 'react';
 
 export default (reducer, actions, initialState) => {

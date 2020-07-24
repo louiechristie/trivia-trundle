@@ -1,16 +1,23 @@
+import { StackScreenProps } from '@react-navigation/stack';
 import Constants from 'expo-constants';
 import React, { useContext } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
-import { List, Title, Paragraph, ActivityIndicator, withTheme, Button } from 'react-native-paper';
+import { List, Title, Paragraph, ActivityIndicator, useTheme, Button } from 'react-native-paper';
 
 import Header from '../components/Header';
 import { Context } from '../context/QuestionsContext';
-import { Question } from '../types';
+import { Question, RootStackParamList } from '../types';
 
 const DEBUG = Constants.manifest.extra.debug || false;
 
-function ResultsScreen({ navigation }): JSX.Element {
+type Props = StackScreenProps<RootStackParamList, 'Results'>;
+
+export default function ResultsScreen({ navigation }: Props): JSX.Element {
   const { state } = useContext(Context);
+  const theme = useTheme();
+  const {
+    colors: { positive, negative },
+  } = theme;
   const { questions, score, error, isLoading } = state;
 
   const showInfoBox = questions.length === 0 || error !== null || isLoading === true;
@@ -20,7 +27,9 @@ function ResultsScreen({ navigation }): JSX.Element {
   };
 
   return (
-    <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+    <ScrollView
+      style={[styles.container, { backgroundColor: theme.colors.background }]}
+      contentContainerStyle={styles.contentContainer}>
       <Header />
 
       {showInfoBox ? (
@@ -37,20 +46,30 @@ function ResultsScreen({ navigation }): JSX.Element {
       ) : (
         <View style={styles.results}>
           <Title style={styles.title}>You scored</Title>
-          <Title style={styles.title}>{score} out of 10</Title>
+          <Title style={styles.title}>{score} / 10</Title>
 
-          <List.Section>
+          <List.Section theme={theme}>
             {isLoading && <ActivityIndicator />}
 
             {questions.map((question: Question) => {
-              if (question.given_answer === null) return null;
+              const { answered_correctly, given_answer } = question;
+              if (given_answer === null) return null;
               return (
                 <List.Item
                   key={Number(question.id).toString()}
-                  left={(props) => (
-                    <List.Icon {...props} icon={question.answered_correctly ? 'plus' : 'minus'} />
-                  )}
+                  left={(props) => {
+                    return (
+                      <List.Icon
+                        {...props}
+                        icon={answered_correctly ? 'plus' : 'minus'}
+                        color={answered_correctly ? positive : negative}
+                      />
+                    );
+                  }}
                   title={question.question}
+                  description={`${
+                    answered_correctly ? "Correct, it's" : "Incorrect, it's actually"
+                  } ${question.correct_answer}.`}
                   titleNumberOfLines={5}
                 />
               );
@@ -58,7 +77,11 @@ function ResultsScreen({ navigation }): JSX.Element {
           </List.Section>
         </View>
       )}
-      <Button mode="contained" style={styles.button} onPress={playAgain}>
+      <Button
+        mode="contained"
+        style={styles.button}
+        contentStyle={styles.buttonContent}
+        onPress={playAgain}>
         PLAY AGAIN?
       </Button>
     </ScrollView>
@@ -80,7 +103,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-
     borderWidth: DEBUG ? 2 : 0,
     borderColor: 'yellow',
   },
@@ -113,9 +135,11 @@ const styles = StyleSheet.create({
     borderColor: 'indigo',
   },
   button: {
-    margin: 30,
+    margin: 60,
+    marginTop: 20,
+  },
+  buttonContent: {
+    height: 60,
   },
   debug: { paddingTop: 10 },
 });
-
-export default withTheme(ResultsScreen);

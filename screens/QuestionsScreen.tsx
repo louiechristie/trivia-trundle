@@ -1,10 +1,11 @@
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import type { ParamListBase } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import type { StackScreenProps } from '@react-navigation/stack';
 import Constants from 'expo-constants';
 import React, { useContext } from 'react';
 import { StyleSheet, ScrollView, View } from 'react-native';
-import { useTheme, ActivityIndicator, Paragraph, Button } from 'react-native-paper';
+import { ActivityIndicator, Paragraph, Button } from 'react-native-paper';
 
 import Header from '../components/Header';
 import Question from '../components/Question';
@@ -13,20 +14,15 @@ import { Question as QuestionType } from '../types';
 
 const DEBUG = Constants.manifest.extra.debug || false;
 
-const MaterialTopTabs = createMaterialTopTabNavigator();
+const MaterialTopTabs = DEBUG ? createMaterialTopTabNavigator() : createStackNavigator();
 
-export default function QuestionsScreen({ navigation }: StackScreenProps<ParamListBase>) {
+export default function QuestionsScreen({
+  navigation,
+}: StackScreenProps<ParamListBase>): JSX.Element {
   const { state, getQuestions } = useContext(Context);
-  const { colors } = useTheme();
   const { questions, error, isLoading } = state;
   const empty = questions.length === 0;
   const showInfoBox = error || isLoading || empty;
-
-  React.useLayoutEffect(() => {
-    navigation.setOptions({
-      cardStyle: { flex: 1 },
-    });
-  }, [navigation]);
 
   return (
     <View style={styles.screen}>
@@ -38,19 +34,14 @@ export default function QuestionsScreen({ navigation }: StackScreenProps<ParamLi
         <View style={styles.info}>
           {isLoading && <ActivityIndicator />}
 
-          {empty && <Button onPress={getQuestions}>Load questions.</Button>}
+          {empty && <Button onPress={getQuestions}>Load questions</Button>}
 
           {error && <Paragraph>{error}</Paragraph>}
         </View>
       )}
 
       {!empty && (
-        <ScrollView
-          style={styles.scrollView}
-          contentContainerStyle={[
-            styles.contentContainer,
-            { backgroundColor: colors.questionsBackground },
-          ]}>
+        <ScrollView style={styles.scrollView} contentContainerStyle={styles.contentContainer}>
           <MaterialTopTabs.Navigator style={styles.tabNavigator} initialRouteName="1">
             {questions.map((question: QuestionType) => {
               const { id, category } = question;
@@ -63,7 +54,7 @@ export default function QuestionsScreen({ navigation }: StackScreenProps<ParamLi
                   key={title}
                   name={title}
                   component={ThisQuestion}
-                  options={{ title }}
+                  options={{ title, headerShown: false }}
                 />
               );
             })}

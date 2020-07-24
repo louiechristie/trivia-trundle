@@ -13,7 +13,7 @@ import Navigation from './navigation';
 export default function App(): JSX.Element {
   const isLoadingComplete = useCachedResources();
   const colorScheme = useColorScheme();
-  // const colorScheme = 'light';
+  // For testing dark color scheme
 
   if (!isLoadingComplete) {
     return <ActivityIndicator />;
