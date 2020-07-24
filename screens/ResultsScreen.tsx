@@ -11,7 +11,7 @@ const DEBUG = Constants.manifest.extra.debug || false;
 
 function ResultsScreen({ navigation }): JSX.Element {
   const { state } = useContext(Context);
-  const { questions, error, isLoading } = state;
+  const { questions, score, error, isLoading } = state;
 
   const showInfoBox = questions.length === 0 || error !== null || isLoading === true;
 
@@ -37,7 +37,7 @@ function ResultsScreen({ navigation }): JSX.Element {
       ) : (
         <View style={styles.results}>
           <Title style={styles.title}>You scored</Title>
-          <Title style={styles.title}>out of 10</Title>
+          <Title style={styles.title}>{score} out of 10</Title>
 
           <List.Section>
             {isLoading && <ActivityIndicator />}
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
     borderColor: 'red',
   },
   contentContainer: {
-    flex: 1,
+    flexGrow: 1,
     borderWidth: DEBUG ? 2 : 0,
     borderColor: 'orange',
   },

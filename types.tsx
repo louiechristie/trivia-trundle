@@ -39,6 +39,7 @@ export type State = {
   questions: Question[];
   error: string | null;
   isLoading: boolean;
+  score: number;
 };
 
 export const GET_QUESTIONS = 'GET_QUESTIONS';

@@ -14,6 +14,7 @@ const initialState = {
   questions: [],
   error: null,
   isLoading: false,
+  score: 0,
 };
 
 /**
@@ -48,23 +49,34 @@ export const questionReducer = (state: State, action: ActionTypes): State => {
         ...action.payload,
         questions: transformQuestions(action.payload.questions),
       };
-    case SET_QUESTION_ANSWER:
+    case SET_QUESTION_ANSWER: {
+      const questions = state.questions.map((question) => {
+        let updatedQuestion = { ...question };
+        let answered_correctly;
+
+        if (question.id === action.payload.id) {
+          answered_correctly = action.payload.given_answer === question.correct_answer;
+          updatedQuestion = {
+            ...question,
+            given_answer: action.payload.given_answer,
+            answered_correctly,
+          };
+        }
+
+        return updatedQuestion;
+      });
+
+      const score = questions.reduce(
+        (sum, question) => sum + (question.answered_correctly ? 1 : 0),
+        0
+      );
+
       return {
         ...state,
-        questions: state.questions.map((question) => {
-          let updatedQuestion = { ...question };
-
-          if (question.id === action.payload.id) {
-            updatedQuestion = {
-              ...question,
-              given_answer: action.payload.given_answer,
-              answered_correctly: action.payload.given_answer === question.correct_answer,
-            };
-          }
-
-          return updatedQuestion;
-        }),
+        questions,
+        score,
       };
+    }
     default:
       return state;
   }

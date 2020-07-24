@@ -24,20 +24,22 @@ export default function Question(props: Props): JSX.Element {
   const { setQuestionAnswer } = useContext(Context);
   const { colors } = useTheme();
 
-  const answerFalse = () => {
+  const answer = (given_answer: string) => {
     if (DEBUG) {
-      console.log('Answered False');
+      console.log(`Answered ${given_answer}`);
     }
-    setQuestionAnswer(id, 'False');
-    navigate(Number(id + 1).toString());
-  };
 
-  const answerTrue = () => {
-    if (DEBUG) {
-      console.log('Answered True');
+    let nextScreenName;
+    const screenPlusOne = id + 1;
+
+    if (screenPlusOne <= 10) {
+      nextScreenName = Number(screenPlusOne).toString();
+    } else {
+      nextScreenName = 'Results';
     }
-    setQuestionAnswer(id, 'True');
-    navigate(Number(id + 1).toString());
+
+    setQuestionAnswer(id, given_answer);
+    navigate(nextScreenName);
   };
 
   return (
@@ -58,7 +60,9 @@ export default function Question(props: Props): JSX.Element {
         <View style={styles.buttonsSection}>
           <TouchableRipple
             style={styles.buttonContainer}
-            onPress={answerFalse}
+            onPress={() => {
+              answer('False');
+            }}
             rippleColor="rgba(0, 0, 0, .32)">
             <Surface style={styles.button}>
               <Title style={styles.buttonTitle}>❌</Title>
@@ -74,7 +78,9 @@ export default function Question(props: Props): JSX.Element {
           <TouchableRipple
             style={styles.buttonContainer}
             rippleColor="rgba(0, 0, 0, .32)"
-            onPress={answerTrue}>
+            onPress={() => {
+              answer('True');
+            }}>
             <Surface style={styles.button}>
               <Title style={styles.buttonTitle}>✅</Title>
               <Paragraph
