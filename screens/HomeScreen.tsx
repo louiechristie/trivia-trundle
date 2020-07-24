@@ -33,7 +33,7 @@ export default function HomeScreen({ navigation }): JSX.Element {
         </View>
 
         <Button mode="contained" style={styles.button} onPress={begin}>
-          BEGIN?
+          BEGIN
         </Button>
       </View>
     </View>
