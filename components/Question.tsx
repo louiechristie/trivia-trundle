@@ -1,10 +1,96 @@
 import { AntDesign } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 import Constants from 'expo-constants';
-import * as React from 'react';
+import React, { useContext } from 'react';
 import { StyleSheet, View, ScrollView } from 'react-native';
-import { Surface, Title, Paragraph, withTheme, Button, TouchableRipple } from 'react-native-paper';
+import { Surface, Title, Paragraph, useTheme, TouchableRipple } from 'react-native-paper';
+
+import { Context } from '../context/QuestionsContext';
 
 const DEBUG = Constants.manifest.extra.debug || false;
+
+interface Props {
+  id: number;
+  category: string;
+  question: string;
+}
+
+export default function Question(props: Props): JSX.Element {
+  const { id, category, question } = props;
+
+  const DEBUG = Constants.manifest.extra.debug || false;
+
+  const { navigate } = useNavigation();
+  const { setQuestionAnswer } = useContext(Context);
+  const { colors } = useTheme();
+
+  const answerFalse = () => {
+    if (DEBUG) {
+      console.log('Answered False');
+    }
+    setQuestionAnswer(id, 'False');
+    navigate(Number(id + 1).toString());
+  };
+
+  const answerTrue = () => {
+    if (DEBUG) {
+      console.log('Answered True');
+    }
+    setQuestionAnswer(id, 'True');
+    navigate(Number(id + 1).toString());
+  };
+
+  return (
+    <ScrollView contentContainerStyle={styles.outer}>
+      <View style={styles.container}>
+        <Title style={styles.titleSection}>{category}</Title>
+        <View style={styles.questionSection}>
+          <View style={styles.questionContainer}>
+            <Surface style={styles.questionSurface}>
+              <Paragraph style={styles.paragraph}>{question}</Paragraph>
+              <View style={styles.iconContainer}>
+                <AntDesign name="question" size={48} color={colors.text} />
+              </View>
+            </Surface>
+            <Paragraph style={styles.questionNumber}>{id} of 10</Paragraph>
+          </View>
+        </View>
+        <View style={styles.buttonsSection}>
+          <TouchableRipple
+            style={styles.buttonContainer}
+            onPress={answerFalse}
+            rippleColor="rgba(0, 0, 0, .32)">
+            <Surface style={styles.button}>
+              <Title style={styles.buttonTitle}>❌</Title>
+              <Paragraph
+                style={[
+                  styles.buttonText,
+                  { color: colors.negative, backgroundColor: colors.surface },
+                ]}>
+                False
+              </Paragraph>
+            </Surface>
+          </TouchableRipple>
+          <TouchableRipple
+            style={styles.buttonContainer}
+            rippleColor="rgba(0, 0, 0, .32)"
+            onPress={answerTrue}>
+            <Surface style={styles.button}>
+              <Title style={styles.buttonTitle}>✅</Title>
+              <Paragraph
+                style={[
+                  styles.buttonText,
+                  { color: colors.positive, backgroundColor: colors.surface },
+                ]}>
+                True
+              </Paragraph>
+            </Surface>
+          </TouchableRipple>
+        </View>
+      </View>
+    </ScrollView>
+  );
+}
 
 const styles = StyleSheet.create({
   outer: {
@@ -47,6 +133,7 @@ const styles = StyleSheet.create({
     borderWidth: DEBUG ? 2 : 0,
     borderColor: 'violet',
   },
+  paragraph: {},
   questionNumber: {
     borderWidth: DEBUG ? 2 : 0,
     borderColor: 'violet',
@@ -86,82 +173,3 @@ const styles = StyleSheet.create({
     borderColor: 'grey',
   },
 });
-
-interface Props {
-  id: number;
-  category: string;
-  type: string;
-  difficulty: string;
-  question: string;
-  correct_answer: string;
-  incorrect_answers: string[];
-  theme: {
-    colors;
-  };
-}
-
-const Question = (props: Props): JSX.Element => {
-  const {
-    id,
-    category,
-    type,
-    difficulty,
-    question,
-    correct_answer,
-    incorrect_answers,
-    theme: { colors },
-  } = props;
-
-  return (
-    <ScrollView contentContainerStyle={styles.outer}>
-      <View style={styles.container}>
-        <Title style={styles.titleSection}>{category}</Title>
-        <View style={styles.questionSection}>
-          <View style={styles.questionContainer}>
-            <Surface style={styles.questionSurface}>
-              <Paragraph style={styles.paragraph}>{question}</Paragraph>
-              <View style={styles.iconContainer}>
-                <AntDesign name="question" size={48} color={colors.text} />
-              </View>
-            </Surface>
-            <Paragraph style={styles.questionNumber}>{id} of 10</Paragraph>
-          </View>
-        </View>
-        <View style={styles.buttonsSection}>
-          <TouchableRipple
-            style={styles.buttonContainer}
-            onPress={() => console.log('Pressed')}
-            rippleColor="rgba(0, 0, 0, .32)">
-            <Surface style={styles.button}>
-              <Title style={styles.buttonTitle}>❌</Title>
-              <Paragraph
-                style={[
-                  styles.buttonText,
-                  { color: colors.negative, backgroundColor: colors.surface },
-                ]}>
-                False
-              </Paragraph>
-            </Surface>
-          </TouchableRipple>
-          <TouchableRipple
-            style={styles.buttonContainer}
-            onPress={() => console.log('Pressed')}
-            rippleColor="rgba(0, 0, 0, .32)">
-            <Surface style={styles.button}>
-              <Title style={styles.buttonTitle}>✅</Title>
-              <Paragraph
-                style={[
-                  styles.buttonText,
-                  { color: colors.positive, backgroundColor: colors.surface },
-                ]}>
-                True
-              </Paragraph>
-            </Surface>
-          </TouchableRipple>
-        </View>
-      </View>
-    </ScrollView>
-  );
-};
-
-export default withTheme(Question);

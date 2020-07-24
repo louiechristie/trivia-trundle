@@ -1,8 +1,6 @@
 import React, { useReducer } from 'react';
 
-import { state } from './QuestionsContext';
-
-export default (reducer, actions, initialState: state) => {
+export default (reducer, actions, initialState) => {
   const Context = React.createContext(initialState);
 
   const Provider = ({ children }) => {

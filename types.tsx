@@ -3,6 +3,24 @@ export type RootStackParamList = {
   NotFound: undefined;
 };
 
+export type MaterialBottomTabParams = {
+  Home: undefined;
+  Questions: undefined;
+  Results: undefined;
+};
+
+export type HomeParamList = {
+  HomeScreen: undefined;
+};
+
+export type QuestionsParamList = {
+  QuestionsScreen: undefined;
+};
+
+export type ResultsParamList = {
+  ResultsScreen: undefined;
+};
+
 export type TrueOrFalse = 'True' | 'False';
 
 export type Question = {
@@ -19,7 +37,7 @@ export type Question = {
 
 export type State = {
   questions: Question[];
-  error: string;
+  error: string | null;
   isLoading: boolean;
 };
 
@@ -38,7 +56,7 @@ interface GetQuestionsAction {
 interface SetQuestionAnswerAction {
   type: typeof SET_QUESTION_ANSWER;
   payload: {
-    index: number;
+    id: number;
     given_answer: TrueOrFalse;
   };
 }

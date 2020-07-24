@@ -2,33 +2,20 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
-import { withTheme } from 'react-native-paper';
 
 import HomeScreen from '../screens/HomeScreen';
 import QuestionsScreen from '../screens/QuestionsScreen';
 import ResultsScreen from '../screens/ResultsScreen';
-
-type MaterialBottomTabParams = {
-  Home: undefined;
-  Questions: undefined;
-  Results: undefined;
-};
-
-type HomeParamList = {
-  HomeScreen: undefined;
-};
-
-type QuestionsParamList = {
-  QuestionsScreen: undefined;
-};
-
-type ResultsParamList = {
-  ResultsScreen: undefined;
-};
+import {
+  MaterialBottomTabParams,
+  HomeParamList,
+  QuestionsParamList,
+  ResultsParamList,
+} from '../types';
 
 const BottomTab = createMaterialBottomTabNavigator<MaterialBottomTabParams>();
 
-const BottomTabNavigator = (): JSX.Element => {
+export default function BottomTabNavigator(): JSX.Element {
   return (
     <BottomTab.Navigator initialRouteName="Home">
       <BottomTab.Screen
@@ -54,7 +41,7 @@ const BottomTabNavigator = (): JSX.Element => {
       />
     </BottomTab.Navigator>
   );
-};
+}
 
 // You can explore the built-in icon families and icons on the web at:
 // https://icons.expo.fyi/
@@ -105,5 +92,3 @@ function ResultsNavigator() {
     </ResultsStack.Navigator>
   );
 }
-
-export default withTheme(BottomTabNavigator);

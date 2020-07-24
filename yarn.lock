@@ -2408,10 +2408,10 @@
     color "^3.1.2"
     react-native-iphone-x-helper "^1.2.1"
 
-"@react-navigation/core@^5.12.0":
-  version "5.12.0"
-  resolved "https://registry.yarnpkg.com/@react-navigation/core/-/core-5.12.0.tgz#0d3dab1ae8403b83f9387eaaee3f270dd8eadcfa"
-  integrity sha512-CTmYrFXCZwInN40CpEzkPxhrpzujj20qvsUgpH05+oO1flwsnaJsyBfYawIcTS62/1/Z6SAM7iW5PbKk+qw9iQ==
+"@react-navigation/core@^5.12.1":
+  version "5.12.1"
+  resolved "https://registry.yarnpkg.com/@react-navigation/core/-/core-5.12.1.tgz#46817ebf19ca9dc32559aaa70130c294deb3d7e0"
+  integrity sha512-/0IQ/MzsLHD1JthTPd1AwpIEWMejPksh0qAloynEwL+ILLZMq9jJF3b7T8rFxHVbsBuaM7lKOWUcULDvnOxksQ==
   dependencies:
     "@react-navigation/routers" "^5.4.9"
     escape-string-regexp "^4.0.0"
@@ -2432,12 +2432,12 @@
   dependencies:
     color "^3.1.2"
 
-"@react-navigation/native@^5.7.0":
-  version "5.7.0"
-  resolved "https://registry.yarnpkg.com/@react-navigation/native/-/native-5.7.0.tgz#3ca1ef4aae925ae0a0915dd9625f1a13acc483c0"
-  integrity sha512-a2JBOdRB3q20Jdc5hF8shR4Dk+ZmjF2Rr9RviErtARztu08lU+jcb1gK6c31OKL37JDuaS3xexE9Cb7dYeMy3Q==
+"@react-navigation/native@^5.7.1":
+  version "5.7.1"
+  resolved "https://registry.yarnpkg.com/@react-navigation/native/-/native-5.7.1.tgz#5a59be6f7c1bf4cdf5e16625bf59688aeab808f8"
+  integrity sha512-dhxH+CGC8YoVrjm05/gU/GeLfNpJGQO/KWyzSkEsns+nzxJ/jFZWG2uIksZym5zknJcYn9Ze7jecI7r+0SWAzA==
   dependencies:
-    "@react-navigation/core" "^5.12.0"
+    "@react-navigation/core" "^5.12.1"
     nanoid "^3.1.9"
 
 "@react-navigation/routers@^5.4.9":
@@ -2635,6 +2635,14 @@
   dependencies:
     "@types/istanbul-lib-coverage" "*"
     "@types/istanbul-lib-report" "*"
+
+"@types/jest@^26.0.7":
+  version "26.0.7"
+  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-26.0.7.tgz#495cb1d1818c1699dbc3b8b046baf1c86ef5e324"
+  integrity sha512-+x0077/LoN6MjqBcVOe1y9dpryWnfDZ+Xfo3EqGeBcfPRJlQp3Lw62RvNlWxuGv7kOEwlHriAa54updi3Jvvwg==
+  dependencies:
+    jest-diff "^25.2.1"
+    pretty-format "^25.2.1"
 
 "@types/json-schema@^7.0.3", "@types/json-schema@^7.0.4":
   version "7.0.5"
@@ -8965,7 +8973,7 @@ jest-config@^25.5.4:
     pretty-format "^25.5.0"
     realpath-native "^2.0.0"
 
-jest-diff@^25.5.0:
+jest-diff@^25.2.1, jest-diff@^25.5.0:
   version "25.5.0"
   resolved "https://registry.yarnpkg.com/jest-diff/-/jest-diff-25.5.0.tgz#1dd26ed64f96667c068cef026b677dfa01afcfa9"
   integrity sha512-z1kygetuPiREYdNIumRpAHY6RXiGmp70YHptjdaxTWGmA085W3iCnXNx0DhflK3vwrKmrRWyY1wUpkPMVxMK7A==
@@ -12473,7 +12481,7 @@ pretty-format@^24.7.0, pretty-format@^24.9.0:
     ansi-styles "^3.2.0"
     react-is "^16.8.4"
 
-pretty-format@^25.1.0, pretty-format@^25.2.0, pretty-format@^25.5.0:
+pretty-format@^25.1.0, pretty-format@^25.2.0, pretty-format@^25.2.1, pretty-format@^25.5.0:
   version "25.5.0"
   resolved "https://registry.yarnpkg.com/pretty-format/-/pretty-format-25.5.0.tgz#7873c1d774f682c34b8d48b6743a2bf2ac55791a"
   integrity sha512-kbo/kq2LQ/A/is0PQwsEHM7Ca6//bGPPvU6UnsdDRSKTWxT/ru/xb88v4BJf6a69H+uTytOEsTusT9ksd/1iWQ==

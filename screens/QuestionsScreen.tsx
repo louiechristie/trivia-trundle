@@ -4,7 +4,7 @@ import type { StackScreenProps } from '@react-navigation/stack';
 import Constants from 'expo-constants';
 import React, { useContext } from 'react';
 import { StyleSheet, ScrollView, View } from 'react-native';
-import { withTheme, ActivityIndicator, Paragraph, Button } from 'react-native-paper';
+import { useTheme, ActivityIndicator, Paragraph, Button } from 'react-native-paper';
 
 import Header from '../components/Header';
 import Question from '../components/Question';
@@ -15,13 +15,9 @@ const DEBUG = Constants.manifest.extra.debug || false;
 
 const MaterialTopTabs = createMaterialTopTabNavigator();
 
-function QuestionsScreen({
-  navigation,
-  theme: {
-    colors: { questionsBackground },
-  },
-}: StackScreenProps<ParamListBase>) {
+export default function QuestionsScreen({ navigation }: StackScreenProps<ParamListBase>) {
   const { state, getQuestions } = useContext(Context);
+  const { colors } = useTheme();
   const { questions, error, isLoading } = state;
   const empty = questions.length === 0;
   const showInfoBox = error || isLoading || empty;
@@ -53,12 +49,15 @@ function QuestionsScreen({
           style={styles.scrollView}
           contentContainerStyle={[
             styles.contentContainer,
-            { backgroundColor: questionsBackground },
+            { backgroundColor: colors.questionsBackground },
           ]}>
           <MaterialTopTabs.Navigator style={styles.tabNavigator} initialRouteName="1">
             {questions.map((question: QuestionType) => {
-              const title = Number(question.id).toString();
-              const ThisQuestion = () => <Question {...question} />;
+              const { id, category } = question;
+              const title = Number(id).toString();
+              const ThisQuestion = () => (
+                <Question id={id} category={category} question={question.question} />
+              );
               return (
                 <MaterialTopTabs.Screen
                   key={title}
@@ -110,5 +109,3 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
-
-export default withTheme(QuestionsScreen);

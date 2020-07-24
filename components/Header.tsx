@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native';
 import Constants from 'expo-constants';
 import * as React from 'react';
-import { Appbar, withTheme } from 'react-native-paper';
+import { Appbar } from 'react-native-paper';
 
 const Header = (): JSX.Element => {
   const { name, description } = Constants.manifest;
@@ -14,4 +14,4 @@ const Header = (): JSX.Element => {
   );
 };
 
-export default withTheme(Header);
+export default Header;

@@ -24,7 +24,7 @@ const initialState = {
  * Adds id value to each question for identifying questions in the app.
  *
  */
-const transformQuestions = (questions: Question[]): Question[] => {
+export const transformQuestions = (questions: Question[]): Question[] => {
   return questions?.map(
     (question: Question, index: number): Question => {
       return (
@@ -38,17 +38,9 @@ const transformQuestions = (questions: Question[]): Question[] => {
       );
     }
   );
-  // return (
-  //   questions?.map((question, id) => {
-  //     return {
-  //       id,
-  //       ...question,
-  //     };
-  //   }) || []
-  // );
 };
 
-const questionReducer = (state: State, action: ActionTypes): State => {
+export const questionReducer = (state: State, action: ActionTypes): State => {
   switch (action.type) {
     case GET_QUESTIONS:
       return {
@@ -60,11 +52,17 @@ const questionReducer = (state: State, action: ActionTypes): State => {
       return {
         ...state,
         questions: state.questions.map((question) => {
-          return {
-            ...question,
-            given_answer: question.id === action.payload.id ? action.payload.given_answer : null,
-            answered_correctly: action.payload.given_answer === question.correct_answer,
-          };
+          let updatedQuestion = { ...question };
+
+          if (question.id === action.payload.id) {
+            updatedQuestion = {
+              ...question,
+              given_answer: action.payload.given_answer,
+              answered_correctly: action.payload.given_answer === question.correct_answer,
+            };
+          }
+
+          return updatedQuestion;
         }),
       };
     default:
@@ -125,7 +123,7 @@ const getQuestions = (dispatch) => {
 };
 
 const setQuestionAnswer = (dispatch) => {
-  return (id, given_answer) => {
+  return (id: number, given_answer: string) => {
     dispatch({
       type: SET_QUESTION_ANSWER,
       payload: { id, given_answer },
