@@ -100,6 +100,7 @@ test('questionReducer SET_QUESTION_ANSWER answer True which is correct answer', 
     ],
     error: null,
     isLoading: false,
+    score: 0,
   };
 
   const action: ActionTypes = {
@@ -123,6 +124,7 @@ test('questionReducer SET_QUESTION_ANSWER answer True which is correct answer', 
     ],
     error: null,
     isLoading: false,
+    score: 1,
   };
 
   expect(questionReducer(initialState, action)).toMatchObject(expectedState);
@@ -145,6 +147,7 @@ test('questionReducer SET_QUESTION_ANSWER answer False which is incorrect answer
     ],
     error: null,
     isLoading: false,
+    score: 0,
   };
 
   const action: ActionTypes = {
@@ -168,6 +171,7 @@ test('questionReducer SET_QUESTION_ANSWER answer False which is incorrect answer
     ],
     error: null,
     isLoading: false,
+    score: 0,
   };
   expect(questionReducer(initialState, action)).toMatchObject(expectedState);
 });
@@ -189,6 +193,7 @@ test('questionReducer SET_QUESTION_ANSWER answer True which is incorrect answer'
     ],
     error: null,
     isLoading: false,
+    score: 0,
   };
 
   const action: ActionTypes = {
@@ -212,6 +217,7 @@ test('questionReducer SET_QUESTION_ANSWER answer True which is incorrect answer'
     ],
     error: null,
     isLoading: false,
+    score: 0,
   };
 
   expect(questionReducer(initialState, action)).toMatchObject(expectedState);
@@ -234,6 +240,7 @@ test('questionReducer SET_QUESTION_ANSWER answer True which is correct answer', 
     ],
     error: null,
     isLoading: false,
+    score: 0,
   };
 
   const action: ActionTypes = {
@@ -257,6 +264,7 @@ test('questionReducer SET_QUESTION_ANSWER answer True which is correct answer', 
     ],
     error: null,
     isLoading: false,
+    score: 1,
   };
 
   expect(questionReducer(initialState, action)).toMatchObject(expectedState);
