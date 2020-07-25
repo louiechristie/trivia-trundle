@@ -1,8 +1,17 @@
 import Constants from 'expo-constants';
+import React, { useReducer, createContext } from 'react';
 
 import questionsAPI from '../api/questionsAPI';
-import { Question, State, GET_QUESTIONS, SET_QUESTION_ANSWER, ActionTypes } from '../types';
-import createDataContext from './createDataContext';
+import {
+  ServerResponse,
+  rawQuestion,
+  Question,
+  State,
+  GET_QUESTIONS,
+  SET_QUESTION_ANSWER,
+  ActionTypes,
+  TrueOrFalse,
+} from '../types';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const Entities = require('html-entities').AllHtmlEntities;
@@ -10,7 +19,7 @@ const entities = new Entities();
 
 const DEBUG = Constants.manifest.extra.debug || false;
 
-const initialState = {
+const initialState: State = {
   questions: [],
   error: null,
   isLoading: false,
@@ -25,9 +34,9 @@ const initialState = {
  * Adds id value to each question for identifying questions in the app.
  *
  */
-export const transformQuestions = (questions: Question[]): Question[] => {
+export const transformQuestions = (questions: rawQuestion[]): Question[] => {
   return questions?.map(
-    (question: Question, index: number): Question => {
+    (question: rawQuestion, index: number): Question => {
       return (
         {
           id: index + 1,
@@ -82,9 +91,33 @@ export const questionReducer = (state: State, action: ActionTypes): State => {
   }
 };
 
-const getQuestions = (dispatch) => {
-  return async () => {
-    let response = null;
+type ContextType = {
+  state: State;
+  getQuestions: () => void;
+  setQuestionAnswer: (id: number, given_answer: TrueOrFalse) => void;
+};
+
+export const Context = createContext<ContextType>({
+  state: initialState,
+  getQuestions: () => {
+    console.error('Error: getQuestions() used outside a Provider, must be used within a provider.');
+  },
+  setQuestionAnswer: () => {
+    console.error(
+      'Error: setQuestionAnswer() used outside a Provider, must be used within a provider.'
+    );
+  },
+});
+
+export const Provider: React.FC = ({ children }) => {
+  const [state, dispatch] = useReducer(questionReducer, initialState);
+
+  const getQuestions = async () => {
+    if (DEBUG) {
+      console.log(`getQuestions`);
+    }
+
+    let response: ServerResponse;
     const error = null;
     let isLoading = true;
 
@@ -99,17 +132,20 @@ const getQuestions = (dispatch) => {
 
     try {
       response = await questionsAPI.get('');
+
+      const { data } = response;
+
       isLoading = false;
 
       if (DEBUG) {
         console.log(`response: ${JSON.stringify(response, null, 2)}`);
-        console.log(`response.data: ${JSON.stringify(response.data, null, 2)}`);
+        console.log(`data: ${JSON.stringify(data, null, 2)}`);
       }
 
       dispatch({
         type: GET_QUESTIONS,
         payload: {
-          questions: response?.data?.results || [],
+          questions: data?.results || [],
           error,
           isLoading,
         },
@@ -132,19 +168,22 @@ const getQuestions = (dispatch) => {
       });
     }
   };
-};
 
-const setQuestionAnswer = (dispatch) => {
-  return (id: number, given_answer: string) => {
+  const setQuestionAnswer = (id: number, given_answer: TrueOrFalse) => {
     dispatch({
       type: SET_QUESTION_ANSWER,
       payload: { id, given_answer },
     });
   };
-};
 
-export const { Context, Provider } = createDataContext(
-  questionReducer,
-  { getQuestions, setQuestionAnswer },
-  initialState
-);
+  return (
+    <Context.Provider
+      value={{
+        state,
+        getQuestions,
+        setQuestionAnswer,
+      }}>
+      {children}
+    </Context.Provider>
+  );
+};

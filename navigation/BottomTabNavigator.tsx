@@ -6,12 +6,24 @@ import * as React from 'react';
 import HomeScreen from '../screens/HomeScreen';
 import QuestionsScreen from '../screens/QuestionsScreen';
 import ResultsScreen from '../screens/ResultsScreen';
-import {
-  MaterialBottomTabParams,
-  HomeParamList,
-  QuestionsParamList,
-  ResultsParamList,
-} from '../types';
+
+type MaterialBottomTabParams = {
+  Home: undefined;
+  Questions: undefined;
+  Results: undefined;
+};
+
+type HomeParamList = {
+  HomeScreen: undefined;
+};
+
+type QuestionsParamList = {
+  QuestionsScreen: undefined;
+};
+
+type ResultsParamList = {
+  ResultsScreen: undefined;
+};
 
 const BottomTab = createMaterialBottomTabNavigator<MaterialBottomTabParams>();
 

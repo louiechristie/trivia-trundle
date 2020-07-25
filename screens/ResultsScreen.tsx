@@ -84,6 +84,8 @@ export default function ResultsScreen({ navigation }: Props): JSX.Element {
         onPress={playAgain}>
         PLAY AGAIN?
       </Button>
+
+      {DEBUG && <Paragraph style={styles.debug}>State: {JSON.stringify(state, null, 2)}</Paragraph>}
     </ScrollView>
   );
 }
@@ -116,6 +118,7 @@ const styles = StyleSheet.create({
     borderColor: 'green',
   },
   results: {
+    paddingTop: 10,
     borderWidth: DEBUG ? 2 : 0,
     borderColor: 'yellow',
   },

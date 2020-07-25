@@ -17,7 +17,8 @@
     "deploy:expo": "expo publish",
     "build:web": "expo build:web",
     "deploy:web": "netlify deploy --prod",
-    "lint": "yarn lint:ts && yarn lint:md",
+    "lint": "yarn lint:ts && yarn check:ts && yarn lint:md",
+    "check:ts": "tsc --noEmit",
     "lint:ts": "eslint '**/*.+(js|jsx|ts|tsx)' --ignore-path .gitignore",
     "lint:md": "markdownlint '**/README.md' --ignore node_modules"
   },
@@ -26,7 +27,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn lint-staged"
+      "pre-commit": "tsc --noEmit && yarn lint-staged"
     }
   },
   "lint-staged": {

@@ -1,15 +1,26 @@
 export type TrueOrFalse = 'True' | 'False';
 
-export type Question = {
-  id?: number;
+export interface ServerResponse {
+  data: ServerData;
+}
+
+export interface ServerData {
+  response_code: number;
+  results: rawQuestion[];
+}
+export type rawQuestion = {
   category: string;
   type: string;
   difficulty: string;
   question: string;
   correct_answer: TrueOrFalse;
   incorrect_answers: TrueOrFalse[];
-  given_answer?: null | TrueOrFalse;
-  answered_correctly?: null | boolean;
+};
+
+export type Question = rawQuestion & {
+  id: number;
+  given_answer: null | TrueOrFalse;
+  answered_correctly: null | boolean;
 };
 
 export type State = {
@@ -22,16 +33,16 @@ export type State = {
 export const GET_QUESTIONS = 'GET_QUESTIONS';
 export const SET_QUESTION_ANSWER = 'SET_QUESTION_ANSWER';
 
-interface GetQuestionsAction {
+export interface GetQuestionsAction {
   type: typeof GET_QUESTIONS;
   payload: {
-    error: string;
+    error: string | null;
     isLoading: boolean;
-    questions: Question[];
+    questions: rawQuestion[];
   };
 }
 
-interface SetQuestionAnswerAction {
+export interface SetQuestionAnswerAction {
   type: typeof SET_QUESTION_ANSWER;
   payload: {
     id: number;
@@ -47,6 +58,13 @@ export type RootStackParamList = {
   Results: undefined;
 };
 
+export type DebugStackParamList = {
+  Root: undefined;
+  NotFound: undefined;
+};
+
+export type ParamList = RootStackParamList | DebugStackParamList;
+
 // Fix to allow custom colors in react-native-paper theme
 // See https://callstack.github.io/react-native-paper/theming.html#typescript
 declare global {
@@ -56,6 +74,7 @@ declare global {
       positive: string;
       negative: string;
       questionBackgroundColor: string;
+      lightText: string;
     }
   }
 }

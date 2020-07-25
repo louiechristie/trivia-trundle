@@ -6,6 +6,7 @@ import { StyleSheet, View, ScrollView } from 'react-native';
 import { Surface, Title, Paragraph, useTheme, TouchableRipple } from 'react-native-paper';
 
 import { Context } from '../context/QuestionsContext';
+import { TrueOrFalse } from '../types';
 
 const DEBUG = Constants.manifest.extra.debug || false;
 
@@ -24,9 +25,9 @@ export default function Question(props: Props): JSX.Element {
   const { setQuestionAnswer } = useContext(Context);
   const { colors } = useTheme();
 
-  const answer = (given_answer: string) => {
+  const answer = (given_answer: TrueOrFalse) => {
     if (DEBUG) {
-      console.log(`Answered ${given_answer}`);
+      console.log(`Question ${id} Answered ${given_answer}`);
     }
 
     let nextScreenName;
@@ -38,8 +39,8 @@ export default function Question(props: Props): JSX.Element {
       nextScreenName = 'Results';
     }
 
-    navigate(nextScreenName);
     setQuestionAnswer(id, given_answer);
+    navigate(nextScreenName);
   };
 
   return (
@@ -66,7 +67,7 @@ export default function Question(props: Props): JSX.Element {
             }}
             rippleColor="rgba(255, 255, 255, .32)">
             <Surface style={[styles.button, { backgroundColor: colors.negative }]}>
-              <Entypo name="cross" size={48} color={colors.lightText} />
+              <Entypo style={styles.icon} name="cross" size={48} color={colors.lightText} />
 
               <Paragraph
                 style={[
@@ -84,7 +85,7 @@ export default function Question(props: Props): JSX.Element {
               answer('True');
             }}>
             <Surface style={[styles.button, { backgroundColor: colors.positive }]}>
-              <Entypo name="check" size={48} color={colors.lightText} />
+              <Entypo style={styles.icon} name="check" size={48} color={colors.lightText} />
 
               <Paragraph
                 style={[
@@ -104,17 +105,18 @@ export default function Question(props: Props): JSX.Element {
 const styles = StyleSheet.create({
   outer: {
     flex: 1,
-    paddingBottom: 20,
     alignItems: 'center',
     borderWidth: DEBUG ? 2 : 0,
     borderColor: 'yellow',
   },
   container: {
     flex: 1,
+    padding: 10,
+    paddingBottom: 30,
+    justifyContent: 'space-between',
     borderWidth: DEBUG ? 2 : 0,
     borderColor: 'green',
     maxWidth: 320,
-    padding: 10,
   },
   titleSection: {
     justifyContent: 'center',
@@ -123,7 +125,6 @@ const styles = StyleSheet.create({
     borderColor: 'blue',
   },
   questionSection: {
-    flex: 3,
     justifyContent: 'center',
     alignItems: 'center',
     borderWidth: DEBUG ? 2 : 0,
@@ -137,7 +138,7 @@ const styles = StyleSheet.create({
   },
   questionSurface: {
     padding: 30,
-    minWidth: 300,
+    minHeight: 200,
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 5,
@@ -145,8 +146,9 @@ const styles = StyleSheet.create({
     borderColor: 'violet',
   },
   paragraph: {
-    fontSize: 20,
-    lineHeight: 20 * 1.2,
+    textAlign: 'center',
+    fontSize: 18,
+    lineHeight: 18 * 1.2,
   },
   questionNumber: {
     borderWidth: DEBUG ? 2 : 0,
@@ -156,27 +158,26 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   buttonsSection: {
-    flex: 1,
     justifyContent: 'space-between',
     flexDirection: 'row',
     borderWidth: DEBUG ? 2 : 0,
     borderColor: 'indigo',
   },
   buttonContainer: {
-    flex: 1,
-    margin: 10,
-    borderRadius: 5,
-  },
-  button: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    flexBasis: '45%',
     borderRadius: 5,
     borderWidth: DEBUG ? 2 : 0,
     borderColor: 'violet',
   },
-  buttonTitle: {
-    fontSize: 28,
+  button: {
+    padding: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 5,
+    borderWidth: DEBUG ? 1 : 0,
+    borderColor: 'brown',
+  },
+  icon: {
     borderWidth: DEBUG ? 1 : 0,
     borderColor: 'grey',
   },

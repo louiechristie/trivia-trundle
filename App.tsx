@@ -14,6 +14,7 @@ export default function App(): JSX.Element {
   const isLoadingComplete = useCachedResources();
   const colorScheme = useColorScheme();
   // For testing dark color scheme
+  // const colorScheme = "dark"
 
   if (!isLoadingComplete) {
     return <ActivityIndicator />;

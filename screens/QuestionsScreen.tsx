@@ -1,3 +1,5 @@
+// createMaterialTopTabNavigator used for debugging only
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import type { ParamListBase } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -14,7 +16,7 @@ import { Question as QuestionType } from '../types';
 
 const DEBUG = Constants.manifest.extra.debug || false;
 
-const MaterialTopTabs = DEBUG ? createMaterialTopTabNavigator() : createStackNavigator();
+const Navigator = createStackNavigator();
 
 export default function QuestionsScreen({
   navigation,
@@ -42,23 +44,29 @@ export default function QuestionsScreen({
 
       {!empty && (
         <ScrollView style={styles.scrollView} contentContainerStyle={styles.contentContainer}>
-          <MaterialTopTabs.Navigator style={styles.tabNavigator} initialRouteName="1">
-            {questions.map((question: QuestionType) => {
-              const { id, category } = question;
-              const title = Number(id).toString();
-              const ThisQuestion = () => (
-                <Question id={id} category={category} question={question.question} />
-              );
-              return (
-                <MaterialTopTabs.Screen
-                  key={title}
-                  name={title}
-                  component={ThisQuestion}
-                  options={{ title, headerShown: false }}
-                />
-              );
-            })}
-          </MaterialTopTabs.Navigator>
+          <Navigator.Navigator initialRouteName="1">
+            {questions.map(
+              (question: QuestionType): React.ReactNode => {
+                const { id, category } = question;
+                const title = Number(id).toString();
+                return (
+                  <Navigator.Screen
+                    key={title}
+                    name={title}
+                    options={{ title, headerShown: false }}>
+                    {(props) => (
+                      <Question
+                        {...props}
+                        id={id}
+                        category={category}
+                        question={question.question}
+                      />
+                    )}
+                  </Navigator.Screen>
+                );
+              }
+            )}
+          </Navigator.Navigator>
         </ScrollView>
       )}
     </View>
@@ -90,13 +98,6 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     borderWidth: DEBUG ? 2 : 0,
     borderColor: 'yellow',
-    justifyContent: 'center',
-  },
-  tabNavigator: {
-    flex: 1,
-    flexGrow: 1,
-    borderWidth: DEBUG ? 2 : 0,
-    borderColor: 'green',
     justifyContent: 'center',
   },
 });

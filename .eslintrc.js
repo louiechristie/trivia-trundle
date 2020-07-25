@@ -1,5 +1,10 @@
 module.exports = {
-  extends: ['universe/native', 'universe/web', 'plugin:@typescript-eslint/recommended'],
+  extends: [
+    'universe/native',
+    'universe/web',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:@typescript-eslint/eslint-recommended',
+  ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 2020,

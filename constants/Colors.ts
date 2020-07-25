@@ -15,6 +15,7 @@ export default {
     ...DefaultTheme,
 
     colors: {
+      ...DefaultTheme.colors,
       primary: tintColorLight,
       positive,
       negative,
@@ -33,9 +34,11 @@ export default {
   dark: {
     ...DarkTheme,
     colors: {
+      ...DarkTheme.colors,
       primary: tintColorDark,
       positive,
       negative,
+      questionBackgroundColor: '#000',
       text: '#fff',
       background: '#000',
       lightText: '#FFF',
