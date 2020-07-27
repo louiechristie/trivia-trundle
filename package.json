@@ -2,7 +2,7 @@
   "author": "Louie Christie <6807448+louiechristie@users.noreply.github.com> (https://github.com/louiechristie/)",
   "name": "trivia-trundle",
   "description": "A a 10 question, true or false, trivia game",
-  "version": "0.1.0",
+  "version": "1.0.1",
   "private": true,
   "license": "LicenseRef-LICENSE",
   "main": "node_modules/expo/AppEntry.js",
