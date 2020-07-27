@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     borderWidth: DEBUG ? 2 : 0,
     borderColor: 'green',
-    maxWidth: 320,
+    width: 320,
   },
   titleSection: {
     justifyContent: 'center',
