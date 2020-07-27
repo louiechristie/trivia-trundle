@@ -2,15 +2,31 @@
 
 A quick true or false game.
 
+## Supported Platforms
+
+It is a cross platform app. It has been tested on Android, iOS and web.
+
+It is supported on:
+
+- Google: Android 5+
+- Apple: iOS 10+
+- Web: Chrome, Firefox, Edge, Safari 7+, IE 10+
+
+For more details of compatibility see [mimimum supported OS for Expo](https://docs.expo.io/introduction/why-not-expo/) and [react-native-web documentation.](https://github.com/necolas/react-native-web.)
+
 ## Demo
 
-- Android:
-  - Install [Android Expo App](https://play.google.com/store/apps/details?id=host.exp.exponent&hl=en)
-  - Scan the QR code at [https://expo.io/@louiechristie/trivia-trundle](https://expo.io/@louiechristie/trivia-trundle)
+- Android: [https://expo.io/@louiechristie/trivia-trundle](https://expo.io/@louiechristie/trivia-trundle)
+
+(Note: You will first need to install [Android Expo App](https://play.google.com/store/apps/details?id=host.exp.exponent&hl=en) then scan the QR code from above.)
+
 - Web: [https://triviatrundle.netlify.com/](https://triviatrundle.netlify.com/)
-- iOS: Demo not available online due to Apple restrictions. build the app locally on your computer by following the 'Getting Started' instructions below.
+
+An iOS demo online is not available due to Apple restrictions.
 
 ## Getting Started
+
+To build and run the app locally on you computer:
 
 - Clone the repository.
 
@@ -22,19 +38,19 @@ A quick true or false game.
   yarn
 ```
 
-- Either, start the development processes for iOS/Android App:
+- start the development processes for iOS/Android App:
 
 ```console
 yarn start
 ```
 
-- Or, start the development processes for website:
+Alternatively, start the development processes for website:
 
 ```console
 yarn web
 ```
 
-## Other usefull scripts
+## Other useful scripts
 
 `yarn test` - Run code tests
 
@@ -52,4 +68,4 @@ yarn web
 
 [Louie Christie](https://www.louiechristie.com)
 
-Copyright Louie Christie (c) 2020
+Copyright [Louie Christie](https://www.louiechristie.com) (c) 2020
