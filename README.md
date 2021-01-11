@@ -12,7 +12,7 @@ It is supported on:
 - Apple: iOS 10+
 - Web: Chrome, Firefox, Edge, Safari 7+, IE 10+
 
-For more details of compatibility see [mimimum supported OS for Expo](https://docs.expo.io/introduction/why-not-expo/) and [react-native-web documentation.](https://github.com/necolas/react-native-web.)
+For more details of compatibility see [minimum supported OS for Expo](https://docs.expo.io/introduction/why-not-expo/) and [react-native-web documentation.](https://github.com/necolas/react-native-web.)
 
 ## Demo
 
@@ -26,7 +26,7 @@ An iOS demo online is not available due to Apple restrictions.
 
 ## Getting Started
 
-To build and run the app locally on you computer:
+To build and run the app locally on your computer:
 
 - Clone the repository.
 
