@@ -1,5 +1,6 @@
 import Constants from 'expo-constants';
 import React, { useReducer, createContext } from 'react';
+import {decode} from 'html-entities';
 
 import questionsAPI from '../api/questionsAPI';
 import {
@@ -14,8 +15,6 @@ import {
 } from '../types';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const Entities = require('html-entities').AllHtmlEntities;
-const entities = new Entities();
 
 const DEBUG = Constants.manifest.extra.debug || false;
 
@@ -41,7 +40,7 @@ export const transformQuestions = (questions: rawQuestion[]): Question[] => {
         {
           id: index + 1,
           ...question,
-          question: entities.decode(question.question),
+          question: decode(question.question, { level: 'html5' }),
           given_answer: null,
           answered_correctly: null,
         } || []
