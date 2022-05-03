@@ -16,7 +16,7 @@ For more details of compatibility see [minimum supported OS for Expo](https://do
 
 ## Demo
 
-- Android: [https://expo.io/@louiechristie/trivia-trundle](https://expo.io/@louiechristie/trivia-trundle)
+- Android: [https://expo.dev/@louiechristie/trivia-trundle](https://expo.io/@louiechristie/trivia-trundle)
 
 (Note: You will first need to install [Android Expo App](https://play.google.com/store/apps/details?id=host.exp.exponent&hl=en) then scan the QR code from above.)
 
@@ -68,4 +68,4 @@ yarn web
 
 [Louie Christie](https://www.louiechristie.com)
 
-Copyright [Louie Christie](https://www.louiechristie.com) (c) 2020
+Copyright [Louie Christie](https://www.louiechristie.com) (c) 2020 (2022)
