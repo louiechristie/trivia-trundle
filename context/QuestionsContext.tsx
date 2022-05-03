@@ -1,6 +1,6 @@
 import Constants from 'expo-constants';
+import { decode } from 'html-entities';
 import React, { useReducer, createContext } from 'react';
-import {decode} from 'html-entities';
 
 import questionsAPI from '../api/questionsAPI';
 import {
@@ -16,7 +16,7 @@ import {
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 
-const DEBUG = Constants.manifest.extra.debug || false;
+const DEBUG = Constants.manifest?.extra?.debug || false;
 
 const initialState: State = {
   questions: [],
@@ -34,19 +34,17 @@ const initialState: State = {
  *
  */
 export const transformQuestions = (questions: rawQuestion[]): Question[] => {
-  return questions?.map(
-    (question: rawQuestion, index: number): Question => {
-      return (
-        {
-          id: index + 1,
-          ...question,
-          question: decode(question.question, { level: 'html5' }),
-          given_answer: null,
-          answered_correctly: null,
-        } || []
-      );
-    }
-  );
+  return questions?.map((question: rawQuestion, index: number): Question => {
+    return (
+      {
+        id: index + 1,
+        ...question,
+        question: decode(question.question, { level: 'html5' }),
+        given_answer: null,
+        answered_correctly: null,
+      } || []
+    );
+  });
 };
 
 export const questionReducer = (state: State, action: ActionTypes): State => {
@@ -99,9 +97,11 @@ type ContextType = {
 export const Context = createContext<ContextType>({
   state: initialState,
   getQuestions: () => {
+    // eslint-disable-next-line no-console
     console.error('Error: getQuestions() used outside a Provider, must be used within a provider.');
   },
   setQuestionAnswer: () => {
+    // eslint-disable-next-line no-console
     console.error(
       'Error: setQuestionAnswer() used outside a Provider, must be used within a provider.'
     );
@@ -113,6 +113,7 @@ export const Provider: React.FC = ({ children }) => {
 
   const getQuestions = async () => {
     if (DEBUG) {
+      // eslint-disable-next-line no-console
       console.log(`getQuestions`);
     }
 
@@ -137,7 +138,9 @@ export const Provider: React.FC = ({ children }) => {
       isLoading = false;
 
       if (DEBUG) {
+        // eslint-disable-next-line no-console
         console.log(`response: ${JSON.stringify(response, null, 2)}`);
+        // eslint-disable-next-line no-console
         console.log(`data: ${JSON.stringify(data, null, 2)}`);
       }
 
@@ -153,6 +156,7 @@ export const Provider: React.FC = ({ children }) => {
       isLoading = false;
 
       if (DEBUG) {
+        // eslint-disable-next-line no-console
         console.log(`get_questions err: ${err}`);
       }
 

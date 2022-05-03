@@ -6,9 +6,9 @@ import { StyleSheet, View, ScrollView } from 'react-native';
 import { Surface, Title, Paragraph, useTheme, TouchableRipple } from 'react-native-paper';
 
 import { Context } from '../context/QuestionsContext';
-import { TrueOrFalse } from '../types';
+import { TrueOrFalse, QuestionsStackParamList, QuestionStackProps } from '../types';
 
-const DEBUG = Constants.manifest.extra.debug || false;
+const DEBUG = Constants.manifest?.extra?.debug || false;
 
 interface Props {
   id: number;
@@ -19,24 +19,25 @@ interface Props {
 export default function Question(props: Props): JSX.Element {
   const { id, category, question } = props;
 
-  const DEBUG = Constants.manifest.extra.debug || false;
+  const DEBUG = Constants.manifest?.extra?.debug || false;
 
-  const { navigate } = useNavigation();
+  const { navigate } = useNavigation<QuestionStackProps>();
   const { setQuestionAnswer } = useContext(Context);
   const { colors } = useTheme();
 
   const answer = (given_answer: TrueOrFalse) => {
     if (DEBUG) {
+      // eslint-disable-next-line no-console
       console.log(`Question ${id} Answered ${given_answer}`);
     }
 
-    let nextScreenName;
+    let nextScreenName: keyof QuestionsStackParamList;
     const screenPlusOne = id + 1;
 
     if (screenPlusOne <= 10) {
-      nextScreenName = Number(screenPlusOne).toString();
+      nextScreenName = Number(screenPlusOne).toString() as unknown as keyof QuestionsStackParamList;
     } else {
-      nextScreenName = 'Results';
+      nextScreenName = 'Results' as keyof QuestionsStackParamList;
     }
 
     setQuestionAnswer(id, given_answer);

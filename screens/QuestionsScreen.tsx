@@ -2,8 +2,8 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import type { ParamListBase } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import type { StackScreenProps } from '@react-navigation/stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import Constants from 'expo-constants';
 import React, { useContext } from 'react';
 import { StyleSheet, ScrollView, View } from 'react-native';
@@ -14,13 +14,13 @@ import Question from '../components/Question';
 import { Context } from '../context/QuestionsContext';
 import { Question as QuestionType } from '../types';
 
-const DEBUG = Constants.manifest.extra.debug || false;
+const DEBUG = Constants.manifest?.extra?.debug || false;
 
-const Navigator = createStackNavigator();
+const Navigator = createNativeStackNavigator();
 
 export default function QuestionsScreen({
   navigation,
-}: StackScreenProps<ParamListBase>): JSX.Element {
+}: NativeStackScreenProps<ParamListBase>): JSX.Element {
   const { state, getQuestions } = useContext(Context);
   const { questions, error, isLoading } = state;
   const empty = questions.length === 0;
@@ -45,27 +45,17 @@ export default function QuestionsScreen({
       {!empty && (
         <ScrollView style={styles.scrollView} contentContainerStyle={styles.contentContainer}>
           <Navigator.Navigator initialRouteName="1">
-            {questions.map(
-              (question: QuestionType): React.ReactNode => {
-                const { id, category } = question;
-                const title = Number(id).toString();
-                return (
-                  <Navigator.Screen
-                    key={title}
-                    name={title}
-                    options={{ title, headerShown: false }}>
-                    {(props) => (
-                      <Question
-                        {...props}
-                        id={id}
-                        category={category}
-                        question={question.question}
-                      />
-                    )}
-                  </Navigator.Screen>
-                );
-              }
-            )}
+            {questions.map((question: QuestionType): React.ReactNode => {
+              const { id, category } = question;
+              const title = Number(id).toString();
+              return (
+                <Navigator.Screen key={title} name={title} options={{ title, headerShown: false }}>
+                  {(props) => (
+                    <Question {...props} id={id} category={category} question={question.question} />
+                  )}
+                </Navigator.Screen>
+              );
+            })}
           </Navigator.Navigator>
         </ScrollView>
       )}

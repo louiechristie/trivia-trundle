@@ -1,4 +1,4 @@
-import { StackScreenProps } from '@react-navigation/stack';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import Constants from 'expo-constants';
 import React, { useContext } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
@@ -8,9 +8,9 @@ import Header from '../components/Header';
 import { Context } from '../context/QuestionsContext';
 import { Question, RootStackParamList } from '../types';
 
-const DEBUG = Constants.manifest.extra.debug || false;
+const DEBUG = Constants.manifest?.extra?.debug || false;
 
-type Props = StackScreenProps<RootStackParamList, 'Results'>;
+type Props = NativeStackScreenProps<RootStackParamList, 'Results'>;
 
 export default function ResultsScreen({ navigation }: Props): JSX.Element {
   const { state } = useContext(Context);

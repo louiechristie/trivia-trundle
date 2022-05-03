@@ -1,11 +1,14 @@
 import { MaterialIcons } from '@expo/vector-icons';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
 
 import HomeScreen from '../screens/HomeScreen';
 import QuestionsScreen from '../screens/QuestionsScreen';
 import ResultsScreen from '../screens/ResultsScreen';
+import { QuestionsStackParamList } from '../types';
+
+type MaterialIconName = React.ComponentProps<typeof MaterialIcons>['name'];
 
 type MaterialBottomTabParams = {
   Home: undefined;
@@ -15,10 +18,6 @@ type MaterialBottomTabParams = {
 
 type HomeParamList = {
   HomeScreen: undefined;
-};
-
-type QuestionsParamList = {
-  QuestionsScreen: undefined;
 };
 
 type ResultsParamList = {
@@ -57,13 +56,13 @@ export default function BottomTabNavigator(): JSX.Element {
 
 // You can explore the built-in icon families and icons on the web at:
 // https://icons.expo.fyi/
-function TabBarIcon(props: { name: string; color: string }) {
+function TabBarIcon(props: { name: MaterialIconName; color: string }) {
   return <MaterialIcons size={28} style={{ marginBottom: -3 }} {...props} />;
 }
 
 // Each tab has its own navigation stack, you can read more about this pattern here:
 // https://reactnavigation.org/docs/tab-based-navigation#a-stack-navigator-for-each-tab
-const HomeStack = createStackNavigator<HomeParamList>();
+const HomeStack = createNativeStackNavigator<HomeParamList>();
 
 function HomeNavigator() {
   return (
@@ -77,13 +76,13 @@ function HomeNavigator() {
   );
 }
 
-const QuestionsStack = createStackNavigator<QuestionsParamList>();
+const QuestionsStack = createNativeStackNavigator<QuestionsStackParamList>();
 
 function QuestionsNavigator() {
   return (
     <QuestionsStack.Navigator>
       <QuestionsStack.Screen
-        name="QuestionsScreen"
+        name="1"
         component={QuestionsScreen}
         options={{ headerShown: false, headerTitle: 'Questions' }}
       />
@@ -91,7 +90,7 @@ function QuestionsNavigator() {
   );
 }
 
-const ResultsStack = createStackNavigator<ResultsParamList>();
+const ResultsStack = createNativeStackNavigator<ResultsParamList>();
 
 function ResultsNavigator() {
   return (

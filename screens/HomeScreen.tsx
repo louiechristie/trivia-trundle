@@ -1,4 +1,4 @@
-import { StackScreenProps } from '@react-navigation/stack';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import React, { useContext } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Title, Paragraph, Button, useTheme } from 'react-native-paper';
@@ -7,7 +7,7 @@ import Header from '../components/Header';
 import { Context } from '../context/QuestionsContext';
 import { RootStackParamList } from '../types';
 
-type Props = StackScreenProps<RootStackParamList, 'Home'>;
+type Props = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
 export default function HomeScreen({ navigation }: Props): JSX.Element {
   const { getQuestions } = useContext(Context);
