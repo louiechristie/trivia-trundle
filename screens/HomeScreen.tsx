@@ -1,4 +1,5 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import Constants from 'expo-constants';
 import React, { useContext } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Title, Paragraph, Button, useTheme } from 'react-native-paper';
@@ -40,6 +41,10 @@ export default function HomeScreen({ navigation }: Props): JSX.Element {
         <Button mode="contained" contentStyle={styles.button} onPress={begin}>
           BEGIN
         </Button>
+
+        <Paragraph>
+          Version: {Constants?.manifest?.version} {__DEV__ ? ' [DEV] ' : ''}
+        </Paragraph>
       </View>
     </View>
   );
