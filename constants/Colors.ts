@@ -19,7 +19,7 @@ export default {
       primary: tintColorLight,
       positive,
       negative,
-      questionBackgroundColor: '#E0E0E0',
+      questionBackgroundColor: '#FFFFFF',
       card: '#FFF',
       surface: '#FFF',
       border: 'rgb(199, 199, 204)',

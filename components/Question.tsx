@@ -143,8 +143,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 5,
-    borderWidth: DEBUG ? 2 : 0,
-    borderColor: 'violet',
+    borderWidth: DEBUG ? 2 : 2,
+    borderColor: DEBUG ? 'violet' : 'black',
   },
   paragraph: {
     textAlign: 'center',
