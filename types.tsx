@@ -98,6 +98,7 @@ declare global {
       positive: string;
       negative: string;
       questionBackgroundColor: string;
+      questionBorderColor: string;
       lightText: string;
     }
   }

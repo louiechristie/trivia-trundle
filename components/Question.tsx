@@ -51,7 +51,14 @@ export default function Question(props: Props): JSX.Element {
         <Title style={styles.titleSection}>{category}</Title>
         <View style={styles.questionSection}>
           <View style={styles.questionContainer}>
-            <Surface style={styles.questionSurface}>
+            <Surface
+              style={[
+                styles.questionSurface,
+                {
+                  borderColor: DEBUG ? 'violet' : colors.questionBorderColor,
+                  backgroundColor: colors.questionBackgroundColor,
+                },
+              ]}>
               <Paragraph style={styles.paragraph}>{question}</Paragraph>
               <View style={styles.iconContainer}>
                 <AntDesign name="question" size={48} color={colors.text} />
@@ -143,8 +150,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 5,
-    borderWidth: DEBUG ? 2 : 2,
-    borderColor: DEBUG ? 'violet' : 'black',
+    borderWidth: 2,
   },
   paragraph: {
     textAlign: 'center',
