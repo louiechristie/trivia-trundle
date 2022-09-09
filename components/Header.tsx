@@ -9,7 +9,7 @@ const Header = (): JSX.Element => {
   const navigation = useNavigation();
   return (
     <Appbar.Header dark>
-      <Appbar.Action icon="home" onPress={() => navigation.navigate({ key: 'Home' })} />
+      <Appbar.Action icon="home" onPress={() => navigation.navigate('Home')} />
       <Appbar.Content title={name} subtitle={description} />
     </Appbar.Header>
   );
