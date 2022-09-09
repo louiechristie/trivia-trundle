@@ -1,12 +1,11 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import Constants from 'expo-constants';
-import * as Linking from 'expo-linking';
 import React, { useContext } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import { List, Title, Paragraph, ActivityIndicator, useTheme, Button } from 'react-native-paper';
 
+import Credits from '../components/Credits';
 import Header from '../components/Header';
-import Colors from '../constants/Colors';
 import { Context } from '../context/QuestionsContext';
 import { Question, RootStackParamList } from '../types';
 
@@ -85,12 +84,7 @@ export default function ResultsScreen({ navigation }: Props): JSX.Element {
         onPress={playAgain}>
         PLAY AGAIN?
       </Button>
-      <Paragraph style={styles.credits}>Questions by The Open Trivia Database</Paragraph>
-      <Paragraph
-        style={[styles.credits, { color: theme.colors.primary, textDecorationLine: 'underline' }]}
-        onPress={() => Linking.openURL('https://www.louiechristie.com')}>
-        Game by www.LouieChristie.com
-      </Paragraph>
+      <Credits />
       {DEBUG && <Paragraph style={styles.debug}>State: {JSON.stringify(state, null, 2)}</Paragraph>}
     </ScrollView>
   );
@@ -104,6 +98,7 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     flexGrow: 1,
+    paddingBottom: 20,
     borderWidth: DEBUG ? 2 : 0,
     borderColor: 'orange',
   },

@@ -4,6 +4,7 @@ import React, { useContext } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Title, Paragraph, Button, useTheme } from 'react-native-paper';
 
+import Credits from '../components/Credits';
 import Header from '../components/Header';
 import { Context } from '../context/QuestionsContext';
 import { RootStackParamList } from '../types';
@@ -41,6 +42,8 @@ export default function HomeScreen({ navigation }: Props): JSX.Element {
         <Button mode="contained" contentStyle={styles.button} onPress={begin}>
           BEGIN
         </Button>
+
+        <Credits />
 
         <Paragraph>
           Version: {Constants?.manifest?.version} {__DEV__ ? ' [DEV] ' : ''}
