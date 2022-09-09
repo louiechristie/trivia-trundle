@@ -1,10 +1,12 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import Constants from 'expo-constants';
+import * as Linking from 'expo-linking';
 import React, { useContext } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import { List, Title, Paragraph, ActivityIndicator, useTheme, Button } from 'react-native-paper';
 
 import Header from '../components/Header';
+import Colors from '../constants/Colors';
 import { Context } from '../context/QuestionsContext';
 import { Question, RootStackParamList } from '../types';
 
@@ -31,7 +33,6 @@ export default function ResultsScreen({ navigation }: Props): JSX.Element {
       style={[styles.container, { backgroundColor: theme.colors.background }]}
       contentContainerStyle={styles.contentContainer}>
       <Header />
-
       {showInfoBox ? (
         <View style={styles.inner}>
           <View style={styles.empty}>
@@ -84,7 +85,12 @@ export default function ResultsScreen({ navigation }: Props): JSX.Element {
         onPress={playAgain}>
         PLAY AGAIN?
       </Button>
-
+      <Paragraph style={styles.credits}>Questions by The Open Trivia Database</Paragraph>
+      <Paragraph
+        style={[styles.credits, { color: theme.colors.primary, textDecorationLine: 'underline' }]}
+        onPress={() => Linking.openURL('https://www.louiechristie.com')}>
+        Game by www.LouieChristie.com
+      </Paragraph>
       {DEBUG && <Paragraph style={styles.debug}>State: {JSON.stringify(state, null, 2)}</Paragraph>}
     </ScrollView>
   );
@@ -143,6 +149,10 @@ const styles = StyleSheet.create({
   },
   buttonContent: {
     height: 60,
+  },
+  credits: {
+    textAlign: 'center',
+    paddingBottom: 10,
   },
   debug: { paddingTop: 10 },
 });
