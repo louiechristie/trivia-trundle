@@ -20,7 +20,7 @@ For more details of compatibility see [minimum supported OS for Expo](https://do
 
 (Note: You will first need to install [Android Expo App](https://play.google.com/store/apps/details?id=host.exp.exponent&hl=en) then scan the QR code from above.)
 
-- Web: [https://triviatrundle.netlify.com/](https://triviatrundle.netlify.com/)
+- Web: [https://www.louiechristie.com/trivia-trundle/](https://www.louiechristie.com/trivia-trundle/)
 
 An iOS demo online is not available due to Apple restrictions.
 
