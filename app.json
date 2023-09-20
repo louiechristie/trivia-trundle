@@ -5,7 +5,7 @@
     "description": "A quick true or false game.",
     "privacy": "unlisted",
     "githubUrl": "https://github.com/louiechristie/trivia-trundle",
-    "version": "2.2.0",
+    "version": "2.3.0",
     "orientation": "default",
     "icon": "./assets/images/icon.png",
     "scheme": "trivia-trundle",
@@ -21,7 +21,8 @@
       "backgroundColor": "#ffffff"
     },
     "updates": {
-      "fallbackToCacheTimeout": 0
+      "fallbackToCacheTimeout": 0,
+      "useClassicUpdates": true
     },
     "assetBundlePatterns": [
       "**/*"
