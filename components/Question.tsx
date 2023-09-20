@@ -8,7 +8,7 @@ import { Surface, Title, Paragraph, useTheme, TouchableRipple } from 'react-nati
 import { Context } from '../context/QuestionsContext';
 import { TrueOrFalse, QuestionsStackParamList, QuestionStackProps } from '../types';
 
-const DEBUG = Constants.manifest?.extra?.debug || false;
+const DEBUG = Constants.expoConfig?.extra?.debug || false;
 
 interface Props {
   id: number;
@@ -19,7 +19,7 @@ interface Props {
 export default function Question(props: Props): JSX.Element {
   const { id, category, question } = props;
 
-  const DEBUG = Constants.manifest?.extra?.debug || false;
+  const DEBUG = Constants.expoConfig?.extra?.debug || false;
 
   const { navigate } = useNavigation<QuestionStackProps>();
   const { setQuestionAnswer } = useContext(Context);

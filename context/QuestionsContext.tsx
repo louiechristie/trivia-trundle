@@ -16,7 +16,7 @@ import {
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 
-const DEBUG = Constants.manifest?.extra?.debug || false;
+const DEBUG = Constants.expoConfig?.extra?.debug || false;
 
 const initialState: State = {
   questions: [],

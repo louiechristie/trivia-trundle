@@ -11,7 +11,7 @@ import { RootStackParamList } from '../types';
 import BottomTabNavigator from './BottomTabNavigator';
 import LinkingConfiguration from './LinkingConfiguration';
 
-const DEBUG = Constants.manifest?.extra?.debug || false;
+const DEBUG = Constants.expoConfig?.extra?.debug || false;
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }): JSX.Element {
   return (

@@ -4,8 +4,8 @@ import * as React from 'react';
 import { Appbar } from 'react-native-paper';
 
 const Header = (): JSX.Element => {
-  const description = Constants.manifest?.description;
-  const name = Constants.manifest?.name;
+  const description = Constants.expoConfig?.description;
+  const name = Constants.expoConfig?.name;
   const navigation = useNavigation();
   return (
     <Appbar.Header dark>

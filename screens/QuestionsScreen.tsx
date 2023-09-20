@@ -14,7 +14,7 @@ import Question from '../components/Question';
 import { Context } from '../context/QuestionsContext';
 import { Question as QuestionType } from '../types';
 
-const DEBUG = Constants.manifest?.extra?.debug || false;
+const DEBUG = Constants.expoConfig?.extra?.debug || false;
 
 const Navigator = createNativeStackNavigator();
 
