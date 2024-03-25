@@ -35,6 +35,9 @@
     },
     "extra": {
       "debug": false
+    },
+    "experiments": {
+      "baseUrl": "/trivia-trundle"
     }
   }
 }
