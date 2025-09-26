@@ -10,15 +10,15 @@
   "scripts": {
     "start": "expo start",
     "android": "npx expo start --android",
-    "ios": "npx expo start --ios",
+    "ios": "open -a Simulator && npx expo start --ios",
     "web": "npx expo start --web",
     "eject": "npx expo eject",
     "test": "jest --watchAll",
-    "deploy": "yarn deploy:expo && yarn build:web && yarn deploy:web",
+    "deploy": "npm run deploy:expo && npm run build:web && npm run deploy:web",
     "deploy:expo": "npx expo publish",
     "export": "npx expo export",
-    "deploy:web": "yarn export && rsync -avP ~/Documents/trivia-trundle/dist/ pi@192.168.178.29:/var/www/html/trivia-trundle",
-    "lint": "yarn lint:ts && yarn check:ts && yarn lint:md",
+    "deploy:web": "npm run export && rsync -avP ~/Documents/trivia-trundle/dist/ pi@192.168.178.29:/var/www/html/trivia-trundle",
+    "lint": "npm run lint:ts && npm run check:ts && npm run lint:md",
     "check:ts": "tsc --noEmit",
     "lint:ts": "eslint '**/*.+(js|jsx|ts|tsx)' --ignore-path .gitignore",
     "lint:md": "markdownlint '**/README.md' --ignore node_modules"
@@ -28,7 +28,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "tsc --noEmit && yarn lint-staged"
+      "pre-commit": "tsc --noEmit && npm run lint-staged"
     }
   },
   "lint-staged": {

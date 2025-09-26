@@ -30,31 +30,29 @@ To build and run the app locally on your computer:
 
 - Clone the repository.
 
-- Install [yarn version 1.x](https://classic.yarnpkg.com/lang/en/)
-
 - Install dependencies:
 
 ```console
-  yarn
+  npm i
 ```
 
 - start the development processes for iOS/Android App:
 
 ```console
-yarn start
+npm run start
 ```
 
 Alternatively, start the development processes for website:
 
 ```console
-yarn web
+npm run web
 ```
 
 ## Other useful scripts
 
-`yarn test` - Run code tests
+`npm run test` - Run code tests
 
-`yarn lint` - Lint the code to check code quality and consistency
+`npm run lint` - Lint the code to check code quality and consistency
 
 ## Technologies Used
 
