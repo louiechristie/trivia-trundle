@@ -1,4 +1,4 @@
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons, Entypo, MaterialIcons } from '@expo/vector-icons';
 import * as Font from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import * as React from 'react';
@@ -14,6 +14,8 @@ export default function useCachedResources(): boolean {
 
         // Load fonts
         await Font.loadAsync({
+          ...MaterialIcons.font,
+          ...Entypo.font,
           ...Ionicons.font,
           'space-mono': require('../assets/fonts/SpaceMono-Regular.ttf'),
         });

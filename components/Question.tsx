@@ -1,4 +1,6 @@
-import { AntDesign, Entypo } from '@expo/vector-icons';
+import AntDesign from '@expo/vector-icons/AntDesign';
+import Entypo from '@expo/vector-icons/Entypo';
+
 import { useNavigation } from '@react-navigation/native';
 import Constants from 'expo-constants';
 import React, { useContext } from 'react';

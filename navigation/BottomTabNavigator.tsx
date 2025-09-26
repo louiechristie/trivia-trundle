@@ -1,4 +1,4 @@
-import { MaterialIcons } from '@expo/vector-icons';
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
