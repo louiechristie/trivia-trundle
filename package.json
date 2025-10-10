@@ -16,11 +16,11 @@
     "test": "jest --watchAll",
     "test:smoke:ios": "maestro test tests/maestro/smoke-test-full-game.yaml",
     "test:smoke:android": "maestro test tests/maestro/smoke-test-full-game.yaml",
-    "test:smoke": "npm run test:smoke:ios && test:smoke:android",
-    "deploy": "npm run deploy:expo && npm run build:web && npm run deploy:web",
-    "deploy:expo": "npx expo publish",
-    "export": "npx expo export",
-    "deploy:web": "npm run export && rsync -avP ~/Documents/trivia-trundle/dist/ pi@192.168.178.29:/var/www/html/trivia-trundle",
+    "test:smoke:web": "maestro test web tests/maestro/smoke-test-full-game.yaml",
+    "test:smoke": "npm run test:smoke:ios && npm run test:smoke:android",
+    "build:ios": "eas build --platform ios --profile preview --local",
+    "build:android": "eas build --platform android --profile preview --local",
+    "build:web": "npx expo export",
     "lint": "npm run lint:ts && npm run check:ts && npm run lint:md",
     "check:ts": "tsc --noEmit",
     "lint:ts": "eslint '**/*.+(js|jsx|ts|tsx)' --ignore-path .gitignore",
@@ -98,5 +98,10 @@
     "markdownlint-cli": "^0.39.0",
     "prettier": "^2.8.8",
     "typescript": "^5.3.0"
+  },
+  "overrides": {
+    "@react-native-community/masked-view": {
+      "react": "$react"
+    }
   }
 }

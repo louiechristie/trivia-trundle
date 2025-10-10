@@ -22,7 +22,7 @@
     },
     "updates": {
       "fallbackToCacheTimeout": 0,
-      "useClassicUpdates": true
+      "url": "https://u.expo.dev/99f63609-a66b-4014-af5d-ea4a7efa7a93"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -48,6 +48,9 @@
     },
     "android": {
       "package": "com.louiechristie.triviatrundle"
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
     }
   }
 }
