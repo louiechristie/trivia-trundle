@@ -1,11 +1,8 @@
-import AntDesign from '@expo/vector-icons/AntDesign';
-import Entypo from '@expo/vector-icons/Entypo';
-
 import { useNavigation } from '@react-navigation/native';
 import Constants from 'expo-constants';
 import React, { useContext } from 'react';
-import { StyleSheet, View, ScrollView } from 'react-native';
-import { Surface, Title, Paragraph, useTheme, TouchableRipple } from 'react-native-paper';
+import { Text, StyleSheet, View, ScrollView } from 'react-native';
+import { Surface, Title, Paragraph, useTheme, TouchableRipple, Button } from 'react-native-paper';
 
 import { Context } from '../context/QuestionsContext';
 import { TrueOrFalse, QuestionsStackParamList, QuestionStackProps } from '../types';
@@ -63,7 +60,7 @@ export default function Question(props: Props): JSX.Element {
               ]}>
               <Paragraph style={styles.paragraph}>{question}</Paragraph>
               <View style={styles.iconContainer}>
-                <AntDesign name="question" size={48} color={colors.text} />
+                <Text style={{ fontSize: 48 }}>?</Text>
               </View>
             </Surface>
             <Paragraph style={styles.questionNumber}>{id} of 10</Paragraph>
@@ -77,7 +74,13 @@ export default function Question(props: Props): JSX.Element {
             }}
             rippleColor="rgba(255, 255, 255, .32)">
             <Surface style={[styles.button, { backgroundColor: colors.negative }]}>
-              <Entypo style={styles.icon} name="cross" size={48} color={colors.lightText} />
+              <Text
+                style={{
+                  fontSize: 48,
+                  color: colors.lightText,
+                }}>
+                ✗
+              </Text>
 
               <Paragraph
                 style={[
@@ -95,15 +98,15 @@ export default function Question(props: Props): JSX.Element {
               answer('True');
             }}>
             <Surface style={[styles.button, { backgroundColor: colors.positive }]}>
-              <Entypo style={styles.icon} name="check" size={48} color={colors.lightText} />
+              <Text style={{ fontSize: 48, color: colors.lightText }}>✓</Text>
 
-              <Paragraph
+              <Text
                 style={[
                   styles.buttonText,
                   { color: colors.lightText, backgroundColor: colors.positive },
                 ]}>
                 True
-              </Paragraph>
+              </Text>
             </Surface>
           </TouchableRipple>
         </View>

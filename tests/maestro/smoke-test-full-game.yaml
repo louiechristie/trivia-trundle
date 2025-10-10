@@ -1,0 +1,26 @@
+appId: com.louiechristie.triviatrundle
+---
+- launchApp
+- waitForAnimationToEnd
+- assertVisible: "Welcome to the Trivia Challenge!"
+- tapOn: "BEGIN"
+- waitForAnimationToEnd
+
+# Answer all 10 questions
+- repeat:
+    times: 10
+    commands:
+      - waitForAnimationToEnd
+      - assertVisible: "?"
+      - tapOn: 
+          text: ".*True"
+      - waitForAnimationToEnd
+
+# Check results screen
+- assertVisible: "You Scored"
+- scrollUntilVisible:
+    element:
+      text: "PLAY AGAIN?"
+    direction: DOWN
+- tapOn: "PLAY AGAIN?"
+- assertVisible: "Welcome to the Trivia Challenge!"

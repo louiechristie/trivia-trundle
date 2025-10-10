@@ -25,8 +25,7 @@ export default function HomeScreen({ navigation }: Props): JSX.Element {
       <Header />
       <View style={styles.content}>
         <View>
-          <Title style={styles.title}>Welcome to the</Title>
-          <Title style={styles.title}>Trivia Challenge!</Title>
+          <Title style={styles.title}>Welcome to the Trivia Challenge!</Title>
         </View>
 
         <View>
@@ -46,7 +45,7 @@ export default function HomeScreen({ navigation }: Props): JSX.Element {
         <Credits />
 
         <Paragraph>
-          Version: {Constants?.manifest?.version} {__DEV__ ? ' [DEV] ' : ''}
+          Version: {Constants?.expoConfig?.version} {__DEV__ ? ' [DEV] ' : ''}
         </Paragraph>
       </View>
     </View>

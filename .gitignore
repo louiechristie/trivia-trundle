@@ -15,3 +15,7 @@ dist/
 
 # Local Netlify folder
 .netlify
+
+# Because we are using Continuous Native Generation (CNG) see https://docs.expo.dev/workflow/continuous-native-generation/
+android
+ios

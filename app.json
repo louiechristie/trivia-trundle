@@ -5,7 +5,7 @@
     "description": "A quick true or false game.",
     "privacy": "unlisted",
     "githubUrl": "https://github.com/louiechristie/trivia-trundle",
-    "version": "2.3.0",
+    "version": "3.0.0",
     "orientation": "default",
     "icon": "./assets/images/icon.png",
     "scheme": "trivia-trundle",
@@ -28,16 +28,26 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.louiechristie.triviatrundle",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "web": {
       "favicon": "./assets/images/favicon.png"
     },
     "extra": {
-      "debug": false
+      "debug": false,
+      "eas": {
+        "projectId": "99f63609-a66b-4014-af5d-ea4a7efa7a93"
+      }
     },
     "experiments": {
       "baseUrl": "/trivia-trundle"
+    },
+    "android": {
+      "package": "com.louiechristie.triviatrundle"
     }
   }
 }
