@@ -66,4 +66,4 @@ npm run web
 
 [Louie Christie](https://www.louiechristie.com)
 
-Copyright [Louie Christie](https://www.louiechristie.com) (c) 2020 (2022)
+Copyright [Louie Christie](https://www.louiechristie.com) (c) 2020 (2022, 2025)
