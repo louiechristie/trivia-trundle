@@ -2,7 +2,7 @@ import { useNavigation } from '@react-navigation/native';
 import Constants from 'expo-constants';
 import React, { useContext } from 'react';
 import { Text, StyleSheet, View, ScrollView } from 'react-native';
-import { Surface, Title, Paragraph, useTheme, TouchableRipple, Button } from 'react-native-paper';
+import { Surface, Title, Paragraph, useTheme, TouchableRipple } from 'react-native-paper';
 
 import { Context } from '../context/QuestionsContext';
 import { TrueOrFalse, QuestionsStackParamList, QuestionStackProps } from '../types';
