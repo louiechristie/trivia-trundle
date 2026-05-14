@@ -1,6 +1,6 @@
 import Constants from 'expo-constants';
 import { decode } from 'html-entities';
-import React, { useReducer, createContext } from 'react';
+import React, { useReducer, createContext, ReactNode } from 'react';
 
 import questionsAPI from '../api/questionsAPI';
 import {
@@ -94,6 +94,10 @@ type ContextType = {
   setQuestionAnswer: (id: number, given_answer: TrueOrFalse) => void;
 };
 
+interface QuestionsProviderProps {
+  children: ReactNode;
+}
+
 export const Context = createContext<ContextType>({
   state: initialState,
   getQuestions: () => {
@@ -108,7 +112,7 @@ export const Context = createContext<ContextType>({
   },
 });
 
-export const Provider: React.FC = ({ children }) => {
+export const Provider: React.FC<QuestionsProviderProps> = ({ children }) => {
   const [state, dispatch] = useReducer(questionReducer, initialState);
 
   const getQuestions = async () => {
