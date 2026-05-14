@@ -34,17 +34,17 @@ const initialState: State = {
  *
  */
 export const transformQuestions = (questions: rawQuestion[]): Question[] => {
-  return questions?.map((question: rawQuestion, index: number): Question => {
-    return (
-      {
+  return (
+    questions?.map((question: rawQuestion, index: number): Question => {
+      return {
         id: index + 1,
         ...question,
         question: decode(question.question, { level: 'html5' }),
         given_answer: null,
         answered_correctly: null,
-      } || []
-    );
-  });
+      };
+    }) || []
+  );
 };
 
 export const questionReducer = (state: State, action: ActionTypes): State => {
