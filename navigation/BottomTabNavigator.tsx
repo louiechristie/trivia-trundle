@@ -6,7 +6,7 @@ import * as React from 'react';
 import HomeScreen from '../screens/HomeScreen';
 import QuestionsScreen from '../screens/QuestionsScreen';
 import ResultsScreen from '../screens/ResultsScreen';
-import { QuestionsStackParamList } from '../types';
+import { QuestionsStackParamList, RootStackParamList } from '../types';
 
 type MaterialIconName = React.ComponentProps<typeof MaterialIcons>['name'];
 
@@ -14,14 +14,6 @@ type MaterialBottomTabParams = {
   Home: undefined;
   Questions: undefined;
   Results: undefined;
-};
-
-type HomeParamList = {
-  HomeScreen: undefined;
-};
-
-type ResultsParamList = {
-  ResultsScreen: undefined;
 };
 
 const BottomTab = createMaterialBottomTabNavigator<MaterialBottomTabParams>();
@@ -62,13 +54,13 @@ function TabBarIcon(props: { name: MaterialIconName; color: string }) {
 
 // Each tab has its own navigation stack, you can read more about this pattern here:
 // https://reactnavigation.org/docs/tab-based-navigation#a-stack-navigator-for-each-tab
-const HomeStack = createNativeStackNavigator<HomeParamList>();
+const HomeStack = createNativeStackNavigator<RootStackParamList>();
 
 function HomeNavigator() {
   return (
     <HomeStack.Navigator>
       <HomeStack.Screen
-        name="HomeScreen"
+        name="Home"
         component={HomeScreen}
         options={{ headerShown: false, headerTitle: 'Home' }}
       />
@@ -90,13 +82,13 @@ function QuestionsNavigator() {
   );
 }
 
-const ResultsStack = createNativeStackNavigator<ResultsParamList>();
+const ResultsStack = createNativeStackNavigator<RootStackParamList>();
 
 function ResultsNavigator() {
   return (
     <ResultsStack.Navigator>
       <ResultsStack.Screen
-        name="ResultsScreen"
+        name="Results"
         component={ResultsScreen}
         options={{ headerShown: false, headerTitle: 'Results' }}
       />
