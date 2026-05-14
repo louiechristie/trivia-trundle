@@ -1,4 +1,4 @@
-url: https://www.louiechristie.com/trivia-trundle/
+url: http://localhost:8081/trivia-trundle
 ---
 - launchApp
 - waitForAnimationToEnd
