@@ -23,11 +23,12 @@
     "debug:test": "maestro studio tests/maestro/smoke-test-full-game.yaml",
     "build:ios": "eas build --platform ios --profile preview --local",
     "build:android": "eas build --platform android --profile preview --local",
-    "build:web": "npx expo export ",
+    "build:web": "npx expo export",
     "lint": "npm run lint:ts && npm run check:ts && npm run lint:md",
     "check:ts": "tsc --noEmit",
     "lint:ts": "eslint '**/*.+(js|jsx|ts|tsx)' --ignore-path .gitignore",
-    "lint:md": "markdownlint '**/README.md' --ignore node_modules"
+    "lint:md": "markdownlint '**/README.md' --ignore node_modules",
+    "deploy:web": "rsync -avhP --delete ./dist/ ~/Documents/louiechristie.com/_site/trivia-trundle"
   },
   "jest": {
     "preset": "jest-expo"
