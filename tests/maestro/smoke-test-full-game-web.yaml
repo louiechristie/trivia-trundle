@@ -1,4 +1,4 @@
-url: http://localhost:8081/trivia-trundle
+url: http://localhost:3000/trivia-trundle
 ---
 - launchApp
 - waitForAnimationToEnd
@@ -17,10 +17,13 @@ url: http://localhost:8081/trivia-trundle
       - waitForAnimationToEnd
 
 # Check results screen
-- assertVisible: "You Scored"
-- scrollUntilVisible:
-    element:
-      text: "PLAY AGAIN?"
-    direction: DOWN
+- assertVisible: "You scored"
+- repeat:
+    times: 8
+    commands:
+      - swipe:
+          start: 50%, 80%
+          end: 50%, 20%
+- assertVisible: "PLAY AGAIN?"
 - tapOn: "PLAY AGAIN?"
 - assertVisible: "Welcome to the Trivia Challenge!"
