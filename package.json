@@ -17,8 +17,8 @@
     "test:jest:watch": "jest --watchAll",
     "test": "npm run lint && npm run test:jest && npm run test:smoke",
     "test:smoke:ios": "npm run build:ios && maestro --platform ios test tests/maestro/smoke-test-full-game.yaml",
-    "test:smoke:android": "maestro --platform android test tests/maestro/smoke-test-full-game.yaml",
-    "test:smoke:web": "npm run build:web && npm run serve & npx --yes wait-on http://localhost:3000 && maestro test tests/maestro/smoke-test-full-game-web.yaml",
+    "test:smoke:android": "npm run build:android && maestro --platform android test tests/maestro/smoke-test-full-game.yaml",
+    "test:smoke:web": "npm run build:web && (npm run serve &) && npx --yes wait-on http://localhost:3000 && maestro test tests/maestro/smoke-test-full-game-web.yaml; EC=$?; kill $(lsof -ti:3000) 2>/dev/null; exit $EC",
     "test:smoke": "npm run test:smoke:web && npm run test:smoke:ios && npm run test:smoke:android",
     "debug:test": "maestro studio tests/maestro/smoke-test-full-game.yaml",
     "build:ios": "eas build --platform ios --profile preview --local",
@@ -30,7 +30,7 @@
     "lint:md": "markdownlint '**/README.md' --ignore node_modules",
     "deploy:web": "rsync -avhP --delete ./dist/ ~/Documents/louiechristie.com/_site/trivia-trundle",
     "upgrade": "npx npm-check-updates -u --target minor && npm install",
-    "serve": "cp -r dist dist/trivia-trundle && npx --yes serve dist;"
+    "serve": "rm -rf dist/trivia-trundle && cp -r dist dist/trivia-trundle && npx --yes serve dist"
   },
   "jest": {
     "preset": "jest-expo"
