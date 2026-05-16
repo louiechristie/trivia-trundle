@@ -21,4 +21,9 @@ dist/
 android
 ios
 
+# Android Studio and XCode
 .idea
+
+# Old build artifacts
+build-*.apk
+build-*.tar.gz
