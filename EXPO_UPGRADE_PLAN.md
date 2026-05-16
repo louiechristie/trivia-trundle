@@ -25,8 +25,8 @@ Constraints carried over from the SDK 51 plan:
 | Step | From → to | Status | Notes |
 |---|---|---|---|
 | 1 | SDK 52 → 53 | ✅ done (commit `31cb734`) | RN 0.79.6, React 19.0.0, Node 20.18+, Xcode 16+, Android compileSdk 35 |
-| 2 | SDK 53 → 54 | pending | RN 0.81, React 19.1, Xcode 16.1+, Android compileSdk 36; introduces Native Tabs |
-| 3 | **Migrate to expo-router** | pending | Done on SDK 54; details below |
+| 2 | SDK 53 → 54 | ✅ done (commit 30a319f) | RN 0.81, React 19.1, Xcode 16.1+, Android compileSdk 36; introduces Native Tabs |
+| 3 | **Migrate to expo-router** | ✅ done (commit 30a319f) | Done on SDK 54; details below |
 | 4 | SDK 54 → 55 | pending | RN 0.83, React 19.2, Xcode 26.2+ |
 | 5 | _(deferred)_ SDK 55 → 56 | pending | SDK 56 is still beta — revisit when stable |
 Commit each step in Git to master branch. Don't create separate branches.
