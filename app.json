@@ -3,7 +3,6 @@
     "name": "Trivia Trundle",
     "slug": "trivia-trundle",
     "description": "A quick true or false game.",
-    "privacy": "unlisted",
     "githubUrl": "https://github.com/louiechristie/trivia-trundle",
     "version": "3.52.0",
     "orientation": "default",
@@ -57,7 +56,8 @@
     },
     "plugins": [
       "expo-asset",
-      "expo-font"
+      "expo-font",
+      "./plugins/with-fmt-consteval-fix.js"
     ]
   }
 }
