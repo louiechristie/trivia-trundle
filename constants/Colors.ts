@@ -1,55 +1,48 @@
-// import {
-//   DefaultTheme as NavigationDefaultTheme,
-//   DarkTheme as NavigationDarkTheme,
-// } from '@react-navigation/native';
-import { DefaultTheme, DarkTheme } from 'react-native-paper';
+import { MD3LightTheme, MD3DarkTheme } from 'react-native-paper';
+import type { MD3Theme } from 'react-native-paper';
 
 const tintColorLight = '#0051E7';
+const tintColorDark = '#fff';
 const negative = '#DD4837';
 const positive = '#59AF23';
 
-const tintColorDark = '#fff';
+export type AppTheme = MD3Theme & {
+  colors: MD3Theme['colors'] & {
+    positive: string;
+    negative: string;
+    questionBackgroundColor: string;
+    questionBorderColor: string;
+    lightText: string;
+  };
+};
 
-const Colors = {
+const Colors: { light: AppTheme; dark: AppTheme } = {
   light: {
-    ...DefaultTheme,
-
+    ...MD3LightTheme,
     colors: {
-      ...DefaultTheme.colors,
+      ...MD3LightTheme.colors,
       primary: tintColorLight,
+      background: '#FFF',
+      surface: '#FFF',
       positive,
       negative,
       questionBackgroundColor: '#FFF',
       questionBorderColor: '#000',
-      card: '#FFF',
-      surface: '#FFF',
-      border: 'rgb(199, 199, 204)',
-      text: '#000',
-      background: '#FFF',
       lightText: '#FFF',
-      tint: tintColorLight,
-      tabIconDefault: '#CCC',
-      tabIconSelected: tintColorLight,
     },
   },
   dark: {
-    ...DarkTheme,
+    ...MD3DarkTheme,
     colors: {
-      ...DarkTheme.colors,
+      ...MD3DarkTheme.colors,
       primary: tintColorDark,
+      background: '#000',
+      surface: '#000',
       positive,
       negative,
       questionBackgroundColor: '#000',
       questionBorderColor: '#FFF',
-      card: '#000',
-      surface: '#000',
-      border: 'rgb(39, 39, 41)',
-      text: '#FFF',
-      background: '#000',
       lightText: '#FFF',
-      tint: tintColorDark,
-      tabIconDefault: '#CCC',
-      tabIconSelected: tintColorDark,
     },
   },
 };

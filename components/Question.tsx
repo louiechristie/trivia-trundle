@@ -1,9 +1,10 @@
 import { useNavigation } from '@react-navigation/native';
 import Constants from 'expo-constants';
 import React, { useContext } from 'react';
-import { Text, StyleSheet, View, ScrollView } from 'react-native';
-import { Surface, Title, Paragraph, useTheme, TouchableRipple } from 'react-native-paper';
+import { Text as RNText, StyleSheet, View, ScrollView } from 'react-native';
+import { Surface, Text, useTheme, TouchableRipple } from 'react-native-paper';
 
+import type { AppTheme } from '../constants/Colors';
 import { Context } from '../context/QuestionsContext';
 import { TrueOrFalse, QuestionsStackParamList, QuestionStackProps } from '../types';
 
@@ -22,7 +23,7 @@ export default function Question(props: Props): JSX.Element {
 
   const { navigate } = useNavigation<QuestionStackProps>();
   const { setQuestionAnswer } = useContext(Context);
-  const { colors } = useTheme();
+  const { colors } = useTheme<AppTheme>();
 
   const answer = (given_answer: TrueOrFalse) => {
     if (DEBUG) {
@@ -47,7 +48,9 @@ export default function Question(props: Props): JSX.Element {
     <ScrollView
       contentContainerStyle={[styles.outer, { backgroundColor: colors.questionBackgroundColor }]}>
       <View style={styles.container}>
-        <Title style={styles.titleSection}>{category}</Title>
+        <Text variant="titleLarge" style={styles.titleSection}>
+          {category}
+        </Text>
         <View style={styles.questionSection}>
           <View style={styles.questionContainer}>
             <Surface
@@ -58,12 +61,16 @@ export default function Question(props: Props): JSX.Element {
                   backgroundColor: colors.questionBackgroundColor,
                 },
               ]}>
-              <Paragraph style={styles.paragraph}>{question}</Paragraph>
+              <Text variant="bodyMedium" style={styles.paragraph}>
+                {question}
+              </Text>
               <View style={styles.iconContainer}>
-                <Text style={{ fontSize: 48 }}>?</Text>
+                <RNText style={{ fontSize: 48 }}>?</RNText>
               </View>
             </Surface>
-            <Paragraph style={styles.questionNumber}>{id} of 10</Paragraph>
+            <Text variant="bodyMedium" style={styles.questionNumber}>
+              {id} of 10
+            </Text>
           </View>
         </View>
         <View style={styles.buttonsSection}>
@@ -74,21 +81,22 @@ export default function Question(props: Props): JSX.Element {
             }}
             rippleColor="rgba(255, 255, 255, .32)">
             <Surface style={[styles.button, { backgroundColor: colors.negative }]}>
-              <Text
+              <RNText
                 style={{
                   fontSize: 48,
                   color: colors.lightText,
                 }}>
                 ✗
-              </Text>
+              </RNText>
 
-              <Paragraph
+              <Text
+                variant="bodyMedium"
                 style={[
                   styles.buttonText,
                   { color: colors.lightText, backgroundColor: colors.negative },
                 ]}>
                 False
-              </Paragraph>
+              </Text>
             </Surface>
           </TouchableRipple>
           <TouchableRipple
@@ -98,15 +106,15 @@ export default function Question(props: Props): JSX.Element {
               answer('True');
             }}>
             <Surface style={[styles.button, { backgroundColor: colors.positive }]}>
-              <Text style={{ fontSize: 48, color: colors.lightText }}>✓</Text>
+              <RNText style={{ fontSize: 48, color: colors.lightText }}>✓</RNText>
 
-              <Text
+              <RNText
                 style={[
                   styles.buttonText,
                   { color: colors.lightText, backgroundColor: colors.positive },
                 ]}>
                 True
-              </Text>
+              </RNText>
             </Surface>
           </TouchableRipple>
         </View>

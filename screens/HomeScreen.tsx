@@ -2,10 +2,11 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import Constants from 'expo-constants';
 import React, { useContext } from 'react';
 import { StyleSheet, View } from 'react-native';
-import { Title, Paragraph, Button, useTheme } from 'react-native-paper';
+import { Text, Button, useTheme } from 'react-native-paper';
 
 import Credits from '../components/Credits';
 import Header from '../components/Header';
+import type { AppTheme } from '../constants/Colors';
 import { Context } from '../context/QuestionsContext';
 import { RootStackParamList } from '../types';
 
@@ -13,7 +14,7 @@ type Props = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
 export default function HomeScreen({ navigation }: Props): JSX.Element {
   const { getQuestions } = useContext(Context);
-  const { colors } = useTheme();
+  const { colors } = useTheme<AppTheme>();
 
   const begin = () => {
     getQuestions();
@@ -25,17 +26,27 @@ export default function HomeScreen({ navigation }: Props): JSX.Element {
       <Header />
       <View style={styles.content}>
         <View>
-          <Title style={styles.title}>Welcome to the Trivia Challenge!</Title>
+          <Text variant="titleLarge" style={styles.title}>
+            Welcome to the Trivia Challenge!
+          </Text>
         </View>
 
         <View>
-          <Paragraph style={styles.paragraph}>You will be presented</Paragraph>
-          <Paragraph style={styles.paragraph}>with 10 True or False</Paragraph>
-          <Paragraph style={styles.paragraph}>questions.</Paragraph>
+          <Text variant="bodyMedium" style={styles.paragraph}>
+            You will be presented
+          </Text>
+          <Text variant="bodyMedium" style={styles.paragraph}>
+            with 10 True or False
+          </Text>
+          <Text variant="bodyMedium" style={styles.paragraph}>
+            questions.
+          </Text>
         </View>
 
         <View>
-          <Paragraph style={styles.paragraph}>Can you score 100%?</Paragraph>
+          <Text variant="bodyMedium" style={styles.paragraph}>
+            Can you score 100%?
+          </Text>
         </View>
 
         <Button mode="contained" contentStyle={styles.button} onPress={begin}>
@@ -44,9 +55,9 @@ export default function HomeScreen({ navigation }: Props): JSX.Element {
 
         <Credits />
 
-        <Paragraph>
+        <Text variant="bodyMedium">
           Version: {Constants?.expoConfig?.version} {__DEV__ ? ' [DEV] ' : ''}
-        </Paragraph>
+        </Text>
       </View>
     </View>
   );

@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react-native';
 import React from 'react';
-import { Provider as PaperProvider } from 'react-native-paper';
+import { PaperProvider } from 'react-native-paper';
 
 import Header from './Header';
 import Colors from '../constants/Colors';

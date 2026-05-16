@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires, prettier/prettier */
 // Config plugin: works around Xcode 16+/26 vs RN 0.76 fmt consteval failure.
 // Adds OTHER_CPLUSPLUSFLAGS=-DFMT_USE_CONSTEVAL=0 to every Pods target and
 // patches fmt's base header to neutralize consteval if the flag alone is

@@ -7,7 +7,7 @@ import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import Constants from 'expo-constants';
 import React, { useContext } from 'react';
 import { StyleSheet, ScrollView, View } from 'react-native';
-import { ActivityIndicator, Paragraph, Button } from 'react-native-paper';
+import { ActivityIndicator, Text, Button } from 'react-native-paper';
 
 import Header from '../components/Header';
 import Question from '../components/Question';
@@ -38,7 +38,7 @@ export default function QuestionsScreen({
 
           {empty && <Button onPress={getQuestions}>Load questions</Button>}
 
-          {error && <Paragraph>{error}</Paragraph>}
+          {error && <Text variant="bodyMedium">{error}</Text>}
         </View>
       )}
 

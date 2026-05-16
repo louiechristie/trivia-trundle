@@ -2,10 +2,11 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import Constants from 'expo-constants';
 import React, { useContext } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
-import { List, Title, Paragraph, ActivityIndicator, useTheme, Button } from 'react-native-paper';
+import { List, Text, ActivityIndicator, useTheme, Button } from 'react-native-paper';
 
 import Credits from '../components/Credits';
 import Header from '../components/Header';
+import type { AppTheme } from '../constants/Colors';
 import { Context } from '../context/QuestionsContext';
 import { Question, RootStackParamList } from '../types';
 
@@ -15,7 +16,7 @@ type Props = NativeStackScreenProps<RootStackParamList, 'Results'>;
 
 export default function ResultsScreen({ navigation }: Props): JSX.Element {
   const { state } = useContext(Context);
-  const theme = useTheme();
+  const theme = useTheme<AppTheme>();
   const {
     colors: { positive, negative },
   } = theme;
@@ -36,17 +37,23 @@ export default function ResultsScreen({ navigation }: Props): JSX.Element {
         <View style={styles.inner}>
           <View style={styles.empty}>
             {isLoading && <ActivityIndicator />}
-            <Paragraph>No results to display.</Paragraph>
-            {error && <Paragraph>{error}</Paragraph>}
+            <Text variant="bodyMedium">No results to display.</Text>
+            {error && <Text variant="bodyMedium">{error}</Text>}
             {DEBUG && (
-              <Paragraph style={styles.debug}>State: {JSON.stringify(state, null, 2)}</Paragraph>
+              <Text variant="bodyMedium" style={styles.debug}>
+                State: {JSON.stringify(state, null, 2)}
+              </Text>
             )}
           </View>
         </View>
       ) : (
         <View style={styles.results}>
-          <Title style={styles.title}>You scored</Title>
-          <Title style={styles.title}>{score} / 10</Title>
+          <Text variant="titleLarge" style={styles.title}>
+            You scored
+          </Text>
+          <Text variant="titleLarge" style={styles.title}>
+            {score} / 10
+          </Text>
 
           <List.Section theme={theme}>
             {isLoading && <ActivityIndicator />}
@@ -85,7 +92,11 @@ export default function ResultsScreen({ navigation }: Props): JSX.Element {
         PLAY AGAIN?
       </Button>
       <Credits />
-      {DEBUG && <Paragraph style={styles.debug}>State: {JSON.stringify(state, null, 2)}</Paragraph>}
+      {DEBUG && (
+        <Text variant="bodyMedium" style={styles.debug}>
+          State: {JSON.stringify(state, null, 2)}
+        </Text>
+      )}
     </ScrollView>
   );
 }
