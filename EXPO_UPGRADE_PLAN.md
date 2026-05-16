@@ -2,9 +2,10 @@
 
 ## Context
 
-The project is on Expo SDK 52 (RN 0.76.9, React 18.3.1, react-native-paper@5)
-after the prior SDK 51 and SDK 52 upgrades. Goal: reach the latest stable
-Expo SDK and switch from React Navigation to Expo Router (file-based routing).
+The project is on Expo SDK 53 (RN 0.79.6, React 19.0.0, react-native-paper@5)
+after the SDK 51, 52, and 53 upgrades all landed on `master`. Goal: reach
+the latest stable Expo SDK and switch from React Navigation to Expo Router
+(file-based routing).
 
 Latest at time of writing (2026-05-16):
 
@@ -21,25 +22,32 @@ Constraints carried over from the SDK 51 plan:
 
 ## Overall sequence
 
-| Step | From → to | Notes |
-|---|---|---|
-| 1 | SDK 52 → 53 | RN 0.79, React 19.0, Node 20.18+, Xcode 16+, Android compileSdk 35 |
-| 2 | SDK 53 → 54 | RN 0.81, React 19.1, Xcode 16.1+, Android compileSdk 36; introduces Native Tabs |
-| 3 | **Migrate to expo-router** | Done on SDK 54; details below |
-| 4 | SDK 54 → 55 | RN 0.83, React 19.2, Xcode 26.2+ |
-| 5 | _(deferred)_ SDK 55 → 56 | SDK 56 is still beta — revisit when stable |
+| Step | From → to | Status | Notes |
+|---|---|---|---|
+| 1 | SDK 52 → 53 | ✅ done (commit `31cb734`) | RN 0.79.6, React 19.0.0, Node 20.18+, Xcode 16+, Android compileSdk 35 |
+| 2 | SDK 53 → 54 | pending | RN 0.81, React 19.1, Xcode 16.1+, Android compileSdk 36; introduces Native Tabs |
+| 3 | **Migrate to expo-router** | pending | Done on SDK 54; details below |
+| 4 | SDK 54 → 55 | pending | RN 0.83, React 19.2, Xcode 26.2+ |
+| 5 | _(deferred)_ SDK 55 → 56 | pending | SDK 56 is still beta — revisit when stable |
 
 Per-step verification gate (every numbered step):
 
-- `npx expo install expo@^X.0.0 --fix` → align managed deps
-- Bump dev-deps not handled by `expo install --fix`: `babel-preset-expo`,
-  `jest-expo`, `@types/react`, `react-test-renderer`
-- `npx expo-doctor` → 0 issues
-- `npm run lint` → clean
-- `npm run test:jest` → all green (refresh snapshots only when the SDK change
-  alone explains the diff)
-- `npm run test:smoke:{web,ios,android}` → all green
-- One commit per step: `chore: upgrade to Expo SDK X`
+1. `npx expo install expo@^X.0.0 --fix` → align managed deps
+2. Hand-bump dev-deps not handled by `expo install --fix`:
+   `babel-preset-expo`, `jest-expo`, `@types/react`, `react-test-renderer`,
+   `typescript`
+3. `npm run upgrade` → pulls everything to the latest matching minor.
+   **Important:** this can over-bump RN's `0.x.y` versioning (`--target minor`
+   treats `0.85` as a minor bump from `0.79`). Re-run `npx expo install --fix`
+   afterwards to pin RN / Paper / react-native-* back to the versions
+   expo-doctor expects for the target SDK.
+4. `npx expo-doctor` → 0 issues
+5. `npm run lint` → clean
+6. `npm run test:jest` → all green (refresh snapshots only when the SDK
+   change alone explains the diff)
+7. `npm run test:smoke:{web,ios,android}` → all green
+8. One commit per step: `chore: upgrade to Expo SDK X`, committed directly
+   to `master` (no feature branches in this repo).
 
 ## When (and why) to migrate to expo-router
 
@@ -65,7 +73,7 @@ The [official migration guide][migrate] is the source of truth.
 
 | Step | Likely friction | Mitigation |
 |---|---|---|
-| 52 → 53 | Node 20.18+ enforced. RN 0.79 lands React 19; the state-setter sync change was already absorbed in SDK 52. Re-evaluate `plugins/with-fmt-consteval-fix.js` — likely still needed under Xcode 26. | Verify Node version locally before starting. Keep the fmt plugin until the build is green without it. |
+| 52 → 53 _(done)_ | React 19's `@types/react` drops the global `JSX` namespace, breaking every `: JSX.Element` return type. Expo's `tsconfig.base` switched to `moduleResolution: "bundler"` + `customConditions`, which conflicts with the local `moduleResolution: "node"` override. Android Gradle build failed because homebrew's `ccache` was still linked against `libfmt.11.dylib` after a local fmt 12 upgrade — **unrelated to SDK 53** but worth knowing. | Replace `JSX.Element` with `React.JSX.Element` across files. Drop the `moduleResolution` line from `tsconfig.json`. For the ccache crash on Android: `brew update && brew install ccache` relinks against fmt 12. |
 | 53 → 54 | Largest jump: RN 0.81 / React 19.1, Android compileSdk 36, Xcode 16.1+. Re-test `react-native-paper@5` peer-dep alignment. fmt-consteval issue is fixed in RN 0.81 upstream. | Plan to delete `plugins/with-fmt-consteval-fix.js` here; if it's the only thing blocking iOS smoke, that's the diagnostic. |
 | expo-router migration (on SDK 54) | See sub-plan below. | Run Maestro flows after migration — text assertions are unchanged, so flows should keep working without recording new baselines. |
 | 54 → 55 | Smaller diff once on expo-router. Xcode 26.2+ becomes hard requirement. | None expected beyond the standard gate. |
@@ -123,7 +131,8 @@ Done when, on SDK 55 with expo-router:
 
 - `npx expo-doctor` reports 0 issues
 - `npm run lint` clean
-- `npm run test:jest` — 22 tests, 15 snapshots stable
+- `npm run test:jest` — all tests + snapshots stable (22 tests / 15
+  snapshots as of SDK 53)
 - `npm run test:smoke:{web,ios,android}` — all three Maestro flows green
 - `app/` is the only routing source of truth
 - `App.tsx`, `navigation/`, and any manual `Stack.Navigator` call sites
