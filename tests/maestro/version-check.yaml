@@ -1,0 +1,6 @@
+appId: com.louiechristie.triviatrundle
+---
+- launchApp
+- waitForAnimationToEnd
+- assertVisible:
+    text: "Version:.*${EXPECTED_VERSION}"

@@ -1,0 +1,6 @@
+url: http://localhost:3000/trivia-trundle
+---
+- launchApp
+- waitForAnimationToEnd
+- assertVisible:
+    text: "Version:.*${EXPECTED_VERSION}"
