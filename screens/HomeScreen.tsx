@@ -12,7 +12,7 @@ import { RootStackParamList } from '../types';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
-export default function HomeScreen({ navigation }: Props): JSX.Element {
+export default function HomeScreen({ navigation }: Props): React.JSX.Element {
   const { getQuestions } = useContext(Context);
   const { colors } = useTheme<AppTheme>();
 

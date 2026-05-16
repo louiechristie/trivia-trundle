@@ -10,7 +10,7 @@ import useCachedResources from './hooks/useCachedResources';
 import useColorScheme from './hooks/useColorScheme';
 import Navigation from './navigation';
 
-export default function App(): JSX.Element {
+export default function App(): React.JSX.Element {
   const isLoadingComplete = useCachedResources();
   const colorScheme = useColorScheme();
   // For testing dark color scheme

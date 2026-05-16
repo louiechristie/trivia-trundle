@@ -18,7 +18,7 @@ type MaterialBottomTabParams = {
 
 const BottomTab = createMaterialBottomTabNavigator<MaterialBottomTabParams>();
 
-export default function BottomTabNavigator(): JSX.Element {
+export default function BottomTabNavigator(): React.JSX.Element {
   return (
     <BottomTab.Navigator initialRouteName="Home">
       <BottomTab.Screen

@@ -14,7 +14,7 @@ const DEBUG = Constants.expoConfig?.extra?.debug || false;
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Results'>;
 
-export default function ResultsScreen({ navigation }: Props): JSX.Element {
+export default function ResultsScreen({ navigation }: Props): React.JSX.Element {
   const { state } = useContext(Context);
   const theme = useTheme<AppTheme>();
   const {

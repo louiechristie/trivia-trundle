@@ -213,19 +213,23 @@ exports[`QuestionsScreen empty state - dark 1`] = `
                       <View
                         collapsable={false}
                         style={
-                          {
-                            "bottom": 0,
-                            "left": 0,
-                            "opacity": 1,
-                            "position": "absolute",
-                            "right": 0,
-                            "top": 0,
-                            "transform": [
-                              {
-                                "rotate": "0deg",
-                              },
-                            ],
-                          }
+                          [
+                            {
+                              "bottom": 0,
+                              "left": 0,
+                              "position": "absolute",
+                              "right": 0,
+                              "top": 0,
+                            },
+                            {
+                              "opacity": 1,
+                              "transform": [
+                                {
+                                  "rotate": "0deg",
+                                },
+                              ],
+                            },
+                          ]
                         }
                         testID="cross-fade-icon-current"
                       >
@@ -680,19 +684,23 @@ exports[`QuestionsScreen empty state - light 1`] = `
                       <View
                         collapsable={false}
                         style={
-                          {
-                            "bottom": 0,
-                            "left": 0,
-                            "opacity": 1,
-                            "position": "absolute",
-                            "right": 0,
-                            "top": 0,
-                            "transform": [
-                              {
-                                "rotate": "0deg",
-                              },
-                            ],
-                          }
+                          [
+                            {
+                              "bottom": 0,
+                              "left": 0,
+                              "position": "absolute",
+                              "right": 0,
+                              "top": 0,
+                            },
+                            {
+                              "opacity": 1,
+                              "transform": [
+                                {
+                                  "rotate": "0deg",
+                                },
+                              ],
+                            },
+                          ]
                         }
                         testID="cross-fade-icon-current"
                       >
@@ -1112,19 +1120,23 @@ exports[`QuestionsScreen error state - light 1`] = `
                       <View
                         collapsable={false}
                         style={
-                          {
-                            "bottom": 0,
-                            "left": 0,
-                            "opacity": 1,
-                            "position": "absolute",
-                            "right": 0,
-                            "top": 0,
-                            "transform": [
-                              {
-                                "rotate": "0deg",
-                              },
-                            ],
-                          }
+                          [
+                            {
+                              "bottom": 0,
+                              "left": 0,
+                              "position": "absolute",
+                              "right": 0,
+                              "top": 0,
+                            },
+                            {
+                              "opacity": 1,
+                              "transform": [
+                                {
+                                  "rotate": "0deg",
+                                },
+                              ],
+                            },
+                          ]
                         }
                         testID="cross-fade-icon-current"
                       >
@@ -1604,19 +1616,23 @@ exports[`QuestionsScreen loading state - light 1`] = `
                       <View
                         collapsable={false}
                         style={
-                          {
-                            "bottom": 0,
-                            "left": 0,
-                            "opacity": 1,
-                            "position": "absolute",
-                            "right": 0,
-                            "top": 0,
-                            "transform": [
-                              {
-                                "rotate": "0deg",
-                              },
-                            ],
-                          }
+                          [
+                            {
+                              "bottom": 0,
+                              "left": 0,
+                              "position": "absolute",
+                              "right": 0,
+                              "top": 0,
+                            },
+                            {
+                              "opacity": 1,
+                              "transform": [
+                                {
+                                  "rotate": "0deg",
+                                },
+                              ],
+                            },
+                          ]
                         }
                         testID="cross-fade-icon-current"
                       >
@@ -1736,15 +1752,17 @@ exports[`QuestionsScreen loading state - light 1`] = `
             <View
               collapsable={false}
               style={
-                {
-                  "alignItems": "center",
-                  "bottom": 0,
-                  "justifyContent": "center",
-                  "left": 0,
-                  "position": "absolute",
-                  "right": 0,
-                  "top": 0,
-                }
+                [
+                  {
+                    "alignItems": "center",
+                    "bottom": 0,
+                    "justifyContent": "center",
+                    "left": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                  },
+                ]
               }
             >
               <View
@@ -1764,11 +1782,14 @@ exports[`QuestionsScreen loading state - light 1`] = `
                 <View
                   collapsable={false}
                   style={
-                    {
-                      "height": 12,
-                      "overflow": "hidden",
-                      "width": 24,
-                    }
+                    [
+                      {
+                        "height": 12,
+                        "overflow": "hidden",
+                        "width": 24,
+                      },
+                      null,
+                    ]
                   }
                 >
                   <View
@@ -1818,15 +1839,17 @@ exports[`QuestionsScreen loading state - light 1`] = `
             <View
               collapsable={false}
               style={
-                {
-                  "alignItems": "center",
-                  "bottom": 0,
-                  "justifyContent": "center",
-                  "left": 0,
-                  "position": "absolute",
-                  "right": 0,
-                  "top": 0,
-                }
+                [
+                  {
+                    "alignItems": "center",
+                    "bottom": 0,
+                    "justifyContent": "center",
+                    "left": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                  },
+                ]
               }
             >
               <View
@@ -1846,12 +1869,16 @@ exports[`QuestionsScreen loading state - light 1`] = `
                 <View
                   collapsable={false}
                   style={
-                    {
-                      "height": 12,
-                      "overflow": "hidden",
-                      "top": 12,
-                      "width": 24,
-                    }
+                    [
+                      {
+                        "height": 12,
+                        "overflow": "hidden",
+                        "width": 24,
+                      },
+                      {
+                        "top": 12,
+                      },
+                    ]
                   }
                 >
                   <View

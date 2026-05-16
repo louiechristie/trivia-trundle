@@ -16,7 +16,7 @@ interface Props {
   question: string;
 }
 
-export default function Question(props: Props): JSX.Element {
+export default function Question(props: Props): React.JSX.Element {
   const { id, category, question } = props;
 
   const DEBUG = Constants.expoConfig?.extra?.debug || false;

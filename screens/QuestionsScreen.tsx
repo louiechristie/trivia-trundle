@@ -20,7 +20,7 @@ const Navigator = createNativeStackNavigator();
 
 export default function QuestionsScreen({
   navigation,
-}: NativeStackScreenProps<ParamListBase>): JSX.Element {
+}: NativeStackScreenProps<ParamListBase>): React.JSX.Element {
   const { state, getQuestions } = useContext(Context);
   const { questions, error, isLoading } = state;
   const empty = questions.length === 0;

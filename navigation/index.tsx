@@ -13,7 +13,11 @@ import LinkingConfiguration from './LinkingConfiguration';
 
 const DEBUG = Constants.expoConfig?.extra?.debug || false;
 
-export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }): JSX.Element {
+export default function Navigation({
+  colorScheme,
+}: {
+  colorScheme: ColorSchemeName;
+}): React.JSX.Element {
   return (
     <NavigationContainer
       linking={LinkingConfiguration}
