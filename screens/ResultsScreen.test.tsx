@@ -8,8 +8,8 @@ import { Context, transformQuestions } from '../context/QuestionsContext';
 import TestQuestions from '../data/QuestionsTestData';
 import { State, TrueOrFalse, rawQuestion } from '../types';
 
-jest.mock('@react-navigation/native', () => ({
-  useNavigation: () => ({ navigate: () => undefined }),
+jest.mock('expo-router', () => ({
+  useRouter: () => ({ push: () => undefined, replace: () => undefined, back: () => undefined }),
 }));
 
 const answeredQuestions = transformQuestions(TestQuestions as rawQuestion[]).map((q, i) => {
@@ -36,16 +36,11 @@ const makeContext = (state: State) => ({
   setQuestionAnswer: () => undefined,
 });
 
-const mockProps = {
-  navigation: { navigate: () => undefined } as never,
-  route: { key: 'Results', name: 'Results' } as never,
-};
-
 const renderInTheme = (theme: typeof Colors.light, state: State) =>
   render(
     <Context.Provider value={makeContext(state)}>
       <PaperProvider theme={theme}>
-        <ResultsScreen {...mockProps} />
+        <ResultsScreen />
       </PaperProvider>
     </Context.Provider>
   ).toJSON();

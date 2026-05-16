@@ -11,9 +11,8 @@ import { State } from '../types';
 // doesn't fire state updates after the render and trigger act() warnings.
 jest.useFakeTimers();
 
-jest.mock('@react-navigation/native', () => ({
-  ...jest.requireActual('@react-navigation/native'),
-  useNavigation: () => ({ navigate: () => undefined }),
+jest.mock('expo-router', () => ({
+  useRouter: () => ({ push: () => undefined, replace: () => undefined, back: () => undefined }),
 }));
 
 const makeContext = (state: State) => ({
@@ -22,16 +21,11 @@ const makeContext = (state: State) => ({
   setQuestionAnswer: () => undefined,
 });
 
-const mockProps = {
-  navigation: { navigate: () => undefined } as never,
-  route: { key: 'Questions', name: 'Questions' } as never,
-};
-
 const renderInTheme = (theme: typeof Colors.light, state: State) =>
   render(
     <Context.Provider value={makeContext(state)}>
       <PaperProvider theme={theme}>
-        <QuestionsScreen {...mockProps} />
+        <QuestionsScreen />
       </PaperProvider>
     </Context.Provider>
   ).toJSON();

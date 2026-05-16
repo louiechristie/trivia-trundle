@@ -6,8 +6,8 @@ import HomeScreen from './HomeScreen';
 import Colors from '../constants/Colors';
 import { Context } from '../context/QuestionsContext';
 
-jest.mock('@react-navigation/native', () => ({
-  useNavigation: () => ({ navigate: () => undefined }),
+jest.mock('expo-router', () => ({
+  useRouter: () => ({ push: () => undefined, replace: () => undefined, back: () => undefined }),
 }));
 
 const contextValue = {
@@ -16,16 +16,11 @@ const contextValue = {
   setQuestionAnswer: () => undefined,
 };
 
-const mockProps = {
-  navigation: { navigate: () => undefined } as never,
-  route: { key: 'Home', name: 'Home' } as never,
-};
-
 const renderInTheme = (theme: typeof Colors.light) =>
   render(
     <Context.Provider value={contextValue}>
       <PaperProvider theme={theme}>
-        <HomeScreen {...mockProps} />
+        <HomeScreen />
       </PaperProvider>
     </Context.Provider>
   ).toJSON();

@@ -29,8 +29,11 @@ Constraints carried over from the SDK 51 plan:
 | 3 | **Migrate to expo-router** | pending | Done on SDK 54; details below |
 | 4 | SDK 54 → 55 | pending | RN 0.83, React 19.2, Xcode 26.2+ |
 | 5 | _(deferred)_ SDK 55 → 56 | pending | SDK 56 is still beta — revisit when stable |
+Commit each step in Git to master branch. Don't create separate branches.
 
 Per-step verification gate (every numbered step):
+
+Note: When running smoke tests `npm run test:smoke:*` show the output in the Claude cli and in the Claude app.
 
 1. `npx expo install expo@^X.0.0 --fix` → align managed deps
 2. Hand-bump dev-deps not handled by `expo install --fix`:
@@ -45,8 +48,10 @@ Per-step verification gate (every numbered step):
 5. `npm run lint` → clean
 6. `npm run test:jest` → all green (refresh snapshots only when the SDK
    change alone explains the diff)
-7. `npm run test:smoke:{web,ios,android}` → all green
-8. One commit per step: `chore: upgrade to Expo SDK X`, committed directly
+7. `npm run test:smoke:web` green
+8. `npm run test:smoke:ios` green
+9. `npm run test:smoke:android` green
+10. One commit per step: `chore: upgrade to Expo SDK X`, committed directly
    to `master` (no feature branches in this repo).
 
 ## When (and why) to migrate to expo-router
@@ -133,7 +138,9 @@ Done when, on SDK 55 with expo-router:
 - `npm run lint` clean
 - `npm run test:jest` — all tests + snapshots stable (22 tests / 15
   snapshots as of SDK 53)
-- `npm run test:smoke:{web,ios,android}` — all three Maestro flows green
+- `npm run test:smoke:web` green
+- `npm run test:smoke:ios` green
+- `npm run test:smoke:android` green
 - `app/` is the only routing source of truth
 - `App.tsx`, `navigation/`, and any manual `Stack.Navigator` call sites
   are gone

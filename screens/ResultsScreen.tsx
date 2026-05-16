@@ -1,5 +1,5 @@
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import Constants from 'expo-constants';
+import { useRouter } from 'expo-router';
 import React, { useContext } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import { List, Text, ActivityIndicator, useTheme, Button } from 'react-native-paper';
@@ -8,13 +8,12 @@ import Credits from '../components/Credits';
 import Header from '../components/Header';
 import type { AppTheme } from '../constants/Colors';
 import { Context } from '../context/QuestionsContext';
-import { Question, RootStackParamList } from '../types';
+import { Question } from '../types';
 
 const DEBUG = Constants.expoConfig?.extra?.debug || false;
 
-type Props = NativeStackScreenProps<RootStackParamList, 'Results'>;
-
-export default function ResultsScreen({ navigation }: Props): React.JSX.Element {
+export default function ResultsScreen(): React.JSX.Element {
+  const router = useRouter();
   const { state } = useContext(Context);
   const theme = useTheme<AppTheme>();
   const {
@@ -25,7 +24,7 @@ export default function ResultsScreen({ navigation }: Props): React.JSX.Element 
   const showInfoBox = questions.length === 0 || error !== null || isLoading === true;
 
   const playAgain = () => {
-    navigation.navigate('Home');
+    router.push('/');
   };
 
   return (

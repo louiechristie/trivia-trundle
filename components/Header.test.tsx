@@ -5,8 +5,8 @@ import { PaperProvider } from 'react-native-paper';
 import Header from './Header';
 import Colors from '../constants/Colors';
 
-jest.mock('@react-navigation/native', () => ({
-  useNavigation: () => ({ navigate: () => undefined }),
+jest.mock('expo-router', () => ({
+  useRouter: () => ({ push: () => undefined, replace: () => undefined, back: () => undefined }),
 }));
 
 const renderInTheme = (theme: typeof Colors.light) =>

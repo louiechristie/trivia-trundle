@@ -6,8 +6,8 @@ import Question from './Question';
 import Colors from '../constants/Colors';
 import { Context } from '../context/QuestionsContext';
 
-jest.mock('@react-navigation/native', () => ({
-  useNavigation: () => ({ navigate: () => undefined }),
+jest.mock('expo-router', () => ({
+  useRouter: () => ({ push: () => undefined, replace: () => undefined, back: () => undefined }),
 }));
 
 const contextValue = {

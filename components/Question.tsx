@@ -1,12 +1,12 @@
-import { useNavigation } from '@react-navigation/native';
 import Constants from 'expo-constants';
+import { useRouter } from 'expo-router';
 import React, { useContext } from 'react';
 import { Text as RNText, StyleSheet, View, ScrollView } from 'react-native';
 import { Surface, Text, useTheme, TouchableRipple } from 'react-native-paper';
 
 import type { AppTheme } from '../constants/Colors';
 import { Context } from '../context/QuestionsContext';
-import { TrueOrFalse, QuestionsStackParamList, QuestionStackProps } from '../types';
+import { TrueOrFalse } from '../types';
 
 const DEBUG = Constants.expoConfig?.extra?.debug || false;
 
@@ -21,7 +21,7 @@ export default function Question(props: Props): React.JSX.Element {
 
   const DEBUG = Constants.expoConfig?.extra?.debug || false;
 
-  const { navigate } = useNavigation<QuestionStackProps>();
+  const router = useRouter();
   const { setQuestionAnswer } = useContext(Context);
   const { colors } = useTheme<AppTheme>();
 
@@ -31,17 +31,14 @@ export default function Question(props: Props): React.JSX.Element {
       console.log(`Question ${id} Answered ${given_answer}`);
     }
 
-    let nextScreenName: keyof QuestionsStackParamList;
-    const screenPlusOne = id + 1;
-
-    if (screenPlusOne <= 10) {
-      nextScreenName = Number(screenPlusOne).toString() as unknown as keyof QuestionsStackParamList;
-    } else {
-      nextScreenName = 'Results' as keyof QuestionsStackParamList;
-    }
-
     setQuestionAnswer(id, given_answer);
-    navigate(nextScreenName);
+
+    const nextId = id + 1;
+    if (nextId <= 10) {
+      router.push(`/questions/${nextId}`);
+    } else {
+      router.push('/results');
+    }
   };
 
   return (

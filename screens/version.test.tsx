@@ -8,8 +8,8 @@ import Colors from '../constants/Colors';
 import { Context } from '../context/QuestionsContext';
 import packageJson from '../package.json';
 
-jest.mock('@react-navigation/native', () => ({
-  useNavigation: () => ({ navigate: () => undefined }),
+jest.mock('expo-router', () => ({
+  useRouter: () => ({ push: () => undefined, replace: () => undefined, back: () => undefined }),
 }));
 
 // Make Constants.expoConfig surface the real app.json so the rendered
@@ -25,11 +25,6 @@ const contextValue = {
   setQuestionAnswer: () => undefined,
 };
 
-const mockProps = {
-  navigation: { navigate: () => undefined } as never,
-  route: { key: 'Home', name: 'Home' } as never,
-};
-
 test('package.json and app.json version are in sync', () => {
   expect(packageJson.version).toBe(appJson.expo.version);
 });
@@ -40,7 +35,7 @@ test('HomeScreen renders the version from app.json', () => {
   render(
     <Context.Provider value={contextValue}>
       <PaperProvider theme={Colors.light}>
-        <HomeScreen {...mockProps} />
+        <HomeScreen />
       </PaperProvider>
     </Context.Provider>
   );

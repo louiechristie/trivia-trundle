@@ -1,5 +1,5 @@
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import Constants from 'expo-constants';
+import { useRouter } from 'expo-router';
 import React, { useContext } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Text, Button, useTheme } from 'react-native-paper';
@@ -8,17 +8,15 @@ import Credits from '../components/Credits';
 import Header from '../components/Header';
 import type { AppTheme } from '../constants/Colors';
 import { Context } from '../context/QuestionsContext';
-import { RootStackParamList } from '../types';
 
-type Props = NativeStackScreenProps<RootStackParamList, 'Home'>;
-
-export default function HomeScreen({ navigation }: Props): React.JSX.Element {
+export default function HomeScreen(): React.JSX.Element {
+  const router = useRouter();
   const { getQuestions } = useContext(Context);
   const { colors } = useTheme<AppTheme>();
 
   const begin = () => {
     getQuestions();
-    navigation.navigate('Questions');
+    router.push('/questions/1');
   };
 
   return (
