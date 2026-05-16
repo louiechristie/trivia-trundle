@@ -3,6 +3,7 @@ import { decode } from 'html-entities';
 import React, { useReducer, createContext, ReactNode } from 'react';
 
 import questionsAPI from '../api/questionsAPI';
+import TestQuestions from '../data/QuestionsTestData';
 import {
   ServerResponse,
   rawQuestion,
@@ -17,6 +18,8 @@ import {
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 
 const DEBUG = Constants.expoConfig?.extra?.debug || false;
+const USE_TEST_QUESTIONS =
+  (process.env as Record<string, string | undefined>).EXPO_PUBLIC_USE_TEST_QUESTIONS === '1';
 
 const initialState: State = {
   questions: [],
@@ -133,6 +136,18 @@ export const Provider: React.FC<QuestionsProviderProps> = ({ children }) => {
         isLoading,
       },
     });
+
+    if (USE_TEST_QUESTIONS) {
+      dispatch({
+        type: GET_QUESTIONS,
+        payload: {
+          questions: TestQuestions as rawQuestion[],
+          error: null,
+          isLoading: false,
+        },
+      });
+      return;
+    }
 
     try {
       response = await questionsAPI.get('');

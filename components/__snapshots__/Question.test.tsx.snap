@@ -1,0 +1,877 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Question dark theme 1`] = `
+<View
+  collapsable={false}
+  pointerEvents="box-none"
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <RCTScrollView
+    contentContainerStyle={
+      [
+        {
+          "alignItems": "center",
+          "borderColor": "yellow",
+          "borderWidth": 0,
+          "flex": 1,
+        },
+        {
+          "backgroundColor": "#000",
+        },
+      ]
+    }
+  >
+    <View>
+      <View
+        style={
+          {
+            "borderColor": "green",
+            "borderWidth": 0,
+            "flex": 1,
+            "justifyContent": "space-between",
+            "padding": 10,
+            "paddingBottom": 30,
+            "width": 320,
+          }
+        }
+      >
+        <Text
+          style={
+            [
+              {
+                "color": "#FFF",
+                "fontFamily": "System",
+                "fontWeight": "400",
+              },
+              {
+                "textAlign": "left",
+              },
+              [
+                {
+                  "textAlign": "left",
+                },
+                {
+                  "color": "rgba(255, 255, 255, 0.87)",
+                  "fontFamily": "System",
+                  "fontWeight": "500",
+                  "writingDirection": "ltr",
+                },
+                [
+                  {
+                    "fontSize": 20,
+                    "letterSpacing": 0.15,
+                    "lineHeight": 30,
+                    "marginVertical": 2,
+                  },
+                  {
+                    "borderColor": "blue",
+                    "borderWidth": 0,
+                    "justifyContent": "center",
+                    "textAlign": "center",
+                  },
+                ],
+              ],
+            ]
+          }
+        >
+          History
+        </Text>
+        <View
+          style={
+            {
+              "alignItems": "center",
+              "borderColor": "blue",
+              "borderWidth": 0,
+              "justifyContent": "center",
+            }
+          }
+        >
+          <View
+            style={
+              {
+                "alignItems": "center",
+                "borderColor": "indigo",
+                "borderWidth": 0,
+                "justifyContent": "center",
+              }
+            }
+          >
+            <View
+              collapsable={false}
+              style={
+                {
+                  "alignItems": "center",
+                  "backgroundColor": "#000",
+                  "borderColor": "#FFF",
+                  "borderRadius": 5,
+                  "borderWidth": 2,
+                  "justifyContent": "center",
+                  "minHeight": 200,
+                  "padding": 30,
+                  "shadowColor": "#000000",
+                  "shadowOffset": {
+                    "height": 3,
+                    "width": 0,
+                  },
+                  "shadowOpacity": 0.24,
+                  "shadowRadius": 4,
+                }
+              }
+            >
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#FFF",
+                      "fontFamily": "System",
+                      "fontWeight": "400",
+                    },
+                    {
+                      "textAlign": "left",
+                    },
+                    [
+                      {
+                        "textAlign": "left",
+                      },
+                      {
+                        "color": "rgba(255, 255, 255, 0.87)",
+                        "fontFamily": "System",
+                        "fontWeight": "400",
+                        "writingDirection": "ltr",
+                      },
+                      [
+                        {
+                          "fontSize": 14,
+                          "letterSpacing": 0.25,
+                          "lineHeight": 20,
+                          "marginVertical": 2,
+                        },
+                        {
+                          "fontSize": 18,
+                          "lineHeight": 21.599999999999998,
+                          "textAlign": "center",
+                        },
+                      ],
+                    ],
+                  ]
+                }
+              >
+                Japan was part of the Allied Powers during World War I.
+              </Text>
+              <View
+                style={
+                  {
+                    "alignItems": "center",
+                  }
+                }
+              >
+                <Text
+                  style={
+                    {
+                      "fontSize": 48,
+                    }
+                  }
+                >
+                  ?
+                </Text>
+              </View>
+            </View>
+            <Text
+              style={
+                [
+                  {
+                    "color": "#FFF",
+                    "fontFamily": "System",
+                    "fontWeight": "400",
+                  },
+                  {
+                    "textAlign": "left",
+                  },
+                  [
+                    {
+                      "textAlign": "left",
+                    },
+                    {
+                      "color": "rgba(255, 255, 255, 0.87)",
+                      "fontFamily": "System",
+                      "fontWeight": "400",
+                      "writingDirection": "ltr",
+                    },
+                    [
+                      {
+                        "fontSize": 14,
+                        "letterSpacing": 0.25,
+                        "lineHeight": 20,
+                        "marginVertical": 2,
+                      },
+                      {
+                        "borderColor": "violet",
+                        "borderWidth": 0,
+                      },
+                    ],
+                  ],
+                ]
+              }
+            >
+              1
+               of 10
+            </Text>
+          </View>
+        </View>
+        <View
+          style={
+            {
+              "borderColor": "indigo",
+              "borderWidth": 0,
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+            }
+          }
+        >
+          <View
+            accessibilityState={
+              {
+                "disabled": false,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                false,
+                {
+                  "borderColor": "violet",
+                  "borderRadius": 5,
+                  "borderWidth": 0,
+                  "flexBasis": "45%",
+                },
+              ]
+            }
+          >
+            <View
+              collapsable={false}
+              style={
+                {
+                  "alignItems": "center",
+                  "backgroundColor": "#DD4837",
+                  "borderColor": "brown",
+                  "borderRadius": 5,
+                  "borderWidth": 0,
+                  "justifyContent": "center",
+                  "padding": 10,
+                  "shadowColor": "#000000",
+                  "shadowOffset": {
+                    "height": 3,
+                    "width": 0,
+                  },
+                  "shadowOpacity": 0.24,
+                  "shadowRadius": 4,
+                }
+              }
+            >
+              <Text
+                style={
+                  {
+                    "color": "#FFF",
+                    "fontSize": 48,
+                  }
+                }
+              >
+                ✗
+              </Text>
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#FFF",
+                      "fontFamily": "System",
+                      "fontWeight": "400",
+                    },
+                    {
+                      "textAlign": "left",
+                    },
+                    [
+                      {
+                        "textAlign": "left",
+                      },
+                      {
+                        "color": "rgba(255, 255, 255, 0.87)",
+                        "fontFamily": "System",
+                        "fontWeight": "400",
+                        "writingDirection": "ltr",
+                      },
+                      [
+                        {
+                          "fontSize": 14,
+                          "letterSpacing": 0.25,
+                          "lineHeight": 20,
+                          "marginVertical": 2,
+                        },
+                        [
+                          {
+                            "borderColor": "grey",
+                            "borderWidth": 0,
+                            "fontSize": 18,
+                          },
+                          {
+                            "backgroundColor": "#DD4837",
+                            "color": "#FFF",
+                          },
+                        ],
+                      ],
+                    ],
+                  ]
+                }
+              >
+                False
+              </Text>
+            </View>
+          </View>
+          <View
+            accessibilityState={
+              {
+                "disabled": false,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                false,
+                {
+                  "borderColor": "violet",
+                  "borderRadius": 5,
+                  "borderWidth": 0,
+                  "flexBasis": "45%",
+                },
+              ]
+            }
+          >
+            <View
+              collapsable={false}
+              style={
+                {
+                  "alignItems": "center",
+                  "backgroundColor": "#59AF23",
+                  "borderColor": "brown",
+                  "borderRadius": 5,
+                  "borderWidth": 0,
+                  "justifyContent": "center",
+                  "padding": 10,
+                  "shadowColor": "#000000",
+                  "shadowOffset": {
+                    "height": 3,
+                    "width": 0,
+                  },
+                  "shadowOpacity": 0.24,
+                  "shadowRadius": 4,
+                }
+              }
+            >
+              <Text
+                style={
+                  {
+                    "color": "#FFF",
+                    "fontSize": 48,
+                  }
+                }
+              >
+                ✓
+              </Text>
+              <Text
+                style={
+                  [
+                    {
+                      "borderColor": "grey",
+                      "borderWidth": 0,
+                      "fontSize": 18,
+                    },
+                    {
+                      "backgroundColor": "#59AF23",
+                      "color": "#FFF",
+                    },
+                  ]
+                }
+              >
+                True
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+  </RCTScrollView>
+</View>
+`;
+
+exports[`Question light theme 1`] = `
+<View
+  collapsable={false}
+  pointerEvents="box-none"
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <RCTScrollView
+    contentContainerStyle={
+      [
+        {
+          "alignItems": "center",
+          "borderColor": "yellow",
+          "borderWidth": 0,
+          "flex": 1,
+        },
+        {
+          "backgroundColor": "#FFF",
+        },
+      ]
+    }
+  >
+    <View>
+      <View
+        style={
+          {
+            "borderColor": "green",
+            "borderWidth": 0,
+            "flex": 1,
+            "justifyContent": "space-between",
+            "padding": 10,
+            "paddingBottom": 30,
+            "width": 320,
+          }
+        }
+      >
+        <Text
+          style={
+            [
+              {
+                "color": "#000",
+                "fontFamily": "System",
+                "fontWeight": "400",
+              },
+              {
+                "textAlign": "left",
+              },
+              [
+                {
+                  "textAlign": "left",
+                },
+                {
+                  "color": "rgba(0, 0, 0, 0.87)",
+                  "fontFamily": "System",
+                  "fontWeight": "500",
+                  "writingDirection": "ltr",
+                },
+                [
+                  {
+                    "fontSize": 20,
+                    "letterSpacing": 0.15,
+                    "lineHeight": 30,
+                    "marginVertical": 2,
+                  },
+                  {
+                    "borderColor": "blue",
+                    "borderWidth": 0,
+                    "justifyContent": "center",
+                    "textAlign": "center",
+                  },
+                ],
+              ],
+            ]
+          }
+        >
+          History
+        </Text>
+        <View
+          style={
+            {
+              "alignItems": "center",
+              "borderColor": "blue",
+              "borderWidth": 0,
+              "justifyContent": "center",
+            }
+          }
+        >
+          <View
+            style={
+              {
+                "alignItems": "center",
+                "borderColor": "indigo",
+                "borderWidth": 0,
+                "justifyContent": "center",
+              }
+            }
+          >
+            <View
+              collapsable={false}
+              style={
+                {
+                  "alignItems": "center",
+                  "backgroundColor": "#FFF",
+                  "borderColor": "#000",
+                  "borderRadius": 5,
+                  "borderWidth": 2,
+                  "justifyContent": "center",
+                  "minHeight": 200,
+                  "padding": 30,
+                  "shadowColor": "#000000",
+                  "shadowOffset": {
+                    "height": 3,
+                    "width": 0,
+                  },
+                  "shadowOpacity": 0.24,
+                  "shadowRadius": 4,
+                }
+              }
+            >
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#000",
+                      "fontFamily": "System",
+                      "fontWeight": "400",
+                    },
+                    {
+                      "textAlign": "left",
+                    },
+                    [
+                      {
+                        "textAlign": "left",
+                      },
+                      {
+                        "color": "rgba(0, 0, 0, 0.87)",
+                        "fontFamily": "System",
+                        "fontWeight": "400",
+                        "writingDirection": "ltr",
+                      },
+                      [
+                        {
+                          "fontSize": 14,
+                          "letterSpacing": 0.25,
+                          "lineHeight": 20,
+                          "marginVertical": 2,
+                        },
+                        {
+                          "fontSize": 18,
+                          "lineHeight": 21.599999999999998,
+                          "textAlign": "center",
+                        },
+                      ],
+                    ],
+                  ]
+                }
+              >
+                Japan was part of the Allied Powers during World War I.
+              </Text>
+              <View
+                style={
+                  {
+                    "alignItems": "center",
+                  }
+                }
+              >
+                <Text
+                  style={
+                    {
+                      "fontSize": 48,
+                    }
+                  }
+                >
+                  ?
+                </Text>
+              </View>
+            </View>
+            <Text
+              style={
+                [
+                  {
+                    "color": "#000",
+                    "fontFamily": "System",
+                    "fontWeight": "400",
+                  },
+                  {
+                    "textAlign": "left",
+                  },
+                  [
+                    {
+                      "textAlign": "left",
+                    },
+                    {
+                      "color": "rgba(0, 0, 0, 0.87)",
+                      "fontFamily": "System",
+                      "fontWeight": "400",
+                      "writingDirection": "ltr",
+                    },
+                    [
+                      {
+                        "fontSize": 14,
+                        "letterSpacing": 0.25,
+                        "lineHeight": 20,
+                        "marginVertical": 2,
+                      },
+                      {
+                        "borderColor": "violet",
+                        "borderWidth": 0,
+                      },
+                    ],
+                  ],
+                ]
+              }
+            >
+              1
+               of 10
+            </Text>
+          </View>
+        </View>
+        <View
+          style={
+            {
+              "borderColor": "indigo",
+              "borderWidth": 0,
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+            }
+          }
+        >
+          <View
+            accessibilityState={
+              {
+                "disabled": false,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                false,
+                {
+                  "borderColor": "violet",
+                  "borderRadius": 5,
+                  "borderWidth": 0,
+                  "flexBasis": "45%",
+                },
+              ]
+            }
+          >
+            <View
+              collapsable={false}
+              style={
+                {
+                  "alignItems": "center",
+                  "backgroundColor": "#DD4837",
+                  "borderColor": "brown",
+                  "borderRadius": 5,
+                  "borderWidth": 0,
+                  "justifyContent": "center",
+                  "padding": 10,
+                  "shadowColor": "#000000",
+                  "shadowOffset": {
+                    "height": 3,
+                    "width": 0,
+                  },
+                  "shadowOpacity": 0.24,
+                  "shadowRadius": 4,
+                }
+              }
+            >
+              <Text
+                style={
+                  {
+                    "color": "#FFF",
+                    "fontSize": 48,
+                  }
+                }
+              >
+                ✗
+              </Text>
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#000",
+                      "fontFamily": "System",
+                      "fontWeight": "400",
+                    },
+                    {
+                      "textAlign": "left",
+                    },
+                    [
+                      {
+                        "textAlign": "left",
+                      },
+                      {
+                        "color": "rgba(0, 0, 0, 0.87)",
+                        "fontFamily": "System",
+                        "fontWeight": "400",
+                        "writingDirection": "ltr",
+                      },
+                      [
+                        {
+                          "fontSize": 14,
+                          "letterSpacing": 0.25,
+                          "lineHeight": 20,
+                          "marginVertical": 2,
+                        },
+                        [
+                          {
+                            "borderColor": "grey",
+                            "borderWidth": 0,
+                            "fontSize": 18,
+                          },
+                          {
+                            "backgroundColor": "#DD4837",
+                            "color": "#FFF",
+                          },
+                        ],
+                      ],
+                    ],
+                  ]
+                }
+              >
+                False
+              </Text>
+            </View>
+          </View>
+          <View
+            accessibilityState={
+              {
+                "disabled": false,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                false,
+                {
+                  "borderColor": "violet",
+                  "borderRadius": 5,
+                  "borderWidth": 0,
+                  "flexBasis": "45%",
+                },
+              ]
+            }
+          >
+            <View
+              collapsable={false}
+              style={
+                {
+                  "alignItems": "center",
+                  "backgroundColor": "#59AF23",
+                  "borderColor": "brown",
+                  "borderRadius": 5,
+                  "borderWidth": 0,
+                  "justifyContent": "center",
+                  "padding": 10,
+                  "shadowColor": "#000000",
+                  "shadowOffset": {
+                    "height": 3,
+                    "width": 0,
+                  },
+                  "shadowOpacity": 0.24,
+                  "shadowRadius": 4,
+                }
+              }
+            >
+              <Text
+                style={
+                  {
+                    "color": "#FFF",
+                    "fontSize": 48,
+                  }
+                }
+              >
+                ✓
+              </Text>
+              <Text
+                style={
+                  [
+                    {
+                      "borderColor": "grey",
+                      "borderWidth": 0,
+                      "fontSize": 18,
+                    },
+                    {
+                      "backgroundColor": "#59AF23",
+                      "color": "#FFF",
+                    },
+                  ]
+                }
+              >
+                True
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+  </RCTScrollView>
+</View>
+`;

@@ -16,9 +16,9 @@
     "test:jest": "jest",
     "test:jest:watch": "jest --watchAll",
     "test": "npm run lint && npm run test:jest && npm run test:smoke",
-    "test:smoke:ios": "npm run build:ios && maestro --platform ios test tests/maestro/smoke-test-full-game.yaml",
-    "test:smoke:android": "npm run build:android && npm run deploy:android:local && maestro --platform android test tests/maestro/smoke-test-full-game.yaml",
-    "test:smoke:web": "npm run build:web && (npm run serve &) && npx --yes wait-on http://localhost:3000 && maestro test tests/maestro/smoke-test-full-game-web.yaml; EC=$?; kill $(lsof -ti:3000) 2>/dev/null; exit $EC",
+    "test:smoke:ios": "EXPO_PUBLIC_USE_TEST_QUESTIONS=1 npm run build:ios && maestro --platform ios test tests/maestro/smoke-test-full-game.yaml",
+    "test:smoke:android": "EXPO_PUBLIC_USE_TEST_QUESTIONS=1 npm run build:android && npm run deploy:android:local && maestro --platform android test tests/maestro/smoke-test-full-game.yaml",
+    "test:smoke:web": "EXPO_PUBLIC_USE_TEST_QUESTIONS=1 npm run build:web && (npm run serve &) && npx --yes wait-on http://localhost:3000 && maestro test tests/maestro/smoke-test-full-game-web.yaml; EC=$?; kill $(lsof -ti:3000) 2>/dev/null; exit $EC",
     "test:smoke": "npm run test:smoke:web && npm run test:smoke:ios && npm run test:smoke:android",
     "debug:test": "maestro studio tests/maestro/smoke-test-full-game.yaml",
     "build:ios": "eas build --platform ios --profile preview --local",
@@ -89,6 +89,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.29.0",
+    "@testing-library/react-native": "^12.9.0",
     "@types/jest": "^29.5.14",
     "@types/react": "~18.2.45",
     "babel-preset-expo": "^10.0.2",
@@ -99,11 +100,15 @@
     "eslint-plugin-prettier": "^4.2.5",
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-tsdoc": "^0.5.2",
+    "glob": "^10.5.0",
     "husky": "^8.0.3",
     "jest-expo": "^50.0.4",
     "lint-staged": "^13.3.0",
     "markdownlint-cli": "^0.48.0",
+    "pixelmatch": "^6.0.0",
+    "pngjs": "^7.0.0",
     "prettier": "^2.8.8",
+    "react-test-renderer": "^18.2.0",
     "typescript": "^5.9.3"
   }
 }

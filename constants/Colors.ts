@@ -10,7 +10,7 @@ const positive = '#59AF23';
 
 const tintColorDark = '#fff';
 
-export default {
+const Colors = {
   light: {
     ...DefaultTheme,
 
@@ -43,6 +43,7 @@ export default {
       questionBorderColor: '#FFF',
       card: '#000',
       surface: '#000',
+      border: 'rgb(39, 39, 41)',
       text: '#FFF',
       background: '#000',
       lightText: '#FFF',
@@ -52,3 +53,5 @@ export default {
     },
   },
 };
+
+export default Colors;
