@@ -4,7 +4,7 @@
     "slug": "trivia-trundle",
     "description": "A quick true or false game.",
     "githubUrl": "https://github.com/louiechristie/trivia-trundle",
-    "version": "3.54.0",
+    "version": "3.55.0",
     "orientation": "default",
     "icon": "./assets/images/icon.png",
     "scheme": "trivia-trundle",
