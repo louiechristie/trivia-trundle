@@ -33,7 +33,10 @@
     "deploy:web": "npm run build:web && rsync -avhP --delete ./dist/ ~/Documents/louiechristie.com/_site/trivia-trundle",
     "upgrade": "npx npm-check-updates -u --target minor && npm install",
     "prebuild:clean": "rm -rf ios android && npx expo prebuild --clean",
-    "serve": "rm -rf dist/trivia-trundle && cp -r dist dist/trivia-trundle && npx --yes serve dist"
+    "serve": "rm -rf dist/trivia-trundle && cp -r dist dist/trivia-trundle && npx --yes serve dist",
+    "lighthouse:autorun": "npx @lhci/cli autorun",
+    "lighthouse:open": "npx @lhci/cli open",
+    "lighthouse": "npm run lighthouse:autorun ; npm run lighthouse:open"
   },
   "jest": {
     "preset": "jest-expo",
