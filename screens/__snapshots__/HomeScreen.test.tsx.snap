@@ -37,7 +37,7 @@ exports[`HomeScreen dark theme 1`] = `
         style={
           [
             {
-              "backgroundColor": "#000",
+              "backgroundColor": "#0051E7",
               "elevation": 0,
               "paddingHorizontal": 0,
               "paddingTop": 0,
@@ -53,7 +53,7 @@ exports[`HomeScreen dark theme 1`] = `
           collapsable={false}
           style={
             {
-              "backgroundColor": "#000",
+              "backgroundColor": "#0051E7",
               "height": 64,
               "shadowColor": "#000",
               "shadowOffset": {
@@ -71,7 +71,7 @@ exports[`HomeScreen dark theme 1`] = `
             style={
               {
                 "alignItems": "center",
-                "backgroundColor": "#000",
+                "backgroundColor": "#0051E7",
                 "flex": 1,
                 "flexDirection": "row",
                 "paddingBottom": undefined,
@@ -741,7 +741,7 @@ exports[`HomeScreen light theme 1`] = `
         style={
           [
             {
-              "backgroundColor": "#FFF",
+              "backgroundColor": "#0051E7",
               "elevation": 0,
               "paddingHorizontal": 0,
               "paddingTop": 0,
@@ -757,7 +757,7 @@ exports[`HomeScreen light theme 1`] = `
           collapsable={false}
           style={
             {
-              "backgroundColor": "#FFF",
+              "backgroundColor": "#0051E7",
               "height": 64,
               "shadowColor": "#000",
               "shadowOffset": {
@@ -775,7 +775,7 @@ exports[`HomeScreen light theme 1`] = `
             style={
               {
                 "alignItems": "center",
-                "backgroundColor": "#FFF",
+                "backgroundColor": "#0051E7",
                 "flex": 1,
                 "flexDirection": "row",
                 "paddingBottom": undefined,

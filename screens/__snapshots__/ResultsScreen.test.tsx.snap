@@ -48,7 +48,7 @@ exports[`ResultsScreen completed - dark 1`] = `
           style={
             [
               {
-                "backgroundColor": "#000",
+                "backgroundColor": "#0051E7",
                 "elevation": 0,
                 "paddingHorizontal": 0,
                 "paddingTop": 0,
@@ -64,7 +64,7 @@ exports[`ResultsScreen completed - dark 1`] = `
             collapsable={false}
             style={
               {
-                "backgroundColor": "#000",
+                "backgroundColor": "#0051E7",
                 "height": 64,
                 "shadowColor": "#000",
                 "shadowOffset": {
@@ -82,7 +82,7 @@ exports[`ResultsScreen completed - dark 1`] = `
               style={
                 {
                   "alignItems": "center",
-                  "backgroundColor": "#000",
+                  "backgroundColor": "#0051E7",
                   "flex": 1,
                   "flexDirection": "row",
                   "paddingBottom": undefined,
@@ -2728,7 +2728,7 @@ exports[`ResultsScreen completed - light 1`] = `
           style={
             [
               {
-                "backgroundColor": "#FFF",
+                "backgroundColor": "#0051E7",
                 "elevation": 0,
                 "paddingHorizontal": 0,
                 "paddingTop": 0,
@@ -2744,7 +2744,7 @@ exports[`ResultsScreen completed - light 1`] = `
             collapsable={false}
             style={
               {
-                "backgroundColor": "#FFF",
+                "backgroundColor": "#0051E7",
                 "height": 64,
                 "shadowColor": "#000",
                 "shadowOffset": {
@@ -2762,7 +2762,7 @@ exports[`ResultsScreen completed - light 1`] = `
               style={
                 {
                   "alignItems": "center",
-                  "backgroundColor": "#FFF",
+                  "backgroundColor": "#0051E7",
                   "flex": 1,
                   "flexDirection": "row",
                   "paddingBottom": undefined,
@@ -5022,7 +5022,7 @@ exports[`ResultsScreen empty - light 1`] = `
           style={
             [
               {
-                "backgroundColor": "#FFF",
+                "backgroundColor": "#0051E7",
                 "elevation": 0,
                 "paddingHorizontal": 0,
                 "paddingTop": 0,
@@ -5038,7 +5038,7 @@ exports[`ResultsScreen empty - light 1`] = `
             collapsable={false}
             style={
               {
-                "backgroundColor": "#FFF",
+                "backgroundColor": "#0051E7",
                 "height": 64,
                 "shadowColor": "#000",
                 "shadowOffset": {
@@ -5056,7 +5056,7 @@ exports[`ResultsScreen empty - light 1`] = `
               style={
                 {
                   "alignItems": "center",
-                  "backgroundColor": "#FFF",
+                  "backgroundColor": "#0051E7",
                   "flex": 1,
                   "flexDirection": "row",
                   "paddingBottom": undefined,
